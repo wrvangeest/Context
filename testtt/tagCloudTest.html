@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
+<html>  
+  <head>  
+    <link rel="stylesheet" type="text/css" href="tagcloud.css">  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+    <title>Tag Cloud Test</title>  
+  </head>  
+  <body>  
+    <div id="tagCloud">  
+      <h2>Tag Cloud</h2>  
+    </div>  
+    <?php
+    //connection information  
+    $host = "localhost";  
+    $user = "root";  
+    $password = "";  
+    $database = "programmadata";  
+        
+    //make connection  
+    $server = mysql_connect($host, $user, $password);  
+    $connection = mysql_select_db($database, $server);  
+        
+    //query the database  
+    $query = mysql_query("SELECT term,reranking_score FROM dwdd14052012"); 
+
+    $result = mysql_query($query);
+
+    if (!$result) {
+      echo "Could not successfully run query ($sql) from DB: " . mysql_error();
+      exit;
+    }
+
+    if (mysql_num_rows($result) == 0) {
+      echo "No rows found, nothing to print so am exiting";
+      exit;
+    }
+
+    while ($row = mysql_fetch_assoc($result)) {
+      echo $row["term"];
+      echo $row["reranking_score"];
+    }
+
+    mysql_free_result($result);
+    ?>
+    </script>  
+  </body>  
+</html>  
