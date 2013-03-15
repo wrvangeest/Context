@@ -76,20 +76,7 @@
 
 		</div>
 	</header>
-	<?php
-		// Create connection
-		$con=mysqli_connect("localhost",,,"ProgrammaData");
-
-		// Check connection
-		if (mysqli_connect_errno($con))
-		  {
-		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		  }
-		else
-		{
-			echo "Verbonden";
-		}
-	?>
+	
 	<div class="container">
 		
 		<div class="row">
@@ -103,9 +90,17 @@
 					</a></div>
 					<div id="add_inner" class="accordion-body collapse in">
 							<span class="label label-success tag" data-time="105"><img src="twitter_icon.png" rel="popover" class="twitter_icon">Random</span>
-							<?php $result = mysql_query("SELECT * FROM dwdd-14052012_finalranking WHERE term LIKE '%Presid%';")
-							?>
-							<span class="label label-success tag" data-time="150"><img src="twitter_icon.png" rel="popover" class="twitter_icon"><? echo $result[0] ?></span>
+							<span class="label label-success tag" data-time="95"><img src="twitter_icon.png" class="twitter_icon">Fail</span>
+							<span class="label label-success tag" data-time="255"><img src="twitter_icon.png" class="twitter_icon">Cute</span>
+							<span class="label label-success tag" data-time="555"><img src="twitter_icon.png" class="twitter_icon">WTF?</span>
+							<span class="label label-success tag" data-time="650"><img src="twitter_icon.png" class="twitter_icon">Powned!!</span>
+							<span class="label label-success tag" data-time="795"><img src="twitter_icon.png" class="twitter_icon">Men with glasses</span>
+							<span class="label label-success tag" data-time="950"><img src="twitter_icon.png" class="twitter_icon">Sweet</span>
+							<span class="label label-success tag" data-time="450"><img src="twitter_icon.png" class="twitter_icon">Can you believe it???</span>
+
+							<span class="label label-success tag" data-time="333"><img src="twitter_icon.png" class="twitter_icon">LOLLLL Win !!!</span>
+
+							<span class="label label-success tag" data-time="951"><img src="twitter_icon.png" class="twitter_icon">N00b</span>
 					</div>
 				
 				</div>
@@ -134,8 +129,7 @@
 		
 		</div>
 	</div>
-	<? mysqli_close($con);
-	?>
+
 
 
 
