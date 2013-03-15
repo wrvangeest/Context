@@ -1,0 +1,324 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>User Managment</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+		<script src="http://vjs.zencdn.net/c/video.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<script src ="javascript/bootstrap.js"></script>
+		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
+		
+		<style>
+
+		body{
+			padding-top: 60px;
+		}
+
+		.alert{
+			display: none;
+		}
+
+		tbody {
+    		height: 450px;
+    		overflow: auto;
+		}
+		
+		td, th{
+			width:150px;
+		}
+
+		thead > tr, tbody{
+    	display:block;
+		}
+
+		#container_inner{
+			width:640px;
+			margin: 0 auto;
+		}
+
+		.twitter_icon{
+			width:15px;
+			height: 15px;
+			margin-bottom:0px;
+		}
+
+		.tag{
+			float:left;
+			margin-top:5px;
+			margin-left:5px;
+			
+			padding:5px;
+
+		}
+
+		.icon_marker{
+			float:left;
+			width:15px;
+			height: 15px;
+			position: absolute;
+			margin-top:18px;
+		}
+
+
+		#videowrapper{
+			width:700px;
+			margin:0 auto;
+		}
+
+		#header{
+			width:700px;
+			height:15px;
+			background-color: grey;
+			margin:0 auto;
+			overflow: hidden;
+		}
+
+		.icon-fire{
+			position: absolute;d
+		}
+
+		
+	
+		</style>
+	</head>
+	
+	<body>
+	
+	<header>
+		<div class="navbar navbar-fixed-top">
+			
+	  			<div class="navbar-inner">
+	  				<div class="container">
+			    		<ul class="nav">
+			     			<li class="active"><a href="index.html">Home</a></li>
+			     			<li><button class="btn btn-success" id="interactive_button">Make the video more interactive!!!</button></li>
+			    		</ul>
+
+			    	</div>
+	  			</div>
+
+
+		</div>
+	</header>
+	
+	<div class="container">
+
+		<div id="videowrapper">
+			
+<div class="well"> 
+		<!-- test with popcornjs framework -->
+		<div class="row">
+			
+			
+					<div class="span12">
+
+						<video height="394" width="700" id="video" onclick="play()">
+							<source type="video/mp4" src="powned.mp4">
+						</video>
+					</div>
+
+				
+
+					<div class="span12" style="margin-bottom:0px;">
+
+								<!-- video controls -->								
+								<div id="video_controls" style="margin-bottom:5px;">
+									<button class="btn btn-danger" id="playbutton">Play</button>
+									<button class="btn btn-primary" id="pausebutton">Pause</button>
+									<button class="btn btn-success" id="stopbutton">Stop</button>
+								</div>
+								
+								<!-- progress bar -->
+
+								<div class="progress" id="popcorn-progbar-wrapper" style="width:700px; height:15px; background-color:grey; margin-bottom:5px;">
+									
+									<div class="bar" id="popcorn-progbar" style="width: 0%;"></div>
+								</div>
+
+								<!-- break points -->
+								<div id="breakpoints" style="height:22px;">
+									<li class="icon-fire" style="margin-left:0px;"></li>
+									<li class="icon-fire" style="margin-left:5px;"></li>
+									<li class="icon-fire" style="margin-left:55px;"></li>
+									<li class="icon-fire" style="margin-left:590px;"></li>
+									<li class="icon-fire" style="margin-left:490px;"></li>
+									<li class="icon-fire" style="margin-left:690px;"></li>
+								</div>
+
+					</div>
+
+						
+							
+					
+
+		</div>
+		</div>
+</div>
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+			
+				
+
+
+			
+		
+
+
+
+		
+		<div class="row">
+
+				
+
+
+
+
+
+		<!-- video sectie -->
+		<div class="span8">	
+
+			<div class="well well-small">
+  			<p>Video</p>
+			</div>
+
+			<!-- the video itself -->
+			<video id="videoplayer"  controls="controls" width="700" height="394">
+				<source type="video/mp4" src="powned.mp4">
+			</video>
+
+			<!-- tag markers -->
+			<div id="tagmarkers" style="display:none;">
+				<span><img src="twitter_icon.png" class="icon_marker" style="margin-left:0px;" data-time="95"></span>
+				<span><img src="twitter_icon.png" class="icon_marker" style="margin-left:55px;" data-time="195"></span>
+				<span><img src="twitter_icon.png" class="icon_marker" style="margin-left:88px;" data-time="222"></span>
+				<span><img src="twitter_icon.png" class="icon_marker" style="margin-left:140px;" data-time="333"></span>
+				<span><img src="twitter_icon.png" class="icon_marker" style="margin-left:179px;" data-time="444"></span>
+				<span><img src="twitter_icon.png" class="icon_marker" style="margin-left:200px;" data-time="555"></span>
+				<span><img src="twitter_icon.png" class="icon_marker" style="margin-left:530px;" data-time="777"></span>
+				
+				
+			</div>
+
+			<!-- progress bar -->
+			<div class="progress" style="width:640px; height:15px;">
+				<div class="bar" id="progbar" style="width: 0%;"></div>
+			</div>
+		</div>
+
+
+
+		<div class="span4" id="tagcloud_lef" style="display:none;">
+			<div class="accordion" id="accordion_leftmenu">
+  				
+  				<div class="form-horizontal" id="addNewUser" action="users.php" method="post">
+					<a class="accordion-toggle" data-toggle="collapse" data-target="#add_inner" data-parent="#accordion_leftmenu">
+					<div class="well well-small">
+  					Tag Cloud
+					</div>
+					</a></div>
+					<div id="add_inner" class="accordion-body collapse in">
+							<span class="label label-success tag" data-time="105"><img src="twitter_icon.png" rel="popover" class="twitter_icon">Random</span>
+							<span class="label label-success tag extra_info" style="display:none; background-color:black;">Tag rating </br>more information etc</span>
+							<span class="label label-success tag" data-time="95"><img src="twitter_icon.png" class="twitter_icon">Fail</span>
+							<span class="label label-success tag" data-time="255"><img src="twitter_icon.png" class="twitter_icon">Cute</span>
+							<span class="label label-success tag" data-time="555"><img src="twitter_icon.png" class="twitter_icon">WTF?</span>
+							<span class="label label-success tag" data-time="650"><img src="twitter_icon.png" class="twitter_icon">Powned!!</span>
+							<span class="label label-success tag" data-time="795"><img src="twitter_icon.png" class="twitter_icon">Men with glasses</span>
+							<span class="label label-success tag" data-time="950"><img src="twitter_icon.png" class="twitter_icon">Sweet</span>
+							<span class="label label-success tag" data-time="450"><img src="twitter_icon.png" class="twitter_icon">Can you believe it???</span>
+
+							<span class="label label-success tag" data-time="333"><img src="twitter_icon.png" class="twitter_icon">LOLLLL Win !!!</span>
+
+							<span class="label label-success tag" data-time="951"><img src="twitter_icon.png" class="twitter_icon">N00b</span>
+					</div>
+				
+				</div>
+			</div>
+
+				
+
+		
+
+
+		
+		</div>
+	</div>
+
+
+
+
+
+	<footer>
+	</footer>
+<script>
+
+	
+	$(document).ready(function(){
+
+		/*########################### begin update progressbar  ###########*/
+
+			// create new popcorn instance
+			var pop = Popcorn("#video");
+
+			// listen to timeupdate
+			pop.on( "timeupdate", function() {
+			   // console.log(this.currentTime());
+				updatePopcornBar(this.currentTime());
+			});
+
+			//when someone clicks on the timeline
+			$("#popcorn-progbar-wrapper").click(function(e){
+				var posX = $(this).offset().left;
+			
+				pop.currentTime(
+						(pop.duration() * ((e.pageX - posX) / parseInt($(this).css("width"))))
+					);
+							
+			});
+
+			
+
+			$("#playbutton").click(function(){
+				pop.play();
+			});
+
+			$("#pausebutton").click(function(){
+				pop.pause();
+			});
+
+			$("#stopbutton").click(function(){
+				pop.currentTime(0);
+				pop.pause();
+			});
+
+		/*########################### end update progresar ################*/
+
+
+	});
+
+	///update progressbar
+	function updatePopcornBar(newwidth)
+	{
+		var finalnew =  (newwidth / Popcorn("#video").duration()) * parseInt($("#popcorn-progbar-wrapper").css("width"));
+		$("#popcorn-progbar").css("width", finalnew +"px");
+
+
+	}		
+			
+
+			
+</script>
+
+	
+	<script src ="javascript/main.js"></script>
+	</body>
+	</html>
