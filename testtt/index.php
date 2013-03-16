@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>User Managment</title>
+		<title>SocialZap</title>
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
 		<script src="http://vjs.zencdn.net/c/video.js"></script>
@@ -78,11 +78,35 @@
 	</header>
 
 	<?php
-	$link = mysql_connect('localhost',);
+	$link = mysql_connect('localhost','root','');
 	if (!$link) {
 	    die('Could not connect: ' . mysql_error());
 	}
 	echo 'Connected successfully';
+	?>
+
+	<?php 
+
+	if (!mysql_select_db('programmadata')) {
+	echo "The mysql_select_db returned FALSE: " . mysql_error();
+	}
+
+	$query = sprintf("SELECT term FROM dwdd14052012
+	    LIMIT 1");
+
+	// Perform Query
+	$result = mysql_query($query);
+
+	// Check result
+	// This shows the actual query sent to MySQL, and the error. Useful for debugging.
+	if (!$result) {
+	    $message  = 'Invalid query: ' . mysql_error() . "\n";
+	    $message .= 'Whole query: ' . $query;
+	    die($message);
+	}
+	while ($row = mysql_fetch_assoc($result)) {
+    echo $row['term'];
+	}
 	?>
 
 	<div class="container">
@@ -97,7 +121,12 @@
 					<legend>Tag Cl</legend>
 					</a></div>
 					<div id="add_inner" class="accordion-body collapse in">
-							<span class="label label-success tag" data-time="105"><img src="twitter_icon.png" rel="popover" class="twitter_icon">Random</span>
+							<span class="label label-success tag" data-time="105"><img src="twitter_icon.png" rel="popover" class="twitter_icon"><?php echo "Random"?></span>
+							<span class="label label-success tag" data-time="105"><img src="twitter_icon.png" rel="popover" class="twitter_icon">
+								<?php
+								$result = "bluh";
+								echo $result;
+								?></span>
 							
 					</div>
 				
@@ -128,6 +157,7 @@
 
 
 	<footer>
+		<a href="tagCloudTest.html"> Klik </a>
 	</footer>
 
 
