@@ -15,7 +15,7 @@
     //connection information  
     $host = "localhost";  
     $user = "root";  
-    $password = "";  
+    $password = "root";  
     $database = "programmadata";  
         
     //make connection  
