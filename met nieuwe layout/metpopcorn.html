@@ -76,25 +76,8 @@
 			overflow: hidden;
 		}
 
-		.tag-point{
-			position: absolute;
-			width: 15px;
-			height:15px;
-		}
-
-		.breakpoint-wrapper{
-			position: absolute;
-			width:700px;
-			
-		}
-		
-		.extrainfo{
-			position: fixed;
-			width: 150px;
-			height: 250px;
-			left:15px;
-			top:60px;
-			background-color: red;
+		.icon-fire{
+			position: absolute;d
 		}
 
 		
@@ -121,11 +104,6 @@
 		</div>
 	</header>
 	
-	<div class="extrainfo">
-	</div>
-
-
-
 	<div class="container">
 
 		<div id="videowrapper">
@@ -138,7 +116,7 @@
 					<div class="span12">
 
 						<video height="394" width="700" id="video" onclick="play()">
-							<source type="video/mp4" src="dwdd14052012.mp4">
+							<source type="video/mp4" src="powned.mp4">
 						</video>
 					</div>
 
@@ -155,24 +133,21 @@
 								
 								<!-- progress bar -->
 
-								<div class="progress" id="popcorn-progbar-wrapper" style="width:700px; height:15px; background-color:grey; margin-bottom:5px;">
+								<div class="progress" id="popcorn-progbar-wrapper" style="width:700px; height:15px; background-color:grey; margin-bottom:5px; cursor: pointer;">
 									
 									<div class="bar" id="popcorn-progbar" style="width: 0%;"></div>
 								</div>
 
-
-								<div class="breakpoint-wrapper">
-									<!-- break points -->
-									<div id="breakpoints" style="height:22px;">
-										<img src="twitter_bird.png" class="tag-point" style="margin-left:10px;">
-										<img src="twitter_bird.png" class="tag-point" style="margin-left:50px;">
-										<img src="twitter_bird.png" class="tag-point" style="margin-left:5px;">
-										<img src="twitter_bird.png" class="tag-point" style="margin-left:444px;">
-										<img src="twitter_bird.png" class="tag-point" style="margin-left:675px;">
-									</div>
+								<!-- break points -->
+								<div id="breakpoints" style="height:22px;">
+									<li class="icon-fire" style="margin-left:0px;"></li>
+									<li class="icon-fire" style="margin-left:5px;"></li>
+									<li class="icon-fire" style="margin-left:55px;"></li>
+									<li class="icon-fire" style="margin-left:590px;"></li>
+									<li class="icon-fire" style="margin-left:490px;"></li>
+									<li class="icon-fire" style="margin-left:690px;"></li>
 								</div>
-								<button class="btn primary" id="capture"> CLICK ME !!! </button>
-								<div id="captureframe"></div>
+
 					</div>
 
 						
@@ -267,7 +242,6 @@
 					</div>
 				
 				</div>
-
 			</div>
 
 				
@@ -326,27 +300,12 @@
 				pop.pause();
 			});
 
-			$("#capture").click(function(){
-
-				var video = document.getElementsByTagName('video')[0];
-				var bottom = document.getElementById("captureframe"); 
-
-
-				var canvas = document.createElement('canvas');
-
-				canvas.width  = 500;
-				canvas.height = 282;
-
-				var ctx = canvas.getContext('2d');
-				ctx.drawImage(video, 0, 0); 
-
-				
-				bottom.appendChild(captureframe);
-
-			});
-
 		/*########################### end update progresar ################*/
 
+		$("#playbutton").simpletip({
+			content: " hahaha",
+			fixed:false
+		});
 
 	});
 
@@ -357,9 +316,7 @@
 		$("#popcorn-progbar").css("width", finalnew +"px");
 
 
-	}
-
-
+	}		
 			
 
 			
@@ -367,5 +324,6 @@
 
 	
 	<script src ="javascript/main.js"></script>
+	<script src ="simple_tip.js"></script>
 	</body>
 	</html>

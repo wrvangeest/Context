@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>User Managment</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+		<script src="http://vjs.zencdn.net/c/video.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<script src ="javascript/bootstrap.js"></script>
+		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
+		
+		<style>
+
+
+		.icon-fire{
+			position: absolute;
+		}
+
+		.main-content-wrapper{
+			min-width: 1100px;
+			margin:0 auto;
+		}
+		
+		.logo{
+			float:left;
+			
+		}
+
+		.header2{
+			height:66px;
+			overflow: hidden;
+			margin-bottom: 0px;	
+			background-color: #262626;
+			padding-top: 0px;
+		}
+		.navigation{
+			list-style-type: none;
+			float:right;
+			padding-top: 25px;
+		}
+		.navigation > li{
+			display: inline;
+			margin-right: 30px;
+		}
+
+		.navigation > li > a{
+			text-decoration: none;
+			color:#ffffff;
+		}
+
+		.demo-video-wrapper{
+			background-image: url(noisy_grid.png);
+			padding-top:15px;
+			height:550px;
+			overflow: hidden;
+
+			
+		}
+
+		.video-area{
+			float:left;
+			
+		}
+
+		.tag-cloud{
+			width: 250px;
+			float:left;
+			margin-left:15px;
+		}
+		 .tager{
+			margin-top: 4px;
+		}
+
+		.panel{
+			-webkit-border-radius:5px;
+			background-color: #fff;
+			border:1px solid #c7c7c7;
+			padding:10px;
+			-moz-box-shadow: 0px 1px 2px #000000;
+			-webkit-box-shadow: 0px 1px 2px #000000;
+			box-shadow: 0px 1px 2px #000000;
+
+			
+
+		}
+
+		.panel-header{
+			width: 100%;
+			border-bottom: 1px solid #c7c7c7;
+			color:#000000;
+			font-size: 17px;
+			margin-bottom: 6px;
+		}
+
+		.features-related-wrapper{
+			border-top: 2px solid #c7c7c7;
+			border-bottom: 2px solid #c7c7c7;
+			padding-top: 5px;
+		}
+
+		.features{
+			margin: 0 auto;
+			color:#000000;
+			font-size: 17px;
+		}
+
+		.footer{
+			background-color: #262626;
+			height: 150px;
+			color:#fff;
+		}
+
+		.extrainfo{
+			
+			width: 250px;
+			height: 125px;
+			float:left;
+			margin-left:15px;
+			margin-top:10px;
+		}
+
+	
+		</style>
+	</head>
+	
+	<body>
+	
+	
+
+		<!--page wrapper -->
+		<div class="main-content-wrapper">
+			
+			<!-- header -->
+			
+			<header class="header2">
+					<div class="container">
+						<h1 class="logo">
+							<a href="newlayout.html">
+								<img src="logo2.jpg">
+							</a>
+
+						</h1>
+						
+				<div class="row">
+					
+
+					<div class="span9" style="float:right; height:66px;">
+						<ul class="navigation">
+			     			<li><a href="index.html">Home</a></li>
+			     			<li><a href="#">Browse</a></li>
+			     			<li><a href="#">Random Video</a></li>
+			     			<li><a href="#">Sign Up</a></li>
+			     			<li><a href="#">Login</a></li>
+			    		</ul>
+
+					</div>
+
+				</div>
+				</div>
+			<!-- end header -->
+			</header>
+
+
+			<!--demo video -->
+			<div class="demo-video-wrapper">
+				<!-- begin demo video container -->
+				<div class="container panel">
+					
+					<!-- video area -->
+					<div class="video-area">
+
+						<div class="panel-header">
+							Demo video
+						</div>
+						
+						<div>
+							<video height="360" width="640" id="video" onclick="play()">
+							<source type="video/mp4" src="powned.mp4">
+							</video>
+						</div>
+					
+				
+						<!-- video controls -->								
+						<div id="video_controls" style="margin-bottom:5px;">
+							<button class="btn btn-success" id="playbutton">Play</button>
+							<button class="btn btn-primary" id="pausebutton">Pause</button>
+							<button class="btn btn-danger" id="stopbutton">Stop</button>
+						</div>
+						
+						<!-- progress bar -->
+
+						<div class="progress" id="popcorn-progbar-wrapper" style="width:640px; height:15px; background-color:grey; margin-bottom:5px; cursor: pointer;">
+							
+						<div class="bar" id="popcorn-progbar" style="width: 0%;"></div>
+						</div>
+
+						<!-- break points -->
+						<div id="breakpoints" style="height:22px; width:640px;">
+							<li class="icon-fire" style="margin-left:0px;"></li>
+							<li class="icon-fire" style="margin-left:5px;"></li>
+							<li class="icon-fire" style="margin-left:55px;"></li>
+							<li class="icon-fire" style="margin-left:590px;"></li>
+							<li class="icon-fire" style="margin-left:490px;"></li>
+							<li class="icon-fire" style="margin-left:610px;"></li>
+						</div>
+
+					
+					<!-- end video area -->
+					</div>
+
+					<!-- begin tagcloud -->
+					<div class="tag-cloud">
+							<div class="panel-header">
+								Tag Cloud
+							</div>
+
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>			
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+						<button class="btn btn-info tager">Win</button>		
+						<button class="btn btn-info tager">Fail</button>
+
+					<!-- end tagcloud -->
+					</div>
+
+					<div class="extrainfo">
+						<div class="panel-header">
+								Extra Information
+						</div>
+						<div id="extrainfo_inner" style="display:none;">
+						</div>
+					</div>
+				<!-- end demo video container -->
+				</div>	
+			<!-- end demo video wrapper -->
+			</div>
+
+
+			<!-- middle part with features and related -->
+			<div class="features-related-wrapper">
+				<!-- features -->
+				<div class="container features">
+					<div class="panel-header">
+						Why is it awesome??
+					</div>
+					
+						<div class="span4">ZapPoints
+							<p>
+								Blablablabla hier een beschrijving over zappoints etc /// / / / / / blabkaaaaattt
+								attdt
+							</p>
+						</div>
+						<div class="span4">TagCloud
+							<p>
+								Blablablabla hier een beschrijving over zappoints etc /// / / / / / blabkaaaaattt
+								attdt
+							</p>
+						</div>
+						<div class="span4">Social
+							<p>
+								Blablablabla hier een beschrijving over zappoints etc /// / / / / / blabkaaaaattt
+								attdt
+							</p>
+						</div>
+				<!-- end features-->
+				</div>
+
+				<div class="container related">
+					<div class="panel-header">
+						Related
+					</div>
+					<ul class="thumbnails">
+  						<li class="span4">
+    						<a href="#" class="thumbnail">
+      						<img src="http://placehold.it/350x150">
+    						</a>
+  						</li>
+  						<li class="span4">
+    						<a href="#" class="thumbnail">
+      						<img src="http://placehold.it/350x150">
+    						</a>
+  						</li>
+  						<li class="span4">
+    						<a href="#" class="thumbnail">
+      						<img src="http://placehold.it/350x150">
+    						</a>
+  						</li>
+  					</ul>
+				</div>
+			<!-- end middle part with features and related -->
+			</div>
+
+			<footer>
+				<div class="footer">
+					<div class="container">
+						sdfdf
+					</div>
+				</div>
+			</footer>
+
+
+		<!-- end page wrapper -->
+		</div>
+<script>
+
+	
+	$(document).ready(function(){
+
+		/*########################### begin update progressbar  ###########*/
+
+			// create new popcorn instance
+			var pop = Popcorn("#video");
+
+			// listen to timeupdate
+			pop.on( "timeupdate", function() {
+			   // console.log(this.currentTime());
+				updatePopcornBar(this.currentTime());
+			});
+
+			//when someone clicks on the timeline
+			$("#popcorn-progbar-wrapper").click(function(e){
+				var posX = $(this).offset().left;
+			
+				pop.currentTime(
+						(pop.duration() * ((e.pageX - posX) / parseInt($(this).css("width"))))
+					);
+							
+			});
+
+			
+
+			$("#playbutton").click(function(){
+				pop.play();
+			});
+
+			$("#pausebutton").click(function(){
+				pop.pause();
+			});
+
+			$("#stopbutton").click(function(){
+				pop.currentTime(0);
+				pop.pause();
+			});
+
+		/*########################### end update progresar ################*/
+
+			$(".icon-fire").on("mouseenter",function(){
+				updateExtraInfo($(this).css("margin-left"));
+			});
+
+			$(".icon-fire").on("mouseout",function(){
+				$("#extrainfo_inner").innerHTML="HHH";
+				$("#extrainfo_inner").fadeOut();			
+			});
+
+
+
+
+
+	});
+
+	///update progressbar
+	function updatePopcornBar(newwidth)
+	{
+		var finalnew =  (newwidth / Popcorn("#video").duration()) * parseInt($("#popcorn-progbar-wrapper").css("width"));
+		$("#popcorn-progbar").css("width", finalnew +"px");
+	}
+
+	function updateExtraInfo(starttime){
+
+
+
+		var canvas = $("#extrainfo_inner");
+		canvas.append("hoi");
+		canvas.fadeIn();
+	}		
+			
+
+			
+</script>
+
+	
+	<script src ="javascript/main.js"></script>
+	<script src ="simple_tip.js"></script>
+	</body>
+	</html>
