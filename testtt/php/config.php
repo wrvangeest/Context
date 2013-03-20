@@ -10,6 +10,6 @@
 	}
 	else
 	{
-		mysql_select_db("user_database", $con);	
+		mysql_select_db("programmadata", $con);	
 	}
 ?>
