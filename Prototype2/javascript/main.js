@@ -1,46 +1,25 @@
-
-var video = document.getElementsByTagName('video')[0];
-//ready function
 $(document).ready(function(){
+//document.write("<script src ='javascript/video.js'></script>");
 
-	//tags clicking
-	$(".tag ,.icon_marker").click(function(){
-		var time = $(this).data("time");		
-		var video = document.getElementsByTagName('video')[0];
-		video.currentTime = time;
-		video.play();
-	});
+//############# Tags onder timeline ################# 
+			$(".icon-fire").on("mouseenter",function(){
+				updateExtraInfo($(this).css("margin-left"));
+			});
 
-	
-	
-	setInterval(function(){
-		$("#progbar").css("width", video.currentTime );
-	},80);
-	
-	
+			$(".icon-fire").on("mouseout",function(){
+				$("#extrainfo_inner").innerHTML="HHH";
+				$("#extrainfo_inner").fadeOut();			
+			});
+
+//############# Update extra info ###################
+function updateExtraInfo(starttime){
 
 
-$(".icon_marker").hover(
-         function () {
-         	
-			$(".twitter_icon").parent().css("opacity","0.2");
-			$(".twitter_icon").eq(0).parent().css("opacity","1");
-           	$(".extra_info").eq(0).css("display","block");
-         }
 
-         , 
-         function () {
-           $(".twitter_icon").parent().css("opacity","1");
-           $(".extra_info").eq(0).css("display","none");
-       
-         }
-     );
-
-	$("#interactive_button").click(function(){
-		$("#tagcloud_lef").css("display","block");
-		$("#tagmarkers").css("display","block");
-
-	});
-
+		var canvas = $("#extrainfo_inner");
+		canvas.append("hoi");
+		canvas.fadeIn();
+	}
 
 });
+
