@@ -1,15 +1,5 @@
 $(document).ready(function(){
 
-//############# Tags onder timeline ################# 
-			$(".icon-fire").on("mouseenter",function(){
-				updateExtraInfo($(this).css("margin-left"));
-				$("#extrainfo_inner").css("display", "block");	
-			});
-
-			$(".icon-fire").on("mouseout",function(){
-				$("#extrainfo_inner").html("");
-			});
-
 //############# Fix TagCloud ##################
 			var ranking = new Array();
 
@@ -28,16 +18,3 @@ $(document).ready(function(){
           
 
 });
-
-//############# Update extra info ###################
-function updateExtraInfo(starttime){
-		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
-								.append('at ' + parseInt(starttime) + 'seconden<br/>')
-								.append('User rating');
-	}		
-
-<<<<<<< HEAD
-
-=======
-});
->>>>>>> d35744909de135fec77319206f817b7d766c5288
