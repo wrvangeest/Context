@@ -12,10 +12,11 @@
 
   <body>  
   
-    <div id="tagCloud" style="width: 550px; height: 350px;"></div>
+    <div id="tagCloud" style="width: 700px; height: 350px;"></div>
 
+   
 
-
+    <div id="infoBox">This is the content of invisible div.</div>
     <?php
     //connection information  
     include("config.php");
@@ -74,11 +75,33 @@
     <script type="text/javascript">
 
         //Call the function jQCloud(made bu lucaong https://github.com/lucaong/jQCloud)
-        $(document).ready(function() {
+        $(document).ready(
+          function() {
             $("#tagCloud").jQCloud(window.result);
-        });
+          }
+         );
 
+        $(document).ready(
+          function() {
+    
+            $("#infoBox").hide();
+            var children = document.getElementById('#tagCloud').childNodes;
+            
+            for each (var in children){
+              $(var).hover(
+                function () {
+                  $('#infoBox').stop().fadeTo("slow", 0.33);
+                },
+                function () {
+                  $('#infoBox').stop().fadeOut("slow");
+                }
+              );
+            }
+          }
+        );
+        
     </script>
+
     </script>  
   </body>  
 </html>  
