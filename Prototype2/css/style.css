@@ -1,0 +1,112 @@
+<style>
+
+
+		.icon-fire{
+			position: absolute;
+		}
+
+		.main-content-wrapper{
+			min-width: 1100px;
+			margin:0 auto;
+		}
+		
+		.logo{
+			float:left;
+			
+		}
+
+		.header2{
+			height:66px;
+			overflow: hidden;
+			margin-bottom: 0px;	
+			background-color: #262626;
+			padding-top: 0px;
+		}
+		.navigation{
+			list-style-type: none;
+			float:right;
+			padding-top: 25px;
+		}
+		.navigation > li{
+			display: inline;
+			margin-right: 30px;
+		}
+
+		.navigation > li > a{
+			text-decoration: none;
+			color:#ffffff;
+		}
+
+		.demo-video-wrapper{
+			background-image: url(noisy_grid.png);
+			padding-top:15px;
+			height:550px;
+			overflow: hidden;
+
+			
+		}
+
+		.video-area{
+			float:left;
+			
+		}
+
+		.tag-cloud{
+			width: 250px;
+			float:left;
+			margin-left:15px;
+		}
+		 .tager{
+			margin-top: 4px;
+		}
+
+		.panel{
+			-webkit-border-radius:5px;
+			background-color: #fff;
+			border:1px solid #c7c7c7;
+			padding:10px;
+			-moz-box-shadow: 0px 1px 2px #000000;
+			-webkit-box-shadow: 0px 1px 2px #000000;
+			box-shadow: 0px 1px 2px #000000;
+
+			
+
+		}
+
+		.panel-header{
+			width: 100%;
+			border-bottom: 1px solid #c7c7c7;
+			color:#000000;
+			font-size: 17px;
+			margin-bottom: 6px;
+		}
+
+		.features-related-wrapper{
+			border-top: 2px solid #c7c7c7;
+			border-bottom: 2px solid #c7c7c7;
+			padding-top: 5px;
+		}
+
+		.features{
+			margin: 0 auto;
+			color:#000000;
+			font-size: 17px;
+		}
+
+		.footer{
+			background-color: #262626;
+			height: 150px;
+			color:#fff;
+		}
+
+		.extrainfo{
+			
+			width: 250px;
+			height: 125px;
+			float:left;
+			margin-left:15px;
+			margin-top:10px;
+		}
+
+	
+		</style>
