@@ -1,17 +1,19 @@
 /* fonts */
 
+
 div.jqcloud {
   font-family: "Helvetica", "Arial", sans-serif;
   font-size: px;
   line-height: normal;
 }
 
+
 div.jqcloud a {
   font-size: inherit;
   text-decoration: none;
 }
 
-div.jqcloud span.w10 { font-size: 550%; }
+div.jqcloud span.w10 { font-size: 550%;}
 div.jqcloud span.w9 { font-size: 500%; }
 div.jqcloud span.w8 { font-size: 450%; }
 div.jqcloud span.w7 { font-size: 400%; }
