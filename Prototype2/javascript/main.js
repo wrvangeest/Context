@@ -1,6 +1,4 @@
 $(document).ready(function(){
-//document.write("<script src ='javascript/video.js'></script>");
-//document.write('blazz');
 
 //############# Tags onder timeline ################# 
 			$(".icon-fire").on("mouseenter",function(){
@@ -38,4 +36,8 @@ function updateExtraInfo(starttime){
 								.append('User rating');
 	}		
 
+<<<<<<< HEAD
 
+=======
+});
+>>>>>>> d35744909de135fec77319206f817b7d766c5288
