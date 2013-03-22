@@ -1,6 +1,4 @@
 $(document).ready(function(){
-//document.write("<script src ='javascript/video.js'></script>");
-//document.write('blazz');
 
 //############# Tags onder timeline ################# 
 				$(".icon-fire").on("mouseenter",function(){
@@ -21,4 +19,3 @@ function updateExtraInfo(starttime){
 	}		
 
 });
-
