@@ -3,12 +3,12 @@ $(document).ready(function(){
 
 
 //############# Mouse actions for zappoints ################# 
-				$(".icon-fire").on("mouseenter",function(){
+			$("body").on("mouseenter",".icon-fire",function(){
 				updateExtraInfo($(this).css("margin-left"));
 				$("#extrainfo_inner").css("display", "block");	
 			});
 
-			$(".icon-fire").on("mouseout",function(){
+			$("body").on("mouseout",".icon-fire",function(){
 				$("#extrainfo_inner").html("");
 						
 			});
