@@ -38,7 +38,6 @@ $(document).ready(function(){
 
 		/*########################### end update progresar ################*/
 
-
 	});
 
 	///update progressbar
