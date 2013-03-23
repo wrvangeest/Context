@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>User Managment</title>
+		<title>SocialZap</title>
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/jqcloud.css">
 		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
@@ -12,125 +12,9 @@
 		<script src ="javascript/bootstrap.js"></script>
 		<script src ="javascript/jqcloud-1.0.3.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
+		<!-- Use css file -->
+		<LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA=screen>
 		
-		<style>
-
-
-		.icon-fire{
-			position: absolute;
-		}
-
-		.main-content-wrapper{
-			min-width: 1100px;
-			margin:0 auto;
-		}
-		
-		.logo{
-			float:left;
-			
-		}
-
-		.header2{
-			height:66px;
-			overflow: hidden;
-			margin-bottom: 0px;	
-			background-color: #262626;
-			padding-top: 0px;
-		}
-		.navigation{
-			list-style-type: none;
-			float:right;
-			padding-top: 25px;
-		}
-		.navigation > li{
-			display: inline;
-			margin-right: 30px;
-		}
-
-		.navigation > li > a{
-			text-decoration: none;
-			color:#ffffff;
-		}
-
-		.demo-video-wrapper{
-			background-image: url(noisy_grid.png);
-			padding-top:15px;
-			height:550px;
-			overflow: hidden;
-
-			
-		}
-
-		.video-area{
-			float:left;
-			
-		}
-
-		.tag-cloud{
-			width: 250px;
-			float:left;
-			margin-left:15px;
-		}
-		 .tager{
-			margin-top: 4px;
-		}
-
-		.panel{
-			-webkit-border-radius:5px;
-			background-color: #fff;
-			border:1px solid #c7c7c7;
-			padding:10px;
-			-moz-box-shadow: 0px 1px 2px #000000;
-			-webkit-box-shadow: 0px 1px 2px #000000;
-			box-shadow: 0px 1px 2px #000000;
-
-			
-
-		}
-
-		.panel-header{
-			width: 100%;
-			border-bottom: 1px solid #c7c7c7;
-			color:#000000;
-			font-size: 17px;
-			margin-bottom: 6px;
-		}
-
-		.features-related-wrapper{
-			border-top: 2px solid #c7c7c7;
-			border-bottom: 2px solid #c7c7c7;
-			padding-top: 5px;
-		}
-
-		.features{
-			margin: 0 auto;
-			color:#000000;
-			font-size: 17px;
-		}
-
-		.footer{
-			background-color: #262626;
-			height: 150px;
-			color:#fff;
-		}
-
-		.extrainfo{
-			
-			width: 250px;
-			height: 125px;
-			float:left;
-			margin-left:15px;
-			margin-top:10px;
-		}
-
-		#tag-cloud-inner{
-			width: 250px;
-			height: 250px;
-			overflow:auto;
-		}
-
-	
-		</style>
 	</head>
 	
 	<body>
@@ -185,7 +69,7 @@
 						
 						<div>
 							<video height="360" width="640" id="video" onclick="play()">
-							<source type="video/mp4" src="powned.mp4">
+							<source type="video/mp4" src="videos/powned.mp4">
 							</video>
 						</div>
 					
@@ -206,12 +90,7 @@
 
 						<!-- break points -->
 						<div id="breakpoints" style="height:22px; width:640px;">
-							<li class="icon-fire" style="margin-left:0px;"></li>
-							<li class="icon-fire" style="margin-left:5px;"></li>
-							<li class="icon-fire" style="margin-left:55px;"></li>
-							<li class="icon-fire" style="margin-left:590px;"></li>
-							<li class="icon-fire" style="margin-left:490px;"></li>
-							<li class="icon-fire" style="margin-left:610px;"></li>
+						<!-- is filled dynamically with zappoint.js-->
 						</div>
 
 					
@@ -302,14 +181,6 @@
 
 		<!-- end page wrapper -->
 		</div>
-<script>
-
-	
-		
-			
-
-			
-</script>
 
 	
 	<script src ="javascript/main.js"></script>
