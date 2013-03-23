@@ -25,30 +25,34 @@ function updateExtraInfo(starttime){
 
 
 //alert("I'm working!");
+
+//Checktime ensures video is loaded
 checkTime();
 
 
-//Check time
+//Function that returns duration after video is loaded
 function checkTime(){
+
 	//Load duration
-	$duration = Popcorn("#video").duration();
-	
-	//alert("Waiting: " + $duration);
+	var dur = Popcorn("#video").duration();
 	
 	//As long as the video is not loaded
-	if(isNaN($duration)){
+	if(isNaN(dur)){
 		//Wait 100ms
 		setTimeout( function() { checkTime(); } , 100);
 	}
 	else{
-		getZapData($duration);
+		//Video is loaded, grab the zappoint data
+		getZapData(dur);
 	}
 }
 
 //Ajax call for zappoint data
+//Return format: {"term":"<term>","time":"<time>"} (JSON String)
 function getZapData(dur){
 	$.post("php/zappoints.php", {duration : dur})
 		.done(function (data) {
+			//Generate the HTML from the data
 			createZapCode(data);
 	     }
 	    )
@@ -59,38 +63,41 @@ function getZapData(dur){
 
 //Generates HTML code
 function createZapCode(data){
+	//Convert data from JSON string to object
 	var obj = JSON.parse(data);
+	//Grab the list div (located in HTML file)
 	var list = document.getElementById("breakpoints");
 
-	jQuery.each(obj,function(i, val) {
-		var loc = calcDist(val);
+	//Loop through the data using JSON functions
+	jQuery.each(obj,function(index, time) {
+		//Retrieve offset in pixels from time
+		var loc = calcDist(time);
+		//Create listitem element
 		var zap = document.createElement("li");
+		//Set properties so CSS recognizes correctly
 		zap.className = "icon-fire";
+		//Set location in pixels
 		zap.style.marginLeft = loc + "px";
+		//Append item to list
 		list.appendChild(zap);
 	})	
 }
 
+//Calculates the offset in pixels for zappoint location
 function calcDist(val){
+	//Convert time ("m:(s)s") to seconds
 	var tempTime = val.time.split(':');
 	var secs = (+tempTime[0]) * 60 + (+tempTime[1]);
+	//Grab duration of video
 	var dur = Popcorn("#video").duration();
+	//Calculate ratio of time/duration
 	var ratio = secs / dur;
+	//Grab width of timeline in pixels
 	var wdth = document.getElementById("breakpoints").style.width;
+	//Trim for calculations
 	wdth = wdth.substr(0,wdth.length - 2);
 	//alert("Secs: " + secs + " Dur: " + dur + " Ratio: " + ratio + " Width: " + wdth);
+	//Return offset value in pixels calculated using ratio
 	return (ratio * wdth);
 }
-
-
-/*
-<div id="breakpoints" style="height:22px; width:640px;">
-							<li class="icon-fire" style="margin-left:0px;"></li>
-							<li class="icon-fire" style="margin-left:5px;"></li>
-							<li class="icon-fire" style="margin-left:55px;"></li>
-							<li class="icon-fire" style="margin-left:590px;"></li>
-							<li class="icon-fire" style="margin-left:490px;"></li>
-							<li class="icon-fire" style="margin-left:610px;"></li>
-						</div>*/
-
 });
