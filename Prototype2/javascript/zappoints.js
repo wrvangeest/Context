@@ -17,7 +17,7 @@ $(document).ready(function(){
 //############# Update extra info ###################
 function updateExtraInfo(starttime){
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
-								.append('at ' + parseInt(starttime) + 'seconden<br/>')
+								.append('at ' + parseInt(starttime) + ' pixels<br/>')
 								.append('User rating');
 	}
 
