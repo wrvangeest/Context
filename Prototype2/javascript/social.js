@@ -23,5 +23,5 @@ function getScript() {
 	$.getScript('http://platform.twitter.com/widgets.js');
 }
 
-alert("Social still working!");
+//alert("Social still working!");
 });
