@@ -27,25 +27,13 @@ function updateExtraInfo(starttime){
 //alert("I'm working!");
 
 //Checktime ensures video is loaded
-checkTime();
+checkTime( function(dur) {
+	//alert("Callback working");
+	getZapData(dur);
+});
 
 
-//Function that returns duration after video is loaded
-function checkTime(){
 
-	//Load duration
-	var dur = Popcorn("#video").duration();
-	
-	//As long as the video is not loaded
-	if(isNaN(dur)){
-		//Wait 100ms
-		setTimeout( function() { checkTime(); } , 100);
-	}
-	else{
-		//Video is loaded, grab the zappoint data
-		getZapData(dur);
-	}
-}
 
 //Ajax call for zappoint data
 //Return format: {"term":"<term>","time":"<time>"} (JSON String)
