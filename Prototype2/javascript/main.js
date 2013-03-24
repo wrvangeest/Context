@@ -13,19 +13,4 @@ $(document).ready(function(){
 				}
 						
 			});
-
- //########### Set video to time in url (if any) ################
- function getSkipTime(dur){
-	$.post("php/zappoints.php", {duration : dur})
-		.done(function (data) {
-			//Generate the HTML from the data
-			createZapCode(data);
-	     }
-	    )
-	    .fail(function() {
-	    	alert("Failed!");
-	    });
-}		    
-          
-
 });

@@ -4,7 +4,7 @@ function checkTime(callback){
 	//Load duration
 	var dur = Popcorn("#video").duration();
 	
-	//alert("Time called: " + dur);
+	//alert("Time called: " + callback);
 
 	//As long as the video is not loaded
 	if(isNaN(dur)){
