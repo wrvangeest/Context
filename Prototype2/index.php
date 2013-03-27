@@ -29,7 +29,7 @@
 			<header class="header2">
 					<div class="container">
 						<h1 class="logo">
-							<a href="newlayout.html">
+							<a href="index.php">
 								<img src="logo2.jpg">
 							</a>
 
