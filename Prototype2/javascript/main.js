@@ -9,7 +9,7 @@ $(document).ready(function(){
 	    		oneStringResult = oneStringResult.replace('"]','');
 	    		ranking = oneStringResult.split('","');
 				for (var i  = 0; i < 20;i++){
-					$("#tag-cloud-inner").append('<button class="btn btn-info tager">' + ranking[i] + "</button>" + " "  );
+					$("#tag-cloud-inner").append('<button class="btn btn-info tager t'+i+'">' + ranking[i] + "</button>" + " "  );
 				}
 						
 			});

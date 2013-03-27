@@ -104,3 +104,65 @@
 	margin-left:15px;
 	margin-top:10px;
 }
+
+/*Size for tags in tag cloud*/
+.btn.tager{
+	width: 23%;
+	height: 23px;
+	font-size: 85%;
+}
+.btn.t0{
+	width: 50%;
+	height: 50px;
+	font-size: 150%;
+}
+.btn.t1{
+	width: 45%;
+	height: 50px;
+	font-size: 145%;
+}
+.btn.t2{
+	width: 40%;
+	height: 40px;
+	font-size: 140%;
+}
+.btn.t3{
+	width: 40%;
+	height: 40px;
+	font-size: 140%;
+}
+.btn.t4{
+	width: 30%;
+	height: 30px;
+	font-size: 130%;
+}
+.btn.t5{
+	width: 30%;
+	height: 30px;
+	font-size: 130%;
+}
+.btn.t6{
+	width: 30%;
+	height: 30px;
+	font-size: 130%;
+}
+.btn.t7{
+	width: 23%;
+	height: 25px;
+	font-size:100%;
+}
+.btn.t8{
+	width: 23%;
+	height: 25px;
+	font-size:100%;
+}
+.btn.t9{
+	width: 23%;
+	height: 25px;
+	font-size:100%;
+}
+.btn.t10{
+	width: 23%;
+	height: 25px;
+	font-size:100%;
+}
