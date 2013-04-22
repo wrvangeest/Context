@@ -28,9 +28,10 @@ function updateExtraInfo(starttime){
 
 //Checktime ensures video is loaded
 checkTime( function(dur) {
-	//alert("Callback working");
-	getZapData(dur);
-});
+		//alert("Callback working");
+		getZapData(dur);
+	},0
+);
 
 
 
