@@ -24,9 +24,6 @@
 
     while ($row = mysql_fetch_assoc($result)) {
         
-        //$terms[$i] = $row["term"];
-        //$scores[$i] = $row["reranking_score"];
-
         $data[$i] = $row["term"];
         if($i > 20)
           break;

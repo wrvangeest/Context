@@ -43,6 +43,6 @@ function transDur($d){
 }
 
 //Calls function
-echo runQuery($_REQUEST['duration']);
+//echo runQuery($_REQUEST['duration']);
 
 ?>
