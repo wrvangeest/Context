@@ -51,4 +51,5 @@ function transDurSec($d){
 //Grabs minutes from seconds
 function transDurMin($d){
 	return floor($d / 60);
+}
 ?>
