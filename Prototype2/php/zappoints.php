@@ -39,10 +39,15 @@ function runQuery($duration){
 
 //Converts duration from seconds to (min:sec)
 function transDur($d){
-	return floor($d/60) . ":" . $d % 60;
+	if ($d>0) {
+		return floor($d/60) . ":" . $d % 60;
+	}else{
+		return '0:0';
+	}
 }
 
 //Calls function
-echo runQuery($_REQUEST['duration']);
-
+if(isset($_REQUEST['duration'])){
+	echo runQuery($_REQUEST['duration']);
+}	
 ?>

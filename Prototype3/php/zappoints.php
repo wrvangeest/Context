@@ -43,6 +43,7 @@ function runQuery($duration){
 	return json_encode($rows);
 }
 
+//<<<<<<< HEAD
 //Grabs remaining seconds without minutes from seconds
 function transDurSec($d){
 	return $d % 60;
@@ -51,9 +52,4 @@ function transDurSec($d){
 //Grabs minutes from seconds
 function transDurMin($d){
 	return floor($d / 60);
-}
-
-//Calls function
-echo runQuery($_REQUEST['duration']);
-
 ?>
