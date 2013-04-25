@@ -24,8 +24,6 @@ function updateExtraInfo(starttime){
 
 
 
-//alert("I'm working!");
-
 //Checktime ensures video is loaded
 checkTime( function(dur) {
 		//alert("Callback working");
@@ -41,6 +39,7 @@ checkTime( function(dur) {
 function getZapData(dur){
 	$.post("php/zappoints.php", {duration : dur})
 		.done(function (data) {
+			alert(data);
 			//Generate the HTML from the data
 			createZapCode(data);
 	     }
