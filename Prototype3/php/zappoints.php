@@ -52,4 +52,8 @@ function transDurSec($d){
 function transDurMin($d){
 	return floor($d / 60);
 }
+if(isset($_REQUEST['duration'])){
+	echo runQuery($_REQUEST['duration']);
+}	
+
 ?>

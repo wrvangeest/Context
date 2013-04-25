@@ -39,7 +39,6 @@ checkTime( function(dur) {
 function getZapData(dur){
 	$.post("php/zappoints.php", {duration : dur})
 		.done(function (data) {
-			alert(data);
 			//Generate the HTML from the data
 			createZapCode(data);
 	     }
