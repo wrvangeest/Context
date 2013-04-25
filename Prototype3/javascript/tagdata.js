@@ -4,13 +4,22 @@ $(document).ready(function(){
 
 //############# Mouse actions for zappoints ################# 
 			$("body").on("mouseenter",".icon-fire",function(){
+				//Displays extra information on the right
 				updateExtraInfo($(this).css("margin-left"));
-				$("#extrainfo_inner").css("display", "block");	
+				$("#extrainfo_inner").css("display", "block");
+
+				//Highlights tag in cloud
+				$zapId = this.id;
+				$zapId = $zapId.slice(8,$zapId.length);
+				$cloudClass = ".btn.t" + $zapId;
+				$orColor = $($cloudClass).css("backgroundColor");
+				$($cloudClass).css("background-color", "#b98acf");
+				console.log($orColor);
 			});
 
 			$("body").on("mouseout",".icon-fire",function(){
 				$("#extrainfo_inner").html("");
-						
+				$($cloudClass).css("background-color", $orColor);
 			});
 
 
@@ -73,7 +82,7 @@ function createZapCode(data){
 		//Set properties so CSS recognizes correctly
 		zap.className = "icon-fire";
 		//Set id for linking to cloud
-		//zap.id = "zappoint" . index;
+		zap.id = "zappoint" + index;
 		//Set location in pixels
 		zap.style.marginLeft = loc + "px";
 		//Append item to list
