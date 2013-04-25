@@ -26,7 +26,6 @@ function updateExtraInfo(starttime){
 
 //Checktime ensures video is loaded
 checkTime( function(dur) {
-		//alert("Callback working");
 		getZapData(dur);
 	},0
 );
@@ -52,11 +51,9 @@ function getZapData(dur){
 
 //Appends cloud information to generate cloud
 function createCloud(data){
-	var i = 0;
 
 	jQuery.each(data, function(index,item) {
 		$("#tag-cloud-inner").append('<button class="btn btn-info tager t' + index + '">' + item.term + "</button>" + " "  );
-		i++;
 	})
 }
 
@@ -75,6 +72,8 @@ function createZapCode(data){
 		var zap = document.createElement("li");
 		//Set properties so CSS recognizes correctly
 		zap.className = "icon-fire";
+		//Set id for linking to cloud
+		//zap.id = "zappoint" . index;
 		//Set location in pixels
 		zap.style.marginLeft = loc + "px";
 		//Append item to list

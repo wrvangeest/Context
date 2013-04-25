@@ -185,7 +185,7 @@
 	
 	<script src ="javascript/main.js"></script>
 	<script src ="javascript/video.js"></script>
-	<script src ="javascript/zappoints.js"></script>
+	<script src ="javascript/tagdata.js"></script>
 	<script src ="javascript/social.js"></script>
 	<script src ="javascript/checktime.js"></script>
 	<script src ="javascript/geturlvars.js"></script>
