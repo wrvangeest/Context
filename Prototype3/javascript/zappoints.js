@@ -39,8 +39,10 @@ checkTime( function(dur) {
 function getZapData(dur){
 	$.post("php/zappoints.php", {duration : dur})
 		.done(function (data) {
+			var obj = JSON.parse(data);
 			//Generate the HTML from the data
-			createZapCode(data);
+			createZapCode(obj);
+			createCloud(obj);
 	     }
 	    )
 	    .fail(function() {
@@ -48,17 +50,27 @@ function getZapData(dur){
 	    });
 }		
 
+//Appends cloud information to generate cloud
+function createCloud(data){
+	var i = 0;
+
+	jQuery.each(data, function(index,item) {
+		$("#tag-cloud-inner").append('<button class="btn btn-info tager t' + index + '">' + item.term + "</button>" + " "  );
+		i++;
+	})
+}
+
 //Generates HTML code
 function createZapCode(data){
 	//Convert data from JSON string to object
-	var obj = JSON.parse(data);
+	
 	//Grab the list div (located in HTML file)
 	var list = document.getElementById("breakpoints");
 
 	//Loop through the data using JSON functions
-	jQuery.each(obj,function(index, time) {
+	jQuery.each(data,function(index, item) {
 		//Retrieve offset in pixels from time
-		var loc = calcDist(time);
+		var loc = calcDist(item);
 		//Create listitem element
 		var zap = document.createElement("li");
 		//Set properties so CSS recognizes correctly

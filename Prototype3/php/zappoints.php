@@ -26,11 +26,17 @@ function runQuery($duration){
 	// Get data from table
 	$result = mysql_query($qry);
 
-	//If error
-	if(!$result){
-		$result = "Failed!";
-		exit();
-	}
+	// check wether nothing exist
+    if (!$result) {
+      echo "Could not successfully run query ($sql) from DB: " . mysql_error();
+      exit;
+    }
+
+	// When data is empty
+	if (mysql_num_rows($result) == 0) {
+      echo "No rows found, nothing to print so am exiting";
+      exit;
+    }
 
 	$rows = array();
 
@@ -38,6 +44,9 @@ function runQuery($duration){
 	while($row = mysql_fetch_assoc($result)){
 		$rows[] = $row;
 	}
+
+	//Free result memory
+	mysql_free_result($result);
 
 	//Return a JSON string
 	return json_encode($rows);
