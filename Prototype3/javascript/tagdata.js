@@ -18,8 +18,6 @@ $(document).ready(function(){
 		return canvas;
 	}*/
 
-
-
 //############# Mouse actions for zappoints ################# 
 	$("body").on("mouseenter",".icon-bolt",function(){
 		//Displays extra information on the right

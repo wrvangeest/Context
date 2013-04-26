@@ -6,9 +6,6 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/jqcloud.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
-		
-		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-		<script src="http://vjs.zencdn.net/c/video.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script src ="javascript/bootstrap.js"></script>
@@ -71,7 +68,7 @@
 						
 						<div>
 							<video height="360" width="640" id="video" onclick="play()">
-							<source type="video/mp4" src="videos/powned.mp4">
+							<source type="video/m4v" src="videos/powned.m4v">
 							</video>
 						</div>
 
