@@ -1,5 +1,26 @@
 $(document).ready(function(){
 
+	
+
+
+	function snapshot(time){
+
+		var video2 = document.getElementById("snapvideo");
+		var canvas = document.createElement('canvas');
+
+		canvas.width  = 350;
+		canvas.height = 150;
+
+		video2.currentTime = time;
+
+		
+
+		var ctx = canvas.getContext('2d');
+		ctx.drawImage(video2, 0, 0, 350, 150); 
+
+		return canvas;
+	}
+
 
 
 //############# Mouse actions for zappoints ################# 
@@ -53,9 +74,21 @@ $(document).ready(function(){
 
 //############# Update extra info ###################
 function updateExtraInfo(starttime){
-		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
+
+		var ratio = parseInt(starttime) / parseInt($("#popcorn-progbar-wrapper").css("width"));
+		var fulldur = Popcorn("#video").duration();
+		var timeat = fulldur * ratio;
+
+
+
+
+//'<img src=http://placehold.it/350x150><br/>'
+		$("#extrainfo_inner").append(snapshot(timeat))
 								.append('at ' + parseInt(starttime) + ' pixels<br/>')
 								.append('User rating');
+
+
+
 	}
 
 

@@ -74,6 +74,12 @@
 							<source type="video/mp4" src="videos/powned.mp4">
 							</video>
 						</div>
+
+						<div>
+							<video height="0" width="0" id="snapvideo" onclick="play()">
+							<source type="video/mp4" src="videos/powned2.m4v">
+							</video>
+						</div>
 					
 				
 						<!-- video controls -->								
