@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 
 //############# Mouse actions for zappoints ################# 
-	$("body").on("mouseenter",".icon-fire",function(){
+	$("body").on("mouseenter",".icon-bolt",function(){
 		//Displays extra information on the right
 		updateExtraInfo($(this).css("margin-left"));
 		$("#extrainfo_inner").css("display", "block");
@@ -12,14 +12,14 @@ $(document).ready(function(){
 		$zapId = this.id;
 		$zapId = $zapId.slice(8,$zapId.length);
 		$cloudClass = ".btn.t" + $zapId;
-		$orColor = $($cloudClass).css("backgroundColor");
+		$orTagColor = $($cloudClass).css("backgroundColor");
 		$($cloudClass).css("background-color", "#b98acf");
 	});
 
-	$("body").on("mouseout",".icon-fire",function(){
+	$("body").on("mouseout",".icon-bolt",function(){
 		//Clear extra info
 		$("#extrainfo_inner").html("");
-		$($cloudClass).css("background-color", $orColor);
+		$($cloudClass).css("background-color", $orTagColor);
 	});
 
 //############# Mouse actions for tags ################# 
@@ -29,15 +29,16 @@ $(document).ready(function(){
 		$("#extrainfo_inner").css("display", "block");
 
 		//Change background color
-		$orColor = $(this).css("backgroundColor");
+		$orTagColor = $(this).css("backgroundColor");
 		$(this).css("background-color", "#b98acf");
 
 		//Change ZapPoint color
 		$tagId = this.className;
 		$tagId = $tagId.slice(20,$tagId.length);
-		$zapId = "zappoint" + $tagId;
+		$zapId = "#zappoint" + $tagId;
+		$orZapColor = $($zapId).css("color");
 		$($zapId).css("color", "blue");
-		console.log($($zapId).css("color"));
+		$($zapId).addClass("icon-large");
 	});	
 
 	$("body").on("mouseout",".tager",function(){
@@ -45,8 +46,9 @@ $(document).ready(function(){
 		$("#extrainfo_inner").html("");
 
 		//Restore original colors
-		$(this).css("background-color", $orColor);
-		$($zapId).css("color", "black");
+		$(this).css("background-color", $orTagColor);
+		$($zapId).css("color", $orZapColor);
+		$($zapId).removeClass("icon-large");
 	});
 
 //############# Update extra info ###################
@@ -106,14 +108,16 @@ function createZapCode(data){
 		//Create listitem element
 		var zap = document.createElement("li");
 		//Set properties so CSS recognizes correctly
-		zap.className = "icon-fire";
+		zap.className = "icon-bolt";
 		//Set id for linking to cloud
 		zap.id = "zappoint" + index;
 		//Set location in pixels
 		zap.style.marginLeft = loc + "px";
 		//Append item to list
 		list.appendChild(zap);
-	})	
+	});
+	$(".icon-bolt").css("position", "absolute");
+	console.log($(".icon-bluh"));
 }
 
 //Calculates the offset in pixels for zappoint location
