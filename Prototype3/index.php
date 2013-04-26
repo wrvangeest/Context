@@ -193,7 +193,6 @@
 	
 	<script src ="javascript/main.js"></script>
 	<script src ="javascript/video.js"></script>
-		<script src ="simple_tip.js"></script>
 	<script src ="javascript/tagdata.js"></script>
 	<script src ="javascript/social.js"></script>
 	<script src ="javascript/checktime.js"></script>
