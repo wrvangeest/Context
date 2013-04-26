@@ -1,6 +1,6 @@
 $(document).ready(function(){
-
-	function snapshot(time){
+	
+	/*function snapshot(time){
 
 		var video2 = document.getElementById("snapvideo");
 		var canvas = document.createElement('canvas');
@@ -16,7 +16,7 @@ $(document).ready(function(){
 		ctx.drawImage(video2, 0, 0, 350, 150); 
 
 		return canvas;
-	}
+	}*/
 
 
 
@@ -72,11 +72,11 @@ $(document).ready(function(){
 //############# Update extra info ###################
 function updateExtraInfo(starttime){
 
-		var ratio = parseInt(starttime) / parseInt($("#popcorn-progbar-wrapper").css("width"));
-		var fulldur = Popcorn("#video").duration();
-		var timeat = fulldur * ratio;
+		//var ratio = parseInt(starttime) / parseInt($("#popcorn-progbar-wrapper").css("width"));
+		//var fulldur = Popcorn("#video").duration();
+		//var timeat = fulldur * ratio;
 
-		$("#extrainfo_inner").append(snapshot(timeat))
+		$("#extrainfo_inner")//.append(snapshot(timeat))
 								.append('at ' + parseInt(starttime) + ' pixels<br/>')
 								.append('User rating');
 
