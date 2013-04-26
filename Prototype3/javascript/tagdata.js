@@ -1,6 +1,12 @@
 $(document).ready(function(){
 
-	/*function snapshot(time){
+<<<<<<< HEAD
+=======
+	
+
+
+>>>>>>> 0e030296d0563b1b1dce672ddb4a1f2a5c0a6c2a
+	function snapshot(time){
 
 		var video2 = document.getElementById("snapvideo");
 		var canvas = document.createElement('canvas');
@@ -16,7 +22,7 @@ $(document).ready(function(){
 		ctx.drawImage(video2, 0, 0, 350, 150); 
 
 		return canvas;
-	}*/
+	}
 
 //############# Mouse actions for zappoints ################# 
 	$("body").on("mouseenter",".icon-bolt",function(){
@@ -74,12 +80,14 @@ function updateExtraInfo(starttime){
 		var fulldur = Popcorn("#video").duration();
 		var timeat = fulldur * ratio;
 
+<<<<<<< HEAD
+=======
 
 
 
 //'<img src=http://placehold.it/350x150><br/>'
-
-		$("#extrainfo_inner")//.append(snapshot(timeat))
+>>>>>>> 0e030296d0563b1b1dce672ddb4a1f2a5c0a6c2a
+		$("#extrainfo_inner").append(snapshot(timeat))
 								.append('at ' + parseInt(starttime) + ' pixels<br/>')
 								.append('User rating');
 
