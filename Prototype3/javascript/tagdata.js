@@ -3,25 +3,51 @@ $(document).ready(function(){
 
 
 //############# Mouse actions for zappoints ################# 
-			$("body").on("mouseenter",".icon-fire",function(){
-				//Displays extra information on the right
-				updateExtraInfo($(this).css("margin-left"));
-				$("#extrainfo_inner").css("display", "block");
+	$("body").on("mouseenter",".icon-fire",function(){
+		//Displays extra information on the right
+		updateExtraInfo($(this).css("margin-left"));
+		$("#extrainfo_inner").css("display", "block");
 
-				//Highlights tag in cloud
-				$zapId = this.id;
-				$zapId = $zapId.slice(8,$zapId.length);
-				$cloudClass = ".btn.t" + $zapId;
-				$orColor = $($cloudClass).css("backgroundColor");
-				$($cloudClass).css("background-color", "#b98acf");
-				console.log($orColor);
-			});
+		//Highlights tag in cloud
+		$zapId = this.id;
+		$zapId = $zapId.slice(8,$zapId.length);
+		$cloudClass = ".btn.t" + $zapId;
+		$orColor = $($cloudClass).css("backgroundColor");
+		$($cloudClass).css("background-color", "#b98acf");
+	});
 
-			$("body").on("mouseout",".icon-fire",function(){
-				$("#extrainfo_inner").html("");
-				$($cloudClass).css("background-color", $orColor);
-			});
+	$("body").on("mouseout",".icon-fire",function(){
+		//Clear extra info
+		$("#extrainfo_inner").html("");
+		$($cloudClass).css("background-color", $orColor);
+	});
 
+//############# Mouse actions for tags ################# 
+	$("body").on("mouseenter",".tager",function(){
+		//Displays extra information on the right
+		updateExtraInfo($(this).css("margin-left"));
+		$("#extrainfo_inner").css("display", "block");
+
+		//Change background color
+		$orColor = $(this).css("backgroundColor");
+		$(this).css("background-color", "#b98acf");
+
+		//Change ZapPoint color
+		$tagId = this.className;
+		$tagId = $tagId.slice(20,$tagId.length);
+		$zapId = "zappoint" + $tagId;
+		$($zapId).css("color", "blue");
+		console.log($($zapId).css("color"));
+	});	
+
+	$("body").on("mouseout",".tager",function(){
+		//Clear extra info
+		$("#extrainfo_inner").html("");
+
+		//Restore original colors
+		$(this).css("background-color", $orColor);
+		$($zapId).css("color", "black");
+	});
 
 //############# Update extra info ###################
 function updateExtraInfo(starttime){
