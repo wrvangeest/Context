@@ -5,6 +5,8 @@
 		<title>SocialZap</title>
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/jqcloud.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		
 		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
 		<script src="http://vjs.zencdn.net/c/video.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -69,7 +71,13 @@
 						
 						<div>
 							<video height="360" width="640" id="video" onclick="play()">
-							<source type="video/mp4" src="videos/powned.m4v">
+							<source type="video/mp4" src="videos/powned.mp4">
+							</video>
+						</div>
+
+						<div>
+							<video height="0" width="0" id="snapvideo" onclick="play()">
+							<source type="video/mp4" src="videos/powned2.m4v">
 							</video>
 						</div>
 					
@@ -185,6 +193,7 @@
 	
 	<script src ="javascript/main.js"></script>
 	<script src ="javascript/video.js"></script>
+		<script src ="simple_tip.js"></script>
 	<script src ="javascript/tagdata.js"></script>
 	<script src ="javascript/social.js"></script>
 	<script src ="javascript/checktime.js"></script>
