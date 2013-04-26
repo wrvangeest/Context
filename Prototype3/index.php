@@ -71,7 +71,7 @@
 						
 						<div>
 							<video height="360" width="640" id="video" onclick="play()">
-							<source type="video/mp4" src="videos/powned.m4v">
+							<source type="video/mp4" src="videos/powned.mp4">
 							</video>
 						</div>
 					
