@@ -1,6 +1,25 @@
 $(document).ready(function(){
 
 
+	/*function snapshot(time){
+
+		var video2 = document.getElementById("snapvideo");
+		var canvas = document.createElement('canvas');
+
+		canvas.width  = 350;
+		canvas.height = 150;
+
+		video2.currentTime = time;
+
+		
+
+		var ctx = canvas.getContext('2d');
+		ctx.drawImage(video2, 0, 0, 350, 150); 
+
+		return canvas;
+	}*/
+
+
 
 //############# Mouse actions for zappoints ################# 
 	$("body").on("click",".icon-bolt",function(){
@@ -61,6 +80,7 @@ $(document).ready(function(){
 		$($zapId).removeClass("icon-large");
 	});
 
+<<<<<<< HEAD
 
 //############# Helper functions for mouse events #############
 //Go to time given by loc in pixels
@@ -76,11 +96,9 @@ function goToTime(loc) {
 function updateExtraInfo(loc){
 		var time = calcTime(parseInt(loc));
 		time = convertTime(time);
+		//.append(snapshot(timeat))
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
 								.append('at approximately ' + time + '<br/>')
-								.append('User rating');
-	}
-
 
 //############# Helper functions for tagpoint loading #############
 //Checktime ensures video is loaded
