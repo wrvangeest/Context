@@ -36,9 +36,7 @@ $(document).ready(function(){
 		$("#extrainfo_inner").css("display", "block");
 
 		//Highlights tag in cloud
-		$zapId = this.id;
-		$zapId = $zapId.slice(8,$zapId.length);
-		$cloudClass = ".btn.t" + $zapId;
+		$cloudClass = getAssocId(this);
 		$orTagColor = $($cloudClass).css("backgroundColor");
 		$($cloudClass).css("background-color", "#b98acf");
 	});
@@ -52,9 +50,7 @@ $(document).ready(function(){
 //############# Mouse actions for tags #################
 	$("body").on("click",".tager",function(){
 		//Gather ID information
-		$tagId = this.className;
-		$tagId = $tagId.slice(20,$tagId.length);
-		$zapId = "#zappoint" + $tagId;
+		$zapId = getAssocId(this);
 
 		//Get pixel location
 		$loc = $($zapId).css("margin-left");
@@ -64,9 +60,7 @@ $(document).ready(function(){
 	});
 	$("body").on("mouseenter",".tager",function(){
 		//Gather ID information
-		$tagId = this.className;
-		$tagId = $tagId.slice(20,$tagId.length);
-		$zapId = "#zappoint" + $tagId;
+		$zapId = getAssocId(this);
 
 		//Displays extra information on the right
 		updateExtraInfo($($zapId).css("margin-left"));
@@ -92,11 +86,13 @@ $(document).ready(function(){
 		$($zapId).removeClass("icon-large");
 	});
 
+//############# Starts tag and zappoint generation #############
 //Checktime ensures video is loaded
 checkTime( function(dur) {
 		getZapData(dur);
 	},0
 )
+//##############################################################
 
 //############# Helper functions for mouse events #############
 //Go to time given by loc in pixels
@@ -117,6 +113,10 @@ function updateExtraInfo(loc){
 								.append('at approximately ' + time + '<br/>')
 
 }
+//##############################################################
+
+
+//############# Helper functions for tag generation #############
 
 //Ajax call for zappoint data
 //Return format: {"term":"<term>","time":"<time>"} (JSON String)
@@ -166,6 +166,9 @@ function createZapCode(data){
 	});
 	$(".icon-bolt").css("position", "absolute");
 }
+//##############################################################
+
+//############# Helper functions for conversion #############
 
 //Calculates the offset in pixels for zappoint location
 function calcDist(val){
@@ -209,3 +212,21 @@ function convertTime(seconds){
 	return min + ":" + sec;
 }
 });
+//##############################################################
+
+//############# Miscellaneous elper functions #############
+//Returns associated ID (ZapPointID -> TagID or TagID -> ZapPointID)
+function getAssocId(obj){
+	switch(obj.id.substr(0,3)) {
+		case "zap":
+			$zapId = obj.id;
+			$zapId = $zapId.slice(8,$zapId.length);
+			return ".btn.t" + $zapId;
+		case "":
+			$tagId = obj.className;
+			$tagId = $tagId.slice(20,$tagId.length);
+			return "#zappoint" + $tagId;
+	}
+}
+
+//##############################################################
