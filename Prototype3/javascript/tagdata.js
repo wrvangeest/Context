@@ -49,7 +49,19 @@ $(document).ready(function(){
 		$($cloudClass).css("background-color", $orTagColor);
 	});
 
-//############# Mouse actions for tags ################# 
+//############# Mouse actions for tags #################
+	$("body").on("click",".tager",function(){
+		//Gather ID information
+		$tagId = this.className;
+		$tagId = $tagId.slice(20,$tagId.length);
+		$zapId = "#zappoint" + $tagId;
+
+		//Get pixel location
+		$loc = $($zapId).css("margin-left");
+		$loc = $loc.substr(0,$loc.length - 2);
+		//Jump to given time
+		goToTime($loc);
+	});
 	$("body").on("mouseenter",".tager",function(){
 		//Gather ID information
 		$tagId = this.className;
@@ -80,7 +92,11 @@ $(document).ready(function(){
 		$($zapId).removeClass("icon-large");
 	});
 
-<<<<<<< HEAD
+//Checktime ensures video is loaded
+checkTime( function(dur) {
+		getZapData(dur);
+	},0
+)
 
 //############# Helper functions for mouse events #############
 //Go to time given by loc in pixels
@@ -100,12 +116,7 @@ function updateExtraInfo(loc){
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
 								.append('at approximately ' + time + '<br/>')
 
-//############# Helper functions for tagpoint loading #############
-//Checktime ensures video is loaded
-checkTime( function(dur) {
-		getZapData(dur);
-	},0
-);
+}
 
 //Ajax call for zappoint data
 //Return format: {"term":"<term>","time":"<time>"} (JSON String)
@@ -154,7 +165,6 @@ function createZapCode(data){
 		list.appendChild(zap);
 	});
 	$(".icon-bolt").css("position", "absolute");
-	console.log($(".icon-bluh"));
 }
 
 //Calculates the offset in pixels for zappoint location
