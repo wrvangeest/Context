@@ -3,19 +3,16 @@
 	<head>
 		<meta charset = "utf-8">
 		<title>SocialZap</title>
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/jqcloud.css">
-		<link rel="stylesheet" href="css/font-awesome.css">
-		
-		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-		<script src="http://vjs.zencdn.net/c/video.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script src ="javascript/bootstrap.js"></script>
 		<script src ="javascript/jqcloud-1.0.3.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
-		<!-- Use css file -->
-		<LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA=screen>
+		<!--  css files -->
+		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
+		<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+		<link rel="stylesheet" href="css/jqcloud.css" type="text/css">
+		<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
 		
 	</head>
 	
@@ -76,7 +73,7 @@
 						</div>
 
 						<div>
-							<video height="0" width="0" id="snapvideo" onclick="play()">
+							<video height="0" width="0" id="snapvideo" onclick="play()" style="display:none;">
 							<source type="video/mp4" src="videos/powned2.m4v">
 							</video>
 						</div>
@@ -152,7 +149,8 @@
 						</div>
 				<!-- end features-->
 				</div>
-
+				<!-- related container, not really necessary -->
+				<!--
 				<div class="container related">
 					<div class="panel-header">
 						Related
@@ -174,7 +172,8 @@
     						</a>
   						</li>
   					</ul>
-				</div>
+				</div>-->
+				
 			<!-- end middle part with features and related -->
 			</div>
 
@@ -193,7 +192,7 @@
 	
 	<script src ="javascript/main.js"></script>
 	<script src ="javascript/video.js"></script>
-		<script src ="simple_tip.js"></script>
+	<script src ="simple_tip.js"></script>
 	<script src ="javascript/tagdata.js"></script>
 	<script src ="javascript/social.js"></script>
 	<script src ="javascript/checktime.js"></script>
