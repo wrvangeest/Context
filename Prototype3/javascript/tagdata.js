@@ -79,7 +79,6 @@ $(document).ready(function(){
 	$("body").on("mouseout",".tager",function(){
 		//Clear extra info
 		$("#extrainfo_inner").html("");
-
 		//Restore original colors
 		$(this).css("background-color", $orTagColor);
 		$($zapId).css("color", $orZapColor);
