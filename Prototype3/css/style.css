@@ -7,11 +7,6 @@
 	margin:0 auto;
 }
 
-.logo{
-	float:left;
-	
-}
-
 .header2{
 	height:66px;
 	overflow: hidden;
@@ -19,6 +14,12 @@
 	background-color: #262626;
 	padding-top: 0px;
 }
+
+.logo{
+	float:left;
+	
+}
+
 .navigation{
 	list-style-type: none;
 	float:right;
