@@ -17,68 +17,58 @@
 	</head>
 	
 	<body>
-	
-	
-
 		<!--page wrapper -->
 		<div class="main-content-wrapper">
-			
 			<!-- header -->
-			
-			<header class="header2">
-					<div class="container">
-						<h1 class="logo">
-							<a href="index.php">
-								<img src="logo2.jpg">
-							</a>
-
-						</h1>
-						
-				<div class="row">
-					
-
-					<div class="span7" style="float:right; height:66px;">
-						<ul class="navigation">
-			     			<li><a href="index.html">Home</a></li>
-			     			<li><a href="#">Browse</a></li>
-			     			<li><a href="#">Random Video</a></li>
-			     			<li><a href="#">Sign Up</a></li>
-			     			<li><a href="#">Login</a></li>
+			<header>
+				<div class="navbar navbar-fixed-top">
+  					<div class="navbar-inner">
+  						<div class="container">
+    						<a class="brand" href="#">SocialZap</a>
+						    <ul class="navigation">
+			     			<a href="index.php" style="color:white; text-decoration:none;"><li class="icon-home icon-2x"></li></a>
+			     			<li class="icon-th icon-2x"></li>
+			     			<li class="icon-search icon-2x"></li>
+			   				<li class="icon-user icon-2x"></li>
 			    		</ul>
-
+  						</div>
 					</div>
-
-				</div>
 				</div>
 			<!-- end header -->
 			</header>
 
 
-			<div class="container">
+			<div class="container" style="margin-top:80px;">
 				<div class="row">
-					<div class="span4" style="background-color:red;">
+					<div class="span4">
+						<button class="btn" style="width:100%; cursor:default;">Browse all videos</button>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="span4" style="padding-top:15px;">
 						<img src="http://placehold.it/350x150"/>
 					</div>		
-					<div class="span4" style="background-color:red;">
+					<div class="span4" style="padding-top:15px;">
 						<img src="http://placehold.it/350x150"/>
 					</div>	
-					<div class="span4" style="background-color:red;">
+					<div class="span4" style="padding-top:15px;">
 						<img src="http://placehold.it/350x150"/>
 					</div>
-					<div class="span4" style="background-color:red;">
+
+						<div class="span4" style="padding-top:15px;">
 						<img src="http://placehold.it/350x150"/>
-					</div>
-					<div class="span4" style="background-color:red;">
+					</div>		
+					<div class="span4" style="padding-top:15px;">
 						<img src="http://placehold.it/350x150"/>
-					</div>
-					<div class="span4" style="background-color:red;">
-						<img src="http://placehold.it/350x150"/>
-					</div>
-					<div class="span4" style="background-color:red;">
+					</div>	
+					<div class="span4" style="padding-top:15px;">
 						<img src="http://placehold.it/350x150"/>
 					</div>
 				</div>
-			</div
+			
+			</div>
 
 
 		<!-- end page wrapper -->
