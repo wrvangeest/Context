@@ -57,28 +57,23 @@
 			<!--demo video -->
 			<div class="demo-video-wrapper">
 				<!-- begin demo video container -->
-				<div class="container panel">
+				<div class="container">
 					
 					<!-- video area -->
 					<div class="video-area">
-
-						<div class="panel-header">
-							Demo video
-						</div>
-						
+						<button class="btn" style="width:100%; cursor:default;">De Wereld Draait Door, 14/05/2012</button>
 						<div>
 							<video height="360" width="640" id="video" onclick="play()">
 							<source type="video/mp4" src="videos/dwdd14052012.mp4">
 							</video>
 						</div>
-
+						<!-- video for frame preview -->
 						<div>
 							<video height="0" width="0" id="snapvideo" onclick="play()" style="display:none;">
 							<source type="video/mp4" src="videos/powned2.m4v">
 							</video>
 						</div>
 					
-				
 						<!-- video controls -->								
 						<div id="video_controls" style="margin-bottom:5px;">
 							<button class="btn btn-success" id="playbutton">Play</button>
@@ -104,9 +99,7 @@
 
 					<!-- begin tagcloud -->
 					<div class="tag-cloud">
-							<div class="panel-header">
-								Tag Cloud
-							</div>
+							<button class="btn" style="width:100%; cursor:default;">Hot topics</button>
 
 							<div id="tag-cloud-inner">
 							</div>
@@ -115,9 +108,7 @@
 					</div>
 
 					<div class="extrainfo">
-						<div class="panel-header">
-								Extra Information
-						</div>
+						<button class="btn" style="width:100%; cursor:default;">Extra information</button>
 						<div id="extrainfo_inner" style="display:none;">
 						</div>
 					</div>
