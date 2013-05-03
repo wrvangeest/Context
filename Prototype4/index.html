@@ -26,17 +26,22 @@
 			
 			<header>
 					<div class="navbar navbar-static-top">
+					<div class="navbar-inner" id="search-animate-bar" style="margin-top:-50px;">
+						<div class="container" >
+			   				<input id="top-search" type="search" placeholder="What are you looking for?..." style="width:100%;">
+  						</div>
+					</div>
+
+
   					<div class="navbar-inner">
   						<div class="container">
     						<a class="brand" href="index.html"></li> SocialZap</a>
 						    <ul class="navigation">
-			     			<li class="icon-home icon-2x"></li>
-			     			<li class="icon-th icon-2x"></li>
+			     			<li class="icon-home icon-2x" id="homebutton"></li>
+			     			<li class="icon-th icon-2x" id="browsebutton"></li>
 			     			<li class="icon-user icon-2x"></li>
-			     			<li class="icon-search icon-2x"></li>
-			     			<input id="top-search" type="search" placeholder="What are you looking for?..." style="background-color:#d6d6d6;">
-			   				</ul>
-			   				
+			     			<li class="icon-search icon-2x" id="searchbutton"></li>
+			     			</ul>
   						</div>
 					</div>
 				</div>
@@ -152,6 +157,32 @@
 
 		<!-- end page wrapper -->
 		</div>
+
+		<script>
+		$(document).ready(function(){
+			$("#searchbutton").click(function(){
+				var xyz = $("#search-animate-bar").css("margin-top");
+				if(parseInt(xyz) < 0){
+				$("#search-animate-bar").animate({ marginTop: '0px'}, 1000);
+				}else{
+					$("#search-animate-bar").animate({ marginTop: '-50px'}, 1000);
+				}
+
+			});
+
+			$("#browsebutton").click(function(){
+				window.location.replace("browse.html");
+			});
+
+			$("#homebutton").click(function(){
+				window.location.replace("index.html");
+			});
+
+
+		});
+		</script>
+
+
 
 	
 	<script src ="javascript/main.js"></script>
