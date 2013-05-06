@@ -163,8 +163,8 @@ function createZapCode(data){
 		zap.style.marginLeft = loc + "px";
 		//Append item to list
 		list.appendChild(zap);
+		zap.style.position = "absolute";
 	});
-	$(".icon-bolt").css("position", "absolute");
 }
 //##############################################################
 
@@ -214,7 +214,7 @@ function convertTime(seconds){
 });
 //##############################################################
 
-//############# Miscellaneous elper functions #############
+//############# Miscellaneous helper functions #############
 //Returns associated ID (ZapPointID -> TagID or TagID -> ZapPointID)
 function getAssocId(obj){
 	switch(obj.id.substr(0,3)) {
