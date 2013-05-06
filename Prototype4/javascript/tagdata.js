@@ -241,8 +241,13 @@ function calcTime(dist){
 
 //Converts int seconds into string min:sec
 function timeToMin(seconds){
-	var min = Math.floor(seconds / 60);
-	var sec = Math.round(seconds % 60);
+	if (seconds < 0) {
+		var min = 0;
+		var sec = 0;
+	}else{
+		var min = Math.floor(seconds / 60);
+		var sec = Math.round(seconds % 60);
+	}
 	if(sec < 10){
 		sec = "0" + sec;
 	}
