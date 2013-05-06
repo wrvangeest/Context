@@ -26,21 +26,26 @@ $(document).ready(function(){
 		goToTime($loc);
 	});
 
-	$("body").on("mouseenter",".tweetPoint",function(){
+	$("body").on("mouseenter",".zapPoint",function(){
 		//Displays extra information on the right
-		updateExtraInfo($(this).css("margin-left"));
+		updateExtraInfo(this);
 		$("#extrainfo_inner").css("display", "block");
 
-		//Highlights tag in cloud
-		$cloudClass = getAssocId(this);
-		$orTagColor = $($cloudClass).css("backgroundColor");
-		$($cloudClass).css("background-color", "#b98acf");
+		//Highlights tag in cloud for tweetpoints
+		if($(this).hasClass("tweetPoint")){
+			$cloudClass = getAssocId(this);
+			$orTagColor = $($cloudClass).css("backgroundColor");
+			$($cloudClass).css("background-color", "#b98acf");
+		}
 	});
 
-	$("body").on("mouseout",".tweetPoint",function(){
+	$("body").on("mouseout",".zapPoint",function(){
 		//Clear extra info
 		$("#extrainfo_inner").html("");
-		$($cloudClass).css("background-color", $orTagColor);
+
+		if($(this).hasClass("tweetPoint")){
+			$($cloudClass).css("background-color", $orTagColor);
+		}
 	});
 
 //############# Mouse actions for tags #################
@@ -59,7 +64,7 @@ $(document).ready(function(){
 		$zapId = getAssocId(this);
 
 		//Displays extra information on the right
-		updateExtraInfo($($zapId).css("margin-left"));
+		updateExtraInfo(document.getElementById($zapId));
 		$("#extrainfo_inner").css("display", "block");
 
 		//Change background color
@@ -67,6 +72,7 @@ $(document).ready(function(){
 		$(this).css("background-color", "#b98acf");
 
 		//Change ZapPoint color
+		$zapId = '#' + $zapId;
 		$orZapColor = $($zapId).css("color");
 		$($zapId).css("color", "blue");
 		$($zapId).addClass("icon-large");
@@ -93,12 +99,12 @@ function goToTime(loc) {
 }
 
 //Update extra info using pixel offset in pixels as time indicator
-function updateExtraInfo(loc){
-		var time = calcTime(parseInt(loc));
+function updateExtraInfo(obj){
+		var time = calcTime(parseInt($(obj).css("margin-left")));
 		time = timeToMin(time);
 		//.append(snapshot(timeat))
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
-								.append('at approximately ' + time + '<br/>')
+							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
 
 }
 //##############################################################
@@ -180,15 +186,19 @@ function createZapCode(data, type){
 		switch(type) {
 			case "tweet":
 				zap.className = "icon-twitter-sign tweetPoint zapPoint";
+				zap.id = "tweetPoint" + index;
 				break;
 			case "visual":
 				zap.className = "icon-eye-open visualPoint zapPoint";
+				zap.id = "visualPoint" + index;
 				break;
 		}
 		//Set id for linking to cloud
-		zap.id = "zappoint" + index;
+		
 		//Set location in pixels
 		zap.style.marginLeft = loc + "px";
+		//Set tag name as attribute
+		zap.setAttribute('term', item.term);
 		//Append item to list
 		list.appendChild(zap);
 		zap.style.position = "absolute";
@@ -246,18 +256,22 @@ function timeToSec(minutes){
 //##############################################################
 
 //############# Miscellaneous helper functions #############
-//Returns associated ID (ZapPointID -> TagID or TagID -> ZapPointID)
+//Returns associated ID (TweetPointID -> TagID or TagID -> TweetPointID)
 function getAssocId(obj){
 	switch(obj.id.substr(0,3)) {
-		case "zap":
+		case "twe":
 			$zapId = obj.id;
-			$zapId = $zapId.slice(8,$zapId.length);
+			$zapId = $zapId.slice(10,$zapId.length);
 			return ".btn.t" + $zapId;
 		case "":
 			$tagId = obj.className;
 			$tagId = $tagId.slice(20,$tagId.length);
-			return "#zappoint" + $tagId;
+			return "tweetPoint" + $tagId;
 	}
+}
+
+function hasClass(element, clss){
+	return (' ' + element.className + ' ').indexOf(' ' + clss + ' ') > -1;
 }
 
 //##############################################################
