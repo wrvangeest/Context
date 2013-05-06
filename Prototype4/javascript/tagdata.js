@@ -18,7 +18,7 @@ $(document).ready(function(){
 	}*/
 
 //############# Mouse actions for zappoints ################# 
-	$("body").on("click",".zappoint",function(){
+	$("body").on("click",".zapPoint",function(){
 		//Get pixel location
 		$loc = $(this).css("margin-left");
 		$loc = $loc.substr(0,$loc.length - 2);
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		goToTime($loc);
 	});
 
-	$("body").on("mouseenter",".zappoint",function(){
+	$("body").on("mouseenter",".tweetPoint",function(){
 		//Displays extra information on the right
 		updateExtraInfo($(this).css("margin-left"));
 		$("#extrainfo_inner").css("display", "block");
@@ -37,7 +37,7 @@ $(document).ready(function(){
 		$($cloudClass).css("background-color", "#b98acf");
 	});
 
-	$("body").on("mouseout",".zappoint",function(){
+	$("body").on("mouseout",".tweetPoint",function(){
 		//Clear extra info
 		$("#extrainfo_inner").html("");
 		$($cloudClass).css("background-color", $orTagColor);
@@ -95,7 +95,7 @@ function goToTime(loc) {
 //Update extra info using pixel offset in pixels as time indicator
 function updateExtraInfo(loc){
 		var time = calcTime(parseInt(loc));
-		time = convertTime(time);
+		time = timeToMin(time);
 		//.append(snapshot(timeat))
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
 								.append('at approximately ' + time + '<br/>')
@@ -109,21 +109,54 @@ function updateExtraInfo(loc){
 //Ajax call for zappoint data
 //Return format: {"term":"<term>","time":"<time>"} (JSON String)
 function getZapData(dur){
-	$.post("php/zappoints.php", {duration : dur})
+	$.post("php/zappoints.php", {type : "tweet"})
 		.done(function (data) {
 			var obj = JSON.parse(data);
+			var filtered = {};
+			filtered.visual = [];
+			filtered.tweet = [];
+			var j = 0;
+			for(var i = 0; i < obj.scores.length; i++){
+				if(timeToSec(obj.scores[i].time_jump_in_point) <= dur){
+					if(obj.scores[i].tweet_score > 0){
+
+						var x = {};
+						x.term = obj.scores[i].term;
+						x.time = obj.scores[i].time_jump_in_point;
+						x.reranking_score = obj.scores[i].reranking_score;
+						filtered.tweet.push(x);
+					}
+					if(obj.scores[i].in_lscom == 1 && obj.scores[i].visual_score > 0){
+						var x = {};
+						x.term = obj.scores[i].term;
+						x.time = obj.scores[i].time_jump_in_point;
+						x.reranking_score = obj.scores[i].reranking_score;
+						filtered.visual.push(x);
+					}
+				}
+			}
+			filtered.visual.sort(sortByScore);
+			filtered.tweet.sort(sortByScore);
+			filtered.visual.splice(19,filtered.visual.length);
+			filtered.tweet.splice(19,filtered.tweet.length);
 			//Generate the HTML from the data for..
-			//..zappoints
-			createZapCode(obj);
+			//..zappoints()
+			createZapCode(filtered.tweet, "tweet");
+			createZapCode(filtered.visual, "visual");
 			//..tagcloud
-			createCloud(obj);
-	     }
-	    )
+			createCloud(filtered.tweet);
+	    })
 	    //Give message when failed
 	    .fail(function() {
-	    	alert("Failed!");
-	    });
+	    	alert("getZapData failed!");
+	});
+
+
 }		
+
+function sortByScore(x,y){
+	return y.reranking_score - x.reranking_score;
+}
 
 //Appends cloud information to generate cloud
 function createCloud(data){
@@ -133,9 +166,9 @@ function createCloud(data){
 }
 
 //Generates HTML code
-function createZapCode(data){
+function createZapCode(data, type){
 	//Grab the list div (located in HTML file)
-	var list = document.getElementById("breakpoints");
+	var list = document.getElementById(type + "Points");
 
 	//Loop through the data using JSON functions
 	jQuery.each(data,function(index, item) {
@@ -144,7 +177,14 @@ function createZapCode(data){
 		//Create listitem element
 		var zap = document.createElement("li");
 		//Set properties so CSS recognizes correctly
-		zap.className = "icon-bolt zappoint";
+		switch(type) {
+			case "tweet":
+				zap.className = "icon-twitter-sign tweetPoint zapPoint";
+				break;
+			case "visual":
+				zap.className = "icon-eye-open visualPoint zapPoint";
+				break;
+		}
 		//Set id for linking to cloud
 		zap.id = "zappoint" + index;
 		//Set location in pixels
@@ -161,14 +201,13 @@ function createZapCode(data){
 //Calculates the offset in pixels for zappoint location
 function calcDist(val){
 	//Convert time ("m:(s)s") to seconds
-	var tempTime = val.time.split(':');
-	var secs = (+tempTime[0]) * 60 + (+tempTime[1]);
+	var secs = timeToSec(val.time);
 	//Grab duration of video
 	var dur = Popcorn("#video").duration();
 	//Calculate ratio of time/duration
 	var ratio = secs / dur;
 	//Grab width of timeline in pixels
-	var wdth = document.getElementById("breakpoints").style.width;
+	var wdth = document.getElementById("visualPoints").style.width;
 	//Trim for calculations
 	wdth = wdth.substr(0,wdth.length - 2);
 	//alert("Secs: " + secs + " Dur: " + dur + " Ratio: " + ratio + " Width: " + wdth);
@@ -181,7 +220,7 @@ function calcTime(dist){
 	//Get duration of the video
 	var dur = Popcorn("#video").duration();
 	//Get width of timeline in pixels
-	var wdth = document.getElementById("breakpoints").style.width;
+	var wdth = document.getElementById("visualPoints").style.width;
 	//Trim for calculations
 	wdth = wdth.substr(0,wdth.length - 2);
 	//Calculate pixel/total ratio
@@ -191,13 +230,18 @@ function calcTime(dist){
 }
 
 //Converts int seconds into string min:sec
-function convertTime(seconds){
+function timeToMin(seconds){
 	var min = Math.floor(seconds / 60);
 	var sec = Math.round(seconds % 60);
 	if(sec < 10){
 		sec = "0" + sec;
 	}
 	return min + ":" + sec;
+}
+
+function timeToSec(minutes){
+	var time = minutes.split(":");
+	return ((parseInt(time[0]) * 60) + parseInt(time[1]));
 }
 //##############################################################
 

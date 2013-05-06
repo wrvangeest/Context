@@ -1,9 +1,13 @@
 <?php
-
 //Make connection
 include("config.php");
 
+	$data = file_get_contents("http://socialzapapi.demo.auxilium.nl/analyzer/3/scores?format=json");
 
+echo $data
+
+/*
+Deprecated code that used the local database
 
 //Function that runs query
 function runQuery($duration){
@@ -50,7 +54,11 @@ function runQuery($duration){
 
 	//Return a JSON string
 	return json_encode($rows);
-}
+} 
+
+if(isset($_REQUEST['duration'])){
+	echo runQuery($_REQUEST['duration']);
+}	
 
 //Grabs remaining seconds without minutes from seconds
 function transDurSec($d){
@@ -61,8 +69,6 @@ function transDurSec($d){
 function transDurMin($d){
 	return floor($d / 60);
 }
-if(isset($_REQUEST['duration'])){
-	echo runQuery($_REQUEST['duration']);
-}	
-
+*/
 ?>
+
