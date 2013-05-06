@@ -1,6 +1,4 @@
 $(document).ready(function(){
-
-
 	/*function snapshot(time){
 
 		var video2 = document.getElementById("snapvideo");
@@ -19,10 +17,8 @@ $(document).ready(function(){
 		return canvas;
 	}*/
 
-
-
 //############# Mouse actions for zappoints ################# 
-	$("body").on("click",".icon-bolt",function(){
+	$("body").on("click",".zappoint",function(){
 		//Get pixel location
 		$loc = $(this).css("margin-left");
 		$loc = $loc.substr(0,$loc.length - 2);
@@ -30,7 +26,7 @@ $(document).ready(function(){
 		goToTime($loc);
 	});
 
-	$("body").on("mouseenter",".icon-bolt",function(){
+	$("body").on("mouseenter",".zappoint",function(){
 		//Displays extra information on the right
 		updateExtraInfo($(this).css("margin-left"));
 		$("#extrainfo_inner").css("display", "block");
@@ -41,7 +37,7 @@ $(document).ready(function(){
 		$($cloudClass).css("background-color", "#b98acf");
 	});
 
-	$("body").on("mouseout",".icon-bolt",function(){
+	$("body").on("mouseout",".zappoint",function(){
 		//Clear extra info
 		$("#extrainfo_inner").html("");
 		$($cloudClass).css("background-color", $orTagColor);
@@ -85,15 +81,7 @@ $(document).ready(function(){
 		$($zapId).css("color", $orZapColor);
 		$($zapId).removeClass("icon-large");
 	});
-
-//############# Starts tag and zappoint generation #############
-//Checktime ensures video is loaded
-checkTime( function(dur) {
-		getZapData(dur);
-	},0
-)
-//##############################################################
-
+});
 //############# Helper functions for mouse events #############
 //Go to time given by loc in pixels
 function goToTime(loc) {
@@ -156,7 +144,7 @@ function createZapCode(data){
 		//Create listitem element
 		var zap = document.createElement("li");
 		//Set properties so CSS recognizes correctly
-		zap.className = "icon-bolt";
+		zap.className = "icon-bolt zappoint";
 		//Set id for linking to cloud
 		zap.id = "zappoint" + index;
 		//Set location in pixels
@@ -211,7 +199,6 @@ function convertTime(seconds){
 	}
 	return min + ":" + sec;
 }
-});
 //##############################################################
 
 //############# Miscellaneous helper functions #############

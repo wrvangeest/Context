@@ -1,14 +1,3 @@
-$(document).ready(function(){
-
-//alert("Social working!");
-
-checkTime(function(dur){
-	createTwit();
-	},0
-);
-
-//getScript();
-
 //Twitter implementation
 function createTwit() {
 	$('#twitter_link').each(function(){
@@ -22,6 +11,3 @@ function createTwit() {
 function getScript() {
 	$.getScript('http://platform.twitter.com/widgets.js');
 }
-
-//alert("Social still working!");
-});
