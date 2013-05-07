@@ -36,10 +36,10 @@
   						<div class="container">
     						<a class="brand" href="index.html"></li> SocialZap</a>
 						    <ul class="navigation">
-			     			<li class="icon-home icon-2x" id="homebutton"></li>
-			     			<li class="icon-th icon-2x" id="browsebutton"></li>
-			     			<li class="icon-user icon-2x"></li>
-			     			<li class="icon-search icon-2x" id="searchbutton"></li>
+			     			<li class="icon-home icon-2x navButton" id="homebutton" style="cursor: pointer"></li>
+			     			<li class="icon-th icon-2x navButton" id="browsebutton" style="cursor: pointer"></li>
+			     			<li class="icon-user icon-2x navButton" style="cursor: pointer"></li>
+			     			<li class="icon-search icon-2x navButton" id="searchbutton" style="cursor: pointer"></li>
 			     			</ul>
   						</div>
 					</div>
@@ -187,6 +187,14 @@
 			$("#homebutton").click(function(){
 				window.location.replace("index.html");
 			});
+			$(".navButton").mouseenter(function(){
+				$orColor = this.style.color;
+				this.style.color = "white";
+			});
+			$(".navButton").mouseout(function(){
+				this.style.color = $orColor;
+			});
+			
 
 
 		});

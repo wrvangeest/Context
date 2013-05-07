@@ -75,6 +75,7 @@ $(document).ready(function(){
 		$zapId = '#' + $zapId;
 		$orZapColor = $($zapId).css("color");
 		$($zapId).css("color", "blue");
+		$($zapId).css("z-index", 99);
 		$($zapId).addClass("icon-large");
 	});	
 
@@ -85,6 +86,7 @@ $(document).ready(function(){
 		//Restore original colors
 		$(this).css("background-color", $orTagColor);
 		$($zapId).css("color", $orZapColor);
+		$($zapId).css("z-index", 1);
 		$($zapId).removeClass("icon-large");
 	});
 });
@@ -187,10 +189,12 @@ function createZapCode(data, type){
 			case "tweet":
 				zap.className = "icon-twitter-sign tweetPoint zapPoint";
 				zap.id = "tweetPoint" + index;
+				zap.style.color = "rgb(64,153,255)";
 				break;
 			case "visual":
 				zap.className = "icon-eye-open visualPoint zapPoint";
 				zap.id = "visualPoint" + index;
+				zap.style.color = "blue";
 				break;
 		}
 		//Set id for linking to cloud
