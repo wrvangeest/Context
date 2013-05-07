@@ -35,10 +35,16 @@ describe("Test tagdata.js",function(){
 	});
 
 	/*
-	it("test updateExtraInfo",function(){
+	it("test createZapCode",function(){
+		var obj = [{term:"greece",time:"10:29"}];
+		var zapCode = createZapCode(obj);
+		zapCode.calcDist(item) = jasmine.createSpy("calcDist(item) spy").ancCallFake(function() {return 0;});
 
-		elem = document.createElement("div");
-		elem.id = "extrainfo_inner";
+		console.log(zapCode);
+		elem = document.createElement("li");
+		elem.className = "icon-bolt zappoint";
+		elem.id = "zappoint0";
+
 		elem.append('<img src=http://placehold.it/350x150><br/>')
 			.append('at approximately ' + time + '<br/>');
 
