@@ -126,16 +126,16 @@
 			});
 
 			$("#browsebutton").click(function(){
-				window.location.replace("browse.html");
+				location.href = "browse.html";
 			});
 
 			$("#homebutton").click(function(){
-				window.location.replace("index.html");
+				location.href = "index.html";
 			});
 
 			$('img').click(function(){
 				var videoid = $(this).attr("data-videoid");
-				window.location.replace("index.html?videoid=" + videoid);
+				location.href = "index.html?videoid=" + videoid;
 			});
 
 
