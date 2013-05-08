@@ -4,4 +4,6 @@ function getSkipTime(){
 	if(!isNaN(hash['time'])){
 		Popcorn("#video").currentTime(hash['time']).play();
 	}
+
+	console.log(hash['videoid']);
 }

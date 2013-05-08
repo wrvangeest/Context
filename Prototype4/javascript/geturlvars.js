@@ -12,6 +12,6 @@ function getUrlVars()
         vars.push(hash[0]);
         vars[hash[0]] = hash[1];
     }
- 
+ 	
     return vars;
 }

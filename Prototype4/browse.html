@@ -56,37 +56,51 @@
 
 				<div class="row">
 					<div class="span4" style="padding-top:15px;">
-						<img data-videoid="3" src="http://placehold.it/350x150"/>
+						<div style="height:160px; overflow:hidden;">
+						<img data-videoid="3" src="img/videothumb/dwdd14052012.png" />
+						</div>
 						<span>dwdd-14052012</span>
 					</div>		
-					<div class="span4" style="padding-top:15px;">
-						<img data-videoid="4" src="http://placehold.it/350x150"/>	
+					<div class="span4" style="padding-top:15px; height:150px;">
+						<div style="height:160px; overflow:hidden;">
+						<img data-videoid="4" src="img/videothumb/dwdd15052012.png" />	
+						</div>
 						<span>dwdd-15052012</span>
 					</div>	
 					<div class="span4" style="padding-top:15px;">
-						<img data-videoid="5" src="http://placehold.it/350x150"/>
+						<div style="height:160px; overflow:hidden;">
+						<img data-videoid="5" src="img/videothumb/dwdd18052012.png"/>
+						</div>
 						<span>dwdd-18052012</span>
 					</div>
 				</div>
 				<div class="row">
 
 						<div class="span4" style="padding-top:15px;">
-						<img data-videoid="7" src="http://placehold.it/350x150"/>
+						<div style="height:160px; overflow:hidden;">	
+						<img data-videoid="7" src="img/videothumb/pow14052012.png"/>
+						</div>
 						<span>pow-14052012</span>
 					</div>		
 					<div class="span4" style="padding-top:15px;">
-						<img data-videoid="8" src="http://placehold.it/350x150"/>
+						<div style="height:160px; overflow:hidden;">
+						<img data-videoid="8" src="img/videothumb/pow15052012.png"/>
+						</div>
 						<span>pow-15052012</span>
 					</div>	
 					<div class="span4" style="padding-top:15px;">
-						<img data-videoid="9" src="http://placehold.it/350x150"/>
+						<div style="height:160px; overflow:hidden;">
+						<img data-videoid="9" src="img/videothumb/pow16052012.png"/>
+						</div>
 						<span>pow-16052012</span>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="span4" style="padding-top:15px;">
-						<img data-videoid="10" src="http://placehold.it/350x150"/>
+						<div style="height:160px; overflow:hidden;">
+						<img data-videoid="10" src="img/videothumb/pow18052012.png"/>
+						</div>
 						<span>pow-18052012</span>
 					</div>
 
@@ -117,6 +131,11 @@
 
 			$("#homebutton").click(function(){
 				window.location.replace("index.html");
+			});
+
+			$('img').click(function(){
+				var videoid = $(this).attr("data-videoid");
+				window.location.replace("index.html?videoid=" + videoid);
 			});
 
 
