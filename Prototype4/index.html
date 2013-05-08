@@ -57,9 +57,7 @@
 					<div>
 						<video height="360" width="640" id="video" onclick="play()" style="margin-top:4px;">
 				
-						<source type="video/ogg" src="videos/dwdd14052012.ogg">
-						<source type="video/webm" src="videos/dwdd14052012.webm">
-						<source type="video/mp4" src="videos/dwdd14052012.mp4">
+						<source id="videosource" type="video/mp4" src="videos/dwdd14052012.mp4">
 						
 						nopppeeee
 						</video>
@@ -169,6 +167,9 @@
 		</div>
 
 		<script>
+
+
+
 		$(document).ready(function(){
 			$("#searchbutton").click(function(){
 				var xyz = $("#search-animate-bar").css("margin-top");
@@ -194,13 +195,13 @@
 			$(".navButton").mouseout(function(){
 				this.style.color = $orColor;
 			});
+
+
 			
 
 
 		});
 		</script>
-
-
 
 	<script src ="javascript/video.js"></script>
 	<script src ="javascript/tagdata.js"></script>
@@ -209,5 +210,6 @@
 	<script src ="javascript/geturlvars.js"></script>
 	<script src ="javascript/skiptime.js"></script>
 	<script src ="javascript/main.js"></script>
+	
 	</body>
 	</html>
