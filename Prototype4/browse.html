@@ -32,7 +32,7 @@
 
   					<div class="navbar-inner">
   						<div class="container">
-    						<a class="brand" href="index.html"></li> SocialZap</a>
+    						<a class="brand" href="index.php"></li> SocialZap</a>
 						    <ul class="navigation">
 			     			<li class="icon-home icon-2x" id="homebutton"></li>
 			     			<li class="icon-th icon-2x" id="browsebutton"></li>
@@ -130,13 +130,13 @@
 			});
 
 			$("#homebutton").click(function(){
-				location.href = "index.html";
+				location.href = "index.php";
 			});
 
 			$('img').click(function(){
 				var videoid = $(this).attr("data-videoid");
 				var videoname = $(this).attr("data-videoname");
-				location.href = "index.html?videoid=" + videoid + "&videoname=" + videoname;
+				location.href = "index.php?videoid=" + videoid + "&videoname=" + videoname;
 			});
 
 

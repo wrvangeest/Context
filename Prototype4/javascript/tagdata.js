@@ -194,7 +194,7 @@ function createZapCode(data, type){
 			case "visual":
 				zap.className = "icon-eye-open visualPoint zapPoint";
 				zap.id = "visualPoint" + index;
-				zap.style.color = "blue";
+				zap.style.color = "rgb(64, 153, 255)";
 				break;
 		}
 		//Set id for linking to cloud

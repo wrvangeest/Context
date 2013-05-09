@@ -34,7 +34,7 @@
 
   					<div class="navbar-inner">
   						<div class="container">
-    						<a class="brand" href="index.html"></li> SocialZap</a>
+    						<a class="brand" href="index.php"></li> SocialZap</a>
 						    <ul class="navigation">
 			     			<li class="icon-home icon-2x navButton" id="homebutton" style="cursor: pointer"></li>
 			     			<li class="icon-th icon-2x navButton" id="browsebutton" style="cursor: pointer"></li>
@@ -57,7 +57,7 @@
 					<div>
 						<video height="360" width="640" id="video" onclick="play()" style="margin-top:4px;">
 				
-						<source id="videosource" type="video/mp4" src="videos/dwdd14052012.mp4">
+						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['videoname']; ?>.mp4">
 						
 						nopppeeee
 						</video>
@@ -65,7 +65,7 @@
 					<!-- video for frame preview -->
 					<div>
 						<video height="0" width="0" id="snapvideo" onclick="play()" style="display:none;">
-						<source type="video/mp4" src="videos/powned2.m4v">
+						<source type="video/mp4" src="videos/<?php echo $_REQUEST['videoname']; ?>.mp4">
 						</video>
 					</div>
 				
@@ -186,7 +186,7 @@
 			});
 
 			$("#homebutton").click(function(){
-				location.href = "index.html";
+				location.href = "index.php";
 			});
 			$(".navButton").mouseenter(function(){
 				$orColor = this.style.color;
