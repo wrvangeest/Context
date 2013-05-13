@@ -62,7 +62,7 @@
 
 			<!-- begin main-page container -->
 			<div class="container" style="margin-top:15px;">
-				
+			<div class="row">
 				<!-- video area -->
 				<div class="video-area span9">
 					<button class="well well-header"><?php echo $_REQUEST['vidn'];?></button>
@@ -149,11 +149,12 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			<!-- end demo video container -->
 
 				<!-- middle part with comments -->
 				<div class="middle-part-wrapper">
-					<div class="container">
+					<div class="row">
 						<div class="span9">
 							<div class="comments" style="width:700px; float:left;">
 									<div><button class="well well-header">Comments</button></div>
@@ -215,11 +216,11 @@
 			});
 
 			$("#browsebutton").click(function(){
-				location.href = "browse.html";
+				location.href = "index.html";
 			});
 
 			$("#homebutton").click(function(){
-				location.href = "index.php";
+				location.href = "index.html";
 			});
 
 			
