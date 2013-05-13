@@ -51,13 +51,13 @@ $(document).ready(function(){
 //############# Mouse actions for tags #################
 	$("body").on("click",".tager",function(){
 		//Gather ID information
-		$zapId = getAssocId(this);
-
+		var zapId = getAssocId(this);
+		console.log(zapId);
 		//Get pixel location
-		$loc = $($zapId).css("margin-left");
-		$loc = $loc.substr(0,$loc.length - 2);
-		//Jump to given time
-		goToTime($loc);
+		loc = $($zapId).css("margin-left");
+		loc = loc.substr(0,loc.length - 2);
+		//Jump to givesn time
+		goToTime(loc);
 	});
 	$("body").on("mouseenter",".tager",function(){
 		//Gather ID information
@@ -82,7 +82,6 @@ $(document).ready(function(){
 	$("body").on("mouseout",".tager",function(){
 		//Clear extra info
 		$("#extrainfo_inner").html("");
-
 		//Restore original colors
 		$(this).css("background-color", $orTagColor);
 		$($zapId).css("color", $orZapColor);
@@ -97,7 +96,8 @@ function goToTime(loc) {
 	var time = calcTime(loc);
 	console.log(time);
 	//Jump to time
-	Popcorn("#video").currentTime(time).play();
+	Popcorn("#video").currentTime(time);
+	Popcorn("#video").play();
 }
 
 //Update extra info using pixel offset in pixels as time indicator
@@ -117,7 +117,9 @@ function updateExtraInfo(obj){
 //Ajax call for zappoint data
 //Return format: {"term":"<term>","time":"<time>"} (JSON String)
 function getZapData(dur){
-	$.post("php/zappoints.php", {type : "tweet"})
+	var hash = getUrlVars();
+	var vidid = hash['vidid'];
+	$.post("php/zappoints.php?id=" + vidid)
 		.done(function (data) {
 			var obj = JSON.parse(data);
 			var filtered = {};
