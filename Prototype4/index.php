@@ -72,7 +72,8 @@
 					<!-- video controls -->								
 					<div id="video_controls" style="margin-bottom:5px;">
 						<!-- twitter button -->
-						<span style="float:right;height:20px;"> <a id = "twitter_link" href="https://twitter.com/share" class="twitter-share-button">Tweet</a> </span>
+						<span style="float:right;height:20px;"> <button class="btn btn-mini" type="button"><img src = "img\tweet.png" \>Tweet</button>
+							<a id = "twitter_link" href="https://twitter.com/share" class="twitter-share-button" >Tweet</a> </span>
 						<!-- play, pause and stop -->
 						<button class="btn btn-success" id="playbutton">Play</button>
 						<button class="btn btn-primary" id="pausebutton">Pause</button>
