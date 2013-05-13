@@ -28,13 +28,10 @@
 	padding-top:15px;
 	height:550px;
 	overflow: hidden;
-
-	
 }
 
 .video-area{
 	float:left;
-	
 }
 
 .tag-cloud{
@@ -54,9 +51,6 @@
 	-moz-box-shadow: 0px 1px 2px #000000;
 	-webkit-box-shadow: 0px 1px 2px #000000;
 	box-shadow: 0px 1px 2px #000000;
-
-	
-
 }
 
 .panel-header{
@@ -92,6 +86,12 @@
 	margin-top:10px;
 }
 
+#loginform{
+	margin-top: 10px;
+	margin-bottom: 0;
+	display: block; 
+	float:right;
+}
 /*Size for tags in tag cloud*/
 .btn.tager{
 	width: 23%;
