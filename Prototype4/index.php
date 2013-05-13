@@ -53,7 +53,7 @@
 				
 				<!-- video area -->
 				<div class="video-area">
-					<button class="btn" style="width:100%; cursor:default;">De Wereld Draait Door, 14/05/2012</button>
+					<button class="btn" style="width:100%; cursor:default;"><?php echo $_REQUEST['vidn'];?></button>
 					<div>
 						<video height="360" width="640" id="video" style="margin-top:4px;">
 				
@@ -72,8 +72,7 @@
 					<!-- video controls -->								
 					<div id="video_controls" style="margin-bottom:5px;">
 						<!-- twitter button -->
-						<span style="float:right;height:20px;"> <button class="btn btn-mini" type="button"><img src = "img\tweet.png" \>Tweet</button>
-							<a id = "twitter_link" href="https://twitter.com/share" class="twitter-share-button" >Tweet</a> </span>
+						<span style="float:right;height:20px;"> <button class="btn btn-mini" type="button" onclick="sendTweet();"><img src = "img\tweet.png" \>Tweet</button></span>
 						<!-- play, pause and stop -->
 						<button class="btn btn-success" id="playbutton">Play</button>
 						<button class="btn btn-primary" id="pausebutton">Pause</button>
