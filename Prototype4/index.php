@@ -55,7 +55,7 @@
 				<div class="video-area">
 					<button class="btn" style="width:100%; cursor:default;">De Wereld Draait Door, 14/05/2012</button>
 					<div>
-						<video height="360" width="640" id="video" onclick="play()" style="margin-top:4px;">
+						<video height="360" width="640" id="video" style="margin-top:4px;">
 				
 						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4">
 						
@@ -189,17 +189,6 @@
 			$("#homebutton").click(function(){
 				location.href = "index.php";
 			});
-			$(".navButton").mouseenter(function(){
-				$orColor = this.style.color;
-				this.style.color = "white";
-			});
-			$(".navButton").mouseout(function(){
-				this.style.color = $orColor;
-			});
-
-
-			
-
 
 		});
 		</script>

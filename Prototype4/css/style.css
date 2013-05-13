@@ -59,6 +59,10 @@
 
 }
 
+.navigation > li:hover{
+	color: white;
+}
+
 .panel-header{
 	width: 100%;
 	border-bottom: 1px solid #c7c7c7;
