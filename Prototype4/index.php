@@ -64,10 +64,10 @@
 			<div class="container" style="margin-top:15px;">
 				
 				<!-- video area -->
-				<div class="video-area">
+				<div class="video-area span9">
 					<button class="well well-header"><?php echo $_REQUEST['vidn'];?></button>
 					<div>
-						<video height="360" width="640" id="video" style="margin-top:4px;">
+						<video height="394" width="700" id="video" style="margin-top:4px;">
 				
 						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4">
 						
@@ -93,18 +93,18 @@
 					
 					<!-- progress bar -->
 
-					<div class="progress" id="popcorn-progbar-wrapper" style="width:640px; height:15px; background-color:grey; margin-bottom:5px; cursor: pointer;">
+					<div class="progress" id="popcorn-progbar-wrapper" style="width:700px; height:15px; background-color:grey; margin-bottom:5px; cursor: pointer;">
 						
 					<div class="bar" id="popcorn-progbar" style="width: 0%;"></div>
 					</div>
 
 					<!-- Tweet zappoints -->
-					<div id="tweetPoints" style="height:22px; width:640px;">
+					<div id="tweetPoints" style="height:22px; width:700px;">
 					<!-- is filled dynamically with zappoint.js-->
 					</div>
 
 					<!-- Visual zappoints -->
-					<div id="visualPoints" style="height:22px; width:640px;">
+					<div id="visualPoints" style="height:22px; width:700px;">
 					<!-- is filled dynamically with zappoint.js-->
 					</div>
 
@@ -132,19 +132,21 @@
 				<!-- end video area -->
 				</div>
 
-				<!-- begin tagcloud -->
-				<div class="tag-cloud">
-						<button class="well well-header">Hot topics</button>
+				<div class="span3">
+					<!-- begin tagcloud -->
+					<div class="tag-cloud">
+							<button class="well well-header">Hot topics</button>
 
-						<div id="tag-cloud-inner">
+							<div id="tag-cloud-inner">
+							</div>
+
+					<!-- end tagcloud -->
+					</div>
+
+					<div class="extrainfo">
+						<button class="well well-header">Extra information</button>
+						<div id="extrainfo_inner" style="display:none;">
 						</div>
-
-				<!-- end tagcloud -->
-				</div>
-
-				<div class="extrainfo">
-					<button class="well well-header">Extra information</button>
-					<div id="extrainfo_inner" style="display:none;">
 					</div>
 				</div>
 			<!-- end demo video container -->
@@ -152,30 +154,32 @@
 				<!-- middle part with comments -->
 				<div class="middle-part-wrapper">
 					<div class="container">
-						<div class="comments" style="width:640px; float:left;">
-								<div><button class="well well-header">Comments</button></div>
-								<div><input type="text" placeholder="Write a comment...." style="width:627px; margin-top:5px;"></div>
+						<div class="span9">
+							<div class="comments" style="width:700px; float:left;">
+									<div><button class="well well-header">Comments</button></div>
+									<div><input type="text" placeholder="Write a comment...." style="width:687px; margin-top:5px;"></div>
 
-								<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
-									<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+									<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
+										<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+										</div>
+										<div class="comment-info">Ping Wan at 0:25, 1 hours ago:</div>
+										<div class="comment-text" style="float:left;">Great Video!</div>
 									</div>
-									<div class="comment-info">Ping Wan at 0:25, 1 hours ago:</div>
-									<div class="comment-text" style="float:left;">Great Video!</div>
-								</div>
 
-								<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
-									<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+									<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
+										<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+										</div>
+										<div class="comment-info">Anish Narwade at 4:25, 5 hours ago:</div>
+										<div class="comment-text" style="float:left;">Standje 69 Owned!</div>
 									</div>
-									<div class="comment-info">Anish Narwade at 4:25, 5 hours ago:</div>
-									<div class="comment-text" style="float:left;">Standje 69 Owned!</div>
-								</div>
 
-								<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
-									<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+									<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
+										<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+										</div>
+										<div class="comment-info">Haluk Sahin at 3:25, 12 hours ago:</div>
+										<div class="comment-text" style="float:left;">Black money under black couch LOL</div>
 									</div>
-									<div class="comment-info">Haluk Sahin at 3:25, 12 hours ago:</div>
-									<div class="comment-text" style="float:left;">Black money under black couch LOL</div>
-								</div>
+							</div>
 						</div>
 					</div>
 				</div>
