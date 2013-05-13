@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="css/jqcloud.css" type="text/css">
 		<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
+		<link rel="stylesheet" href="css/nouisliderfox.css" type="text/css">
 		
 	</head>	
 	<body>
@@ -111,6 +112,15 @@
 					<div>
 						<button class="well well-header">Advanced options</button>
 
+						<div style="clear:right;">Set minimal reranking Score</div>
+							<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
+							<input id="tweet_value" type="text" style="margin-left:5px;" class="input-mini">
+
+							<div style="clear:right;">Set minimal visual Score</div>
+							<div class="noUiSlider" id="slider2" style="float:left; margin-top:10px;"></div>
+							<input id="visual_value" type="text" style="margin-left:5px;" class="input-mini">
+
+							<button class="btn" style="float:left; clear:both; margin-top:10px; margin-bottom:10px;">Update tags</button>
 						
 
 					</div>
@@ -207,6 +217,28 @@
 			$("#homebutton").click(function(){
 				location.href = "index.php";
 			});
+
+			
+			$("#slider1").noUiSlider({
+    			range: [0, 100]
+			   ,start: 50
+			   ,handles: 1
+			   ,connect: "lower"
+			   ,serialization: {
+			      to: [$("#tweet_value")]
+			   }
+			});
+
+
+			$("#slider2").noUiSlider({
+			    range: [0, 100]
+			   ,start: 50
+			   ,handles: 1
+			   ,connect: "lower"
+			   ,serialization: {
+			      to: [$("#visual_value")]
+			   }
+			});
 			
 
 
@@ -214,6 +246,7 @@
 		</script>
 
 	<script src ="javascript/video.js"></script>
+	<script src ="javascript/nouislider.js"></script>
 	<script src ="javascript/tagdata.js"></script>
 	<script src ="javascript/social.js"></script>
 	<script src ="javascript/checktime.js"></script>
