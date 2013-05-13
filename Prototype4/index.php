@@ -107,7 +107,16 @@
 					<!-- is filled dynamically with zappoint.js-->
 					</div>
 
-					<div><input type="text" placeholder="Write a comment...." style="width:627px;"></div>
+					<!-- begin advanced options -->
+					<div>
+						<button class="well well-header">Advanced options</button>
+
+						
+
+					</div>
+
+
+					
 
 				
 				<!-- end video area -->
@@ -135,6 +144,7 @@
 					<div class="container">
 						<div class="comments" style="width:640px; float:left;">
 								<div><button class="well well-header">Comments</button></div>
+								<div><input type="text" placeholder="Write a comment...." style="width:627px; margin-top:5px;"></div>
 
 								<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
 									<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
@@ -197,17 +207,7 @@
 			$("#homebutton").click(function(){
 				location.href = "index.php";
 			});
-
-			$("#userButton").click(function(){
-
-			});
-			$(".navButton").mouseenter(function(){
-				$orColor = this.style.color;
-				this.style.color = "white";
-			});
-			$(".navButton").mouseout(function(){
-				this.style.color = $orColor;
-			});
+			
 
 
 		});
