@@ -57,7 +57,7 @@
 					<div>
 						<video height="360" width="640" id="video" onclick="play()" style="margin-top:4px;">
 				
-						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['videoname']; ?>.mp4">
+						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4">
 						
 						nopppeeee
 						</video>
