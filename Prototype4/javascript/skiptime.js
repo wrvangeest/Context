@@ -2,8 +2,6 @@
 function getSkipTime(){
 	var hash = getUrlVars();
 
-	$("#videosource").attr("src","videos/" + hash['videoname'] + ".mp4");
-
 	if(!isNaN(hash['time'])){
 		Popcorn("#video").currentTime(hash['time']).play();
 	}

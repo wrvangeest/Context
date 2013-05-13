@@ -66,9 +66,9 @@
 				<div class="video-area">
 					<button class="btn" style="width:100%; cursor:default;">De Wereld Draait Door, 14/05/2012</button>
 					<div>
-						<video height="360" width="640" id="video" onclick="play()" style="margin-top:4px;">
+						<video height="360" width="640" id="video" style="margin-top:4px;">
 				
-						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['videoname']; ?>.mp4">
+						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4">
 						
 						nopppeeee
 						</video>
@@ -209,6 +209,8 @@
 			$(".navButton").mouseout(function(){
 				this.style.color = $orColor;
 			});
+
+
 		});
 		</script>
 
