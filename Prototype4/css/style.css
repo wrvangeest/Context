@@ -54,10 +54,9 @@
 }
 
 .tag-cloud{
-	height:350px;
 }
 #tag-cloud-inner{
-	height:350px;
+	max-height:350px;
 	overflow: auto;
 }
 /*Size for tags in tag cloud*/
