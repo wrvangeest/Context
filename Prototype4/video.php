@@ -206,6 +206,7 @@
 
 	<script src ="javascript/video.js"></script>
 	<script src ="javascript/lib/nouislider.js"></script>
+	<script src ="javascript/tagCloudColor.js"></script>
 	<script src ="javascript/tagdata.js"></script>
 	<script src ="javascript/social.js"></script>
 	<script src ="javascript/checktime.js"></script>
