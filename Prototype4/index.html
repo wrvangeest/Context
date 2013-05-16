@@ -112,6 +112,14 @@
 
 		<!-- end page wrapper -->
 		</div>
+		<script>
+		$('img').click(function(){
+				var videoid = $(this).attr("data-videoid");
+				var videoname = $(this).attr("data-videoname");
+				location.href = "video.php?vidid=" + videoid + "&vidn=" + videoname;
+			});
+
+		</script>
 
 	<script src ="javascript/main.js"></script>
 	</body>
