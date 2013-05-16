@@ -5,7 +5,7 @@
 		<title>SocialZap</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<script src ="javascript/bootstrap.js"></script>
+		<script src ="javascript/lib/bootstrap.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
 		<!--  css files -->
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
@@ -120,7 +120,7 @@
 							<div class="noUiSlider" id="slider2" style="float:left; margin-top:10px;"></div>
 							<input id="visual_value" type="text" style="margin-left:5px;" class="input-mini">
 
-							<button class="btn" style="float:left; clear:both; margin-top:10px; margin-bottom:10px;">Update tags</button>
+							<button id="update-tag-button" class="btn" style="float:left; clear:both; margin-top:10px; margin-bottom:10px;">Update tags</button>
 						
 
 					</div>
@@ -136,7 +136,7 @@
 					<!-- begin tagcloud -->
 					<div class="tag-cloud">
 							<button class="well well-header">Hot topics</button>
-
+							<div id="loading-img" style="display:none;"><img src="img/ajax-loader.gif"/></div>
 							<div id="tag-cloud-inner">
 							</div>
 

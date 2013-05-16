@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+$("#loading-img").show();
 			checkTime(function(dur) {
 				//Starts chain to construct ZapPoints
 				getZapData(dur);
@@ -32,8 +33,8 @@ $(document).ready(function(){
 
 			//make first slider
 			$("#slider1").noUiSlider({
-    			range: [0, 100]
-			   ,start: 50
+    			range: [0, 1]
+			   ,start: 0.5
 			   ,handles: 1
 			   ,connect: "lower"
 			   ,serialization: {
@@ -43,8 +44,8 @@ $(document).ready(function(){
 
 			//make second slider
 			$("#slider2").noUiSlider({
-			    range: [0, 100]
-			   ,start: 50
+			    range: [0, 1]
+			   ,start: 0.5
 			   ,handles: 1
 			   ,connect: "lower"
 			   ,serialization: {
@@ -52,5 +53,16 @@ $(document).ready(function(){
 			   }
 			});
 
+			$("#update-tag-button").click(function(){
+				cleartags();
+				getNewTags();
+			});
+
 
 });
+
+function cleartags(){
+	$("#tag-cloud-inner").empty();
+	$("#tweetPoints").empty();
+	$("#visualPoints").empty();
+}
