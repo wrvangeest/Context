@@ -202,53 +202,7 @@
 		<!-- end page wrapper -->
 		</div>
 
-		<script>
 
-		$(document).ready(function(){
-			$("#searchbutton").click(function(){
-				var xyz = $("#search-animate-bar").css("margin-top");
-				if(parseInt(xyz) < 0){
-				$("#search-animate-bar").animate({ marginTop: '0px'}, 1000);
-				}else{
-					$("#search-animate-bar").animate({ marginTop: '-50px'}, 1000);
-				}
-
-			});
-
-			$("#browsebutton").click(function(){
-				location.href = "index.html";
-			});
-
-			$("#homebutton").click(function(){
-				location.href = "index.html";
-			});
-
-			
-			$("#slider1").noUiSlider({
-    			range: [0, 100]
-			   ,start: 50
-			   ,handles: 1
-			   ,connect: "lower"
-			   ,serialization: {
-			      to: [$("#tweet_value")]
-			   }
-			});
-
-
-			$("#slider2").noUiSlider({
-			    range: [0, 100]
-			   ,start: 50
-			   ,handles: 1
-			   ,connect: "lower"
-			   ,serialization: {
-			      to: [$("#visual_value")]
-			   }
-			});
-			
-
-
-		});
-		</script>
 
 	<script src ="javascript/video.js"></script>
 	<script src ="javascript/lib/nouislider.js"></script>
