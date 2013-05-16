@@ -113,11 +113,39 @@
 		<!-- end page wrapper -->
 		</div>
 		<script>
-		$('img').click(function(){
+		$(document).ready(function(
+
+				//fix search button
+			$("#searchbutton").click(function(){
+				var xyz = $("#search-animate-bar").css("margin-top");
+				if(parseInt(xyz) < 0){
+				$("#search-animate-bar").animate({ marginTop: '0px'}, 1000);
+				}else{
+					$("#search-animate-bar").animate({ marginTop: '-50px'}, 1000);
+				}
+
+			});
+
+			//fix browsebutton
+			$("#browsebutton").click(function(){
+				location.href = "index.html";
+			});
+
+			//fix homebutton
+			$("#homebutton").click(function(){
+				location.href = "index.html";
+			});
+
+			$('img').click(function(){
 				var videoid = $(this).attr("data-videoid");
 				var videoname = $(this).attr("data-videoname");
 				location.href = "video.php?vidid=" + videoid + "&vidn=" + videoname;
 			});
+
+		));
+
+
+		
 
 		</script>
 
