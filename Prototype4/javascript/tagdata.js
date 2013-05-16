@@ -121,6 +121,7 @@ function getZapData(dur){
 	var vidid = hash['vidid'];
 	$.post("php/zappoints.php?id=" + vidid)
 		.done(function (data) {
+			localStorage.setItem(vidid,data);
 			var obj = JSON.parse(data);
 			var filtered = {};
 			filtered.visual = [];
@@ -164,6 +165,20 @@ function getZapData(dur){
 
 }		
 
+function getNewTags(){
+	var hash = getUrlVars();
+	var vidid = hash['vidid'];
+
+	var rerankingscore = $(tweet_value).val();
+	var visualscore = $(visual_value).val();
+
+	alert(rerankingscore);
+	alert(visualscore);
+	//dit is de json code voor de currentvideo
+	alert(localStorage.getItem(vidid));
+
+}	
+
 function sortByScore(x,y){
 	return y.reranking_score - x.reranking_score;
 }
@@ -173,6 +188,7 @@ function createCloud(data){
 	jQuery.each(data, function(index,item) {
 		$("#tag-cloud-inner").append('<button class="btn btn-info tager t' + index + '">' + item.term + "</button>" + " "  );
 	})
+	$("#loading-img").hide();
 }
 
 //Generates HTML code
