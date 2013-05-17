@@ -16,7 +16,9 @@
 .tweet-text{
 	float:left;
 }
-
+.tweet-info .username{
+	font-weight: bold;
+}
 .comments{
 	width:700px; 
 	float:left;
