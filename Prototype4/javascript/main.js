@@ -40,6 +40,9 @@ $("#loading-img").show();
 			   ,serialization: {
 			      to: [$("#tweet_value")]
 			   }
+			   ,slide: function(){
+					getNewTags("tweet");
+				}
 			});
 
 			//make second slider
@@ -51,6 +54,9 @@ $("#loading-img").show();
 			   ,serialization: {
 			      to: [$("#visual_value")]
 			   }
+			   ,slide: function(){
+					getNewTags("visual");
+				}
 			});
 
 			$("#update-tag-button").click(function(){
