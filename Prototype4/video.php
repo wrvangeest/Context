@@ -156,21 +156,21 @@
 										<div class="user-photo" ><li class="icon-user icon-2x"></li>
 										</div>
 										<div class="comment-info">Ping Wan at 0:25, 1 hours ago:</div>
-										<div class="comment-text">Great Video!</div>
+										<div class="comment-text">Goede aflevering!</div>
 									</div>
 
 									<div class="a-comment">
 										<div class="user-photo" ><li class="icon-user icon-2x"></li>
 										</div>
 										<div class="comment-info">Anish Narwade at 4:25, 5 hours ago:</div>
-										<div class="comment-text">I like to suck a DICK!!</div>
+										<div class="comment-text">Vooral dit stukje is leuk: http://goo.gl/0phYQ !</div>
 									</div>
 
 									<div class="a-comment">
 										<div class="user-photo"><li class="icon-user icon-2x"></li>
 										</div>
 										<div class="comment-info">Haluk Sahin at 3:25, 12 hours ago:</div>
-										<div class="comment-text">Black money under black couch LOL</div>
+										<div class="comment-text">Haha, die boeren!</div>
 									</div>
 							</div>
 						</div>
