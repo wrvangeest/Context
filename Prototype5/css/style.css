@@ -1,0 +1,91 @@
+.icon-fire{
+	position: absolute;
+}
+
+.main-content-wrapper{
+	min-width: 100%;
+	margin:0 auto;
+}
+
+.navigation{
+	list-style-type: none;
+	float:left;
+	padding-top: 10px;
+}
+.navigation > li{
+	display: inline;
+	margin-right: 15px;
+	border-right: #ffffff;
+}
+
+.navigation  > a{
+	text-decoration: none;
+	color:#ffffff;
+}
+
+.tager{
+	margin-top: 4px;
+	clear:both;
+}
+
+
+.well-header{
+	width:100%; cursor:default; color:#999999; height:30px;
+}
+.navigation > li:hover{
+	color: white;
+}
+
+
+.footer{
+	margin-top:100px;
+}
+
+.extrainfo{
+	height: 125px;
+	margin-top:10px;
+}
+
+#loginform{
+	margin-top: 10px;
+	margin-bottom: 0;
+	display: block; 
+	float:right;
+}
+
+.tag-cloud{
+}
+#tag-cloud-inner{
+	max-height:350px;
+	overflow: auto;
+}
+/*Size for tags in tag cloud*/
+.btn.tager{
+	width: 100%;
+	height: 25px;
+}
+
+/*comments styling*/
+.comments{
+	width:700px; 
+	float:left;
+}
+.a-comment{
+	width:100%; 
+	margin-top:5px; 
+	border-bottom:1px solid #999999; 
+	float:left;
+}
+.comment-text{
+	float:left;
+}
+#comments-input{
+
+	width:687px; 
+	margin-top:5px;
+}
+.user-photo{
+	width:45px; 
+	height:45px; 
+	float:left;
+}
