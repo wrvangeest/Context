@@ -1,9 +1,12 @@
 $(document).ready(function(){
-	
+	checkTags(colorTags,0);
 
-	setTimeout(function(dur) {
+
+});
+
+function colorTags() {
 	var amountTags = $('#tag-cloud-inner').children().length;
-	for(var i=0;i<amountTags;i++){
+	for(var i = 0; i < amountTags; i++){
 
 		if (i < Math.floor(amountTags/2)){
 			//var cc = Math.floor(i*(255/(amountTags)));
@@ -28,7 +31,4 @@ $(document).ready(function(){
 
 		}
 	}
-	},9000);
-
-
-});
+}

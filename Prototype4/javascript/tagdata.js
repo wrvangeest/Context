@@ -172,6 +172,7 @@ function filterData(id, dur, type){
 	var j = 0;
 	switch(type){
 	case "tweet" :
+		console.log("tweet");
 		$("#tag-cloud-inner").empty();
 		$("#tweetPoints").empty();
 		for(var i = 0; i < Math.min(100, data.tweet.length); i++){
@@ -185,8 +186,10 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.tweet, "tweet");
 		createCloud(filteredTemp.tweet);
+		checkTags(colorTags(),0);
 		break;
 	case "visual" :
+		console.log("visual");
 		$("#visualPoints").empty();
 		for(var i = 0; i < Math.min(100, data.tweet.length); i++){
 			if(i < data.visual.length && data.visual[i].visual_score > $("#visual_value").val()){
@@ -219,17 +222,15 @@ function filterData(id, dur, type){
 				}
 			}
 		}
+		//Generate the HTML from the data for..
+		//..zappoints()
+		createZapCode(filteredTemp.tweet, "tweet");
+		createZapCode(filteredTemp.visual, "visual");
+		//..tagcloud
+		createCloud(filteredTemp.tweet);
+		checkTags(colorTags(),0);
 		break;
 	}
-	
-	//filteredTemp.visual.splice(100,filteredTemp.visual.length);
-	//filteredTemp.tweet.splice(100,filteredTemp.tweet.length);
-	//Generate the HTML from the data for..
-	//..zappoints()
-	createZapCode(filteredTemp.tweet, "tweet");
-	createZapCode(filteredTemp.visual, "visual");
-	//..tagcloud
-	createCloud(filteredTemp.tweet);
 }
 
 function getNewTags(type){
