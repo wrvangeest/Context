@@ -10,7 +10,6 @@
 		<!--  css files -->
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-		<link rel="stylesheet" href="css/jqcloud.css" type="text/css">
 		<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
 		<link rel="stylesheet" href="css/nouisliderfox.css" type="text/css">
 		
@@ -156,29 +155,29 @@
 				<div class="middle-part-wrapper">
 					<div class="row">
 						<div class="span9">
-							<div class="comments" style="width:700px; float:left;">
+							<div class="comments">
 									<div><button class="well well-header">Comments</button></div>
-									<div><input type="text" placeholder="Write a comment...." style="width:687px; margin-top:5px;"></div>
+									<div><input id="comments-input" type="text" placeholder="Write a comment...."></div>
 
-									<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
-										<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+									<div class="a-comment">
+										<div class="user-photo" ><li class="icon-user icon-2x"></li>
 										</div>
 										<div class="comment-info">Ping Wan at 0:25, 1 hours ago:</div>
-										<div class="comment-text" style="float:left;">Great Video!</div>
+										<div class="comment-text">Great Video!</div>
 									</div>
 
-									<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
-										<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+									<div class="a-comment">
+										<div class="user-photo" ><li class="icon-user icon-2x"></li>
 										</div>
 										<div class="comment-info">Anish Narwade at 4:25, 5 hours ago:</div>
-										<div class="comment-text" style="float:left;">Standje 69 Owned!</div>
+										<div class="comment-text">I like to suck a DICK!!</div>
 									</div>
 
-									<div class="a-comment" style="width:100%; margin-top:5px; border-bottom:1px solid #999999; float:left;">
-										<div class="user-photo" style="width:45px; height:45px; float:left;"><li class="icon-user icon-2x"></li>
+									<div class="a-comment">
+										<div class="user-photo"><li class="icon-user icon-2x"></li>
 										</div>
 										<div class="comment-info">Haluk Sahin at 3:25, 12 hours ago:</div>
-										<div class="comment-text" style="float:left;">Black money under black couch LOL</div>
+										<div class="comment-text">Black money under black couch LOL</div>
 									</div>
 							</div>
 						</div>
