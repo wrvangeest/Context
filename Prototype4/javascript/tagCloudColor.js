@@ -1,11 +1,12 @@
 $(document).ready(function(){
-	
+	checkTags(colorTags,0);
 
-	setTimeout(function(dur) {
+
+});
+
+function colorTags() {
 	var amountTags = $('#tag-cloud-inner').children().length;
-
-	console.log(amountTags);
-	for(var i=0;i<amountTags;i++){
+	for(var i = 0; i < amountTags; i++){
 
 		if (i < Math.floor(amountTags/2)){
 			//var cc = Math.floor(i*(255/(amountTags)));
@@ -16,7 +17,6 @@ $(document).ready(function(){
 			var r = 140;
 			var g = 70;
 			var rgb = 'rgb('+ r +',' +g+ ','+ b+ ')';
-			console.log(rgb);
 			$('.t' +i).css("background-color",rgb);
 
 		}
@@ -27,12 +27,8 @@ $(document).ready(function(){
 			var b = 140;
 			var g = 70;
 			var rgb = 'rgb('+ r +',' +g+ ','+ b+ ')';
-			console.log(rgb);
 			$('.t' +i).css("background-color",rgb);
 
 		}
 	}
-	},9000);
-
-
-});
+}

@@ -52,7 +52,6 @@ $(document).ready(function(){
 	$("body").on("click",".tager",function(){
 		//Gather ID information
 		var zapId = getAssocId(this);
-		console.log(zapId);
 		//Get pixel location
 		loc = $($zapId).css("margin-left");
 		loc = loc.substr(0,loc.length - 2);
@@ -94,7 +93,6 @@ $(document).ready(function(){
 function goToTime(loc) {
 	//Calculate seconds
 	var time = calcTime(loc);
-	console.log(time);
 	//Jump to time
 	Popcorn("#video").currentTime(time);
 	Popcorn("#video").play();
@@ -121,62 +119,127 @@ function getZapData(dur){
 	var vidid = hash['vidid'];
 	$.post("php/zappoints.php?id=" + vidid)
 		.done(function (data) {
-			localStorage.setItem(vidid,data);
+			//localStorage.setItem(vidid,data);
 			var obj = JSON.parse(data);
-			var filtered = {};
-			filtered.visual = [];
-			filtered.tweet = [];
-			var j = 0;
-			for(var i = 0; i < obj.scores.length; i++){
-				if(timeToSec(obj.scores[i].time_jump_in_point) <= dur){
-					if(obj.scores[i].tweet_score > 0){
-
-						var x = {};
-						x.term = obj.scores[i].term;
-						x.time = obj.scores[i].time_jump_in_point;
-						x.reranking_score = obj.scores[i].reranking_score;
-						filtered.tweet.push(x);
-					}
-					if(obj.scores[i].in_lscom == 1 && obj.scores[i].visual_score > 0){
-						var x = {};
-						x.term = obj.scores[i].term;
-						x.time = obj.scores[i].time_jump_in_point;
-						x.reranking_score = obj.scores[i].reranking_score;
-						filtered.visual.push(x);
-					}
+		var filtered = {};
+		filtered.visual = [];
+		filtered.tweet = [];
+		var visCount = 0;
+		var twtCount = 0;
+		for(var i = 0; i < obj.scores.length; i++){
+			if(timeToSec(obj.scores[i].time_jump_in_point) <= dur){
+				if(obj.scores[i].tweet_score > 0){
+					var x = {};
+					x.term = obj.scores[i].term;
+					x.time_jump_in_point = obj.scores[i].time_jump_in_point;
+					x.reranking_score = obj.scores[i].reranking_score;
+					filtered.tweet.push(x);
+				}
+				if(obj.scores[i].in_lscom == 1){
+					var x = {};
+					x.term = obj.scores[i].term;
+					x.time_jump_in_point = obj.scores[i].time_jump_in_point;
+					x.reranking_score = obj.scores[i].reranking_score;
+					x.visual_score = obj.scores[i].visual_score;
+					filtered.visual.push(x);
+					/*filtered.visual[visCount] = {
+						term : obj.scores[i].term,
+						time_jump_in_point : obj.scores[i].time_jump_in_point,
+						reranking_score : obj.scores[i].reranking_score
+					};
+					visCount++;*/
 				}
 			}
-			filtered.visual.sort(sortByScore);
-			filtered.tweet.sort(sortByScore);
-			filtered.visual.splice(19,filtered.visual.length);
-			filtered.tweet.splice(19,filtered.tweet.length);
-			//Generate the HTML from the data for..
-			//..zappoints()
-			createZapCode(filtered.tweet, "tweet");
-			createZapCode(filtered.visual, "visual");
-			//..tagcloud
-			createCloud(filtered.tweet);
-	    })
+		}
+		filtered.visual.sort(sortByScore);
+		filtered.tweet.sort(sortByScore);
+		jFiltered = JSON.stringify({visual: filtered.visual, tweet: filtered.tweet});
+		localStorage.setItem(vidid, jFiltered);
+		filterData(vidid, dur, "");
+	})
 	    //Give message when failed
-	    .fail(function() {
+	   	.fail(function() {
 	    	alert("getZapData failed!");
 	});
-
-
 }		
 
-function getNewTags(){
+
+function filterData(id, dur, type){
+	data = JSON.parse(localStorage.getItem(id));
+	var filteredTemp = {};
+	filteredTemp.visual = [];
+	filteredTemp.tweet = [];
+	var j = 0;
+	switch(type){
+	case "tweet" :
+		console.log("tweet");
+		$("#tag-cloud-inner").empty();
+		$("#tweetPoints").empty();
+		for(var i = 0; i < Math.min(100, data.tweet.length); i++){
+			if(i < data.tweet.length && data.tweet[i].reranking_score >= $("#tweet_value").val()){
+				var x = {};
+				x.term = data.tweet[i].term;
+				x.time = data.tweet[i].time_jump_in_point;
+				x.reranking_score = data.tweet[i].reranking_score;
+				filteredTemp.tweet.push(x);
+			}
+		}
+		createZapCode(filteredTemp.tweet, "tweet");
+		createCloud(filteredTemp.tweet);
+		checkTags(colorTags(),0);
+		break;
+	case "visual" :
+		console.log("visual");
+		$("#visualPoints").empty();
+		for(var i = 0; i < Math.min(100, data.tweet.length); i++){
+			if(i < data.visual.length && data.visual[i].visual_score > $("#visual_value").val()){
+				var x = {};
+				x.term = data.visual[i].term;
+				x.time = data.visual[i].time_jump_in_point;
+				x.reranking_score = data.visual[i].reranking_score;
+				filteredTemp.visual.push(x);
+			}
+		}
+		createZapCode(filteredTemp.visual, "visual");
+		break;
+	default : 
+	console.log("default");
+		for(var i = 0; i < Math.min(100, Math.max(data.visual.length, data.tweet.length)); i++){
+			if(timeToSec(data.tweet[i].time_jump_in_point) <= dur){
+				if(i < data.tweet.length && data.tweet[i].reranking_score >= $("#tweet_value").val()){
+					var x = {};
+					x.term = data.tweet[i].term;
+					x.time = data.tweet[i].time_jump_in_point;
+					x.reranking_score = data.tweet[i].reranking_score;
+					filteredTemp.tweet.push(x);
+				}
+				if(i < data.visual.length && data.visual[i].visual_score > $("#visual_value").val()){
+					var x = {};
+					x.term = data.visual[i].term;
+					x.time = data.visual[i].time_jump_in_point;
+					x.reranking_score = data.visual[i].reranking_score;
+					filteredTemp.visual.push(x);
+				}
+			}
+		}
+		//Generate the HTML from the data for..
+		//..zappoints()
+		createZapCode(filteredTemp.tweet, "tweet");
+		createZapCode(filteredTemp.visual, "visual");
+		//..tagcloud
+		createCloud(filteredTemp.tweet);
+		checkTags(colorTags(),0);
+		break;
+	}
+}
+
+function getNewTags(type){
 	var hash = getUrlVars();
 	var vidid = hash['vidid'];
 
-	var rerankingscore = $(tweet_value).val();
-	var visualscore = $(visual_value).val();
-
-	alert(rerankingscore);
-	alert(visualscore);
-	//dit is de json code voor de currentvideo
-	alert(localStorage.getItem(vidid));
-
+	var rerankingscore = $("#tweet_value").val();
+	var visualscore = $("#visual_value").val();
+	filterData(vidid, Popcorn("#video").duration(), type);
 }	
 
 function sortByScore(x,y){

@@ -113,19 +113,12 @@
 
 						<div style="clear:right;">Set minimal reranking Score</div>
 							<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
-							<input id="tweet_value" type="text" style="margin-left:5px;" class="input-mini">
+							<input id="tweet_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
 
 							<div style="clear:right;">Set minimal visual Score</div>
 							<div class="noUiSlider" id="slider2" style="float:left; margin-top:10px;"></div>
-							<input id="visual_value" type="text" style="margin-left:5px;" class="input-mini">
-
-							<button id="update-tag-button" class="btn" style="float:left; clear:both; margin-top:10px; margin-bottom:10px;">Update tags</button>
-						
-
+							<input id="visual_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
 					</div>
-
-
-					
 
 				
 				<!-- end video area -->
