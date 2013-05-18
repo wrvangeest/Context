@@ -5,13 +5,14 @@
 		<title>SocialZap</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<script src ="javascript/lib/bootstrap.js"></script>
+		<script src ="lib/javascript/bootstrap.js"></script>
+		<script src ="lib/javascript/nouislider.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
 		<!--  css files -->
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
-		<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-		<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
-		<link rel="stylesheet" href="css/nouisliderfox.css" type="text/css">
+		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
+		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
+		<link rel="stylesheet" href="lib/css/nouisliderfox.css" type="text/css">
 		
 	</head>	
 	<body>
@@ -197,7 +198,6 @@
 
 
 	<script src ="javascript/video.js"></script>
-	<script src ="javascript/lib/nouislider.js"></script>
 	<script src ="javascript/tagCloudColor.js"></script>
 	<script src ="javascript/tagdata.js"></script>
 	<script src ="javascript/social.js"></script>
