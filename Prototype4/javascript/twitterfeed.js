@@ -21,8 +21,8 @@ function getTwitterFeed(){
 					$("#twitter_feed").append('<div class="tweet"></div>')
 									  .append('<div class="tweet-info"><p class="username">'+ data[i].user.screen_name+'</p> at '+ new Date(data[i].created_at)+':</div>')
 									  .append('<div class="tweet-text">'+ data[i].text +'</div>');
-										
-				};
+				
+				}
 			}	
 
 		});
