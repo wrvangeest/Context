@@ -18,6 +18,7 @@
 }
 .tweet-info .username{
 	font-weight: bold;
+	display: inline;
 }
 .comments{
 	width:700px; 
