@@ -85,9 +85,9 @@
 						<!-- twitter button -->
 						<span style="float:right;height:20px;"> <button class="btn btn-mini" type="button" onclick="sendTweet();"><img src = "img\tweet.png" \>Tweet</button></span>
 						<!-- play, pause and stop -->
-						<button class="btn btn-success" id="playbutton">Play</button>
-						<button class="btn btn-primary" id="pausebutton">Pause</button>
-						<button class="btn btn-danger" id="stopbutton">Stop</button>
+						<button class="btn btn-success icon-play" id="playbutton"></button>
+						<button class="btn btn-success icon-pause" id="pausebutton" style="display:none;"></button>
+						<button class="btn btn-danger icon-stop" id="stopbutton"></button>
 					</div>
 					
 					<!-- progress bar -->
@@ -193,7 +193,6 @@
 
 		<!-- end page wrapper -->
 		</div>
-
 
 
 	<script src ="javascript/video.js"></script>

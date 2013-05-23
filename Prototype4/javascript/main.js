@@ -67,6 +67,15 @@ $("#loading-img").show();
 
 });
 
+Popcorn("#video").on("playing", function(){
+	$("#pausebutton").show();
+	$("#playbutton").hide();
+});
+Popcorn("#video").on("pause", function(){
+	$("#pausebutton").hide();
+	$("#playbutton").show();
+})
+
 function cleartags(){
 	$("#tag-cloud-inner").empty();
 	$("#tweetPoints").empty();
