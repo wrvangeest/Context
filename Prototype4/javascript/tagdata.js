@@ -172,7 +172,6 @@ function filterData(id, dur, type){
 	var j = 0;
 	switch(type){
 	case "tweet" :
-		console.log("tweet");
 		$("#tag-cloud-inner").empty();
 		$("#tweetPoints").empty();
 		for(var i = 0; i < Math.min(100, data.tweet.length); i++){
@@ -186,10 +185,9 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.tweet, "tweet");
 		createCloud(filteredTemp.tweet);
-		checkTags(colorTags(),0);
+		checkTags(colorTags,0);
 		break;
 	case "visual" :
-		console.log("visual");
 		$("#visualPoints").empty();
 		for(var i = 0; i < Math.min(100, data.tweet.length); i++){
 			if(i < data.visual.length && data.visual[i].visual_score > $("#visual_value").val()){
@@ -202,8 +200,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.visual, "visual");
 		break;
-	default : 
-	console.log("default");
+	default :
 		for(var i = 0; i < Math.min(100, Math.max(data.visual.length, data.tweet.length)); i++){
 			if(timeToSec(data.tweet[i].time_jump_in_point) <= dur){
 				if(i < data.tweet.length && data.tweet[i].reranking_score >= $("#tweet_value").val()){
@@ -228,7 +225,7 @@ function filterData(id, dur, type){
 		createZapCode(filteredTemp.visual, "visual");
 		//..tagcloud
 		createCloud(filteredTemp.tweet);
-		checkTags(colorTags(),0);
+		checkTags(colorTags,0);
 		break;
 	}
 }
