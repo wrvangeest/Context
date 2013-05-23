@@ -16,6 +16,16 @@
 		
 	</head>	
 	<body>
+
+
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/nl_NL/all.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 	
 	
 
@@ -151,28 +161,8 @@
 						<div class="span9">
 							<div class="comments">
 									<div><button class="well well-header">Comments</button></div>
-									<div><input id="comments-input" type="text" placeholder="Write a comment...."></div>
-
-									<div class="a-comment">
-										<div class="user-photo" ><li class="icon-user icon-2x"></li>
-										</div>
-										<div class="comment-info">Ping Wan at 0:25, 1 hours ago:</div>
-										<div class="comment-text">Great Video!</div>
-									</div>
-
-									<div class="a-comment">
-										<div class="user-photo" ><li class="icon-user icon-2x"></li>
-										</div>
-										<div class="comment-info">Anish Narwade at 4:25, 5 hours ago:</div>
-										<div class="comment-text">I like to suck a DICK!!</div>
-									</div>
-
-									<div class="a-comment">
-										<div class="user-photo"><li class="icon-user icon-2x"></li>
-										</div>
-										<div class="comment-info">Haluk Sahin at 3:25, 12 hours ago:</div>
-										<div class="comment-text">Black money under black couch LOL</div>
-									</div>
+									<div class="fb-comments" data-href="http://localhost/context/Prototype5/" data-width="700" data-num-posts="10"></div>
+									
 							</div>
 						</div>
 					</div>
