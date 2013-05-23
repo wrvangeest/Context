@@ -36,7 +36,11 @@ $(document).ready(function(){
 			$cloudClass = getAssocId(this);
 			$orTagColor = $($cloudClass).css("backgroundColor");
 			$($cloudClass).css("background-color", "#b98acf");
+			//scroll tag to the right position when hovering over tag
+			scrollToTag($cloudClass);
 		}
+
+
 	});
 
 	$("body").on("mouseout",".zapPoint",function(){
@@ -288,6 +292,19 @@ function createZapCode(data, type){
 		list.appendChild(zap);
 		zap.style.position = "absolute";
 	});
+}
+
+//Scroll tag to the right position 
+//give cloudTag id as paramater
+function scrollToTag(id){
+
+			$('#tag-cloud-inner').scrollTop(0);
+			var tagcloudTop = $('#tag-cloud-inner').position().top;
+			var tagTop = $(id).position().top;
+
+			$('#tag-cloud-inner').animate({
+				scrollTop: tagTop - tagcloudTop
+			},500);
 }
 //##############################################################
 
