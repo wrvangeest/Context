@@ -163,7 +163,7 @@ function getZapData(dur){
 	})
 	    //Give message when failed
 	   	.fail(function() {
-	    	alert("getZapData failed!");
+	    	//alert("getZapData failed!");
 	});
 }		
 
