@@ -45,23 +45,11 @@
 
   					<div class="navbar-inner">
   						<div class="container">
-    						<a class="brand" href="index.php"></li> SocialZap</a>
+    						<a class="brand" href="#"></li> SocialZap</a>
 						    <ul class="navigation">
-			     			<li class="icon-home icon-2x navButton" id="homebutton" style="cursor: pointer"></li>
 			     			<li class="icon-th icon-2x navButton" id="browsebutton" style="cursor: pointer"></li>
-			     			<li class="icon-user icon-2x navButton" id ="userButton" style="cursor: pointer"></li>
 			     			<li class="icon-search icon-2x navButton" id="searchbutton" style="cursor: pointer"></li>
 			     			</ul>
-			     			<form id="loginform">
-								<div class="input-prepend">
-									<span class="add-on"><i class="icon-envelope"></i></span>
-									<input class="span2" type="text" placeholder="Email address">
-								</div>
-								<div class="input-prepend">
-									<span class="add-on"><i class="icon-key"></i></span>
-									<input class="span2" type="password" placeholder="Password">
-								</div>
-							</form>
   						</div>
 					</div>
 
