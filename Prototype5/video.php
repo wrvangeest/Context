@@ -7,6 +7,7 @@
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script src ="lib/javascript/bootstrap.js"></script>
 		<script src ="lib/javascript/nouislider.js"></script>
+		<script src ="lib/javascript/moment.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
 		<!--  css files -->
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>

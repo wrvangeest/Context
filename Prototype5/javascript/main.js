@@ -74,7 +74,7 @@ $("#loading-img").show();
 	    		// store the readyState
 			    var rdy = Popcorn("#video").readyState();
 		    	if(rdy===4){
-			        $("#total-time").text( parseFloat(Popcorn("#video").duration() / 60).toFixed(2) ) ;
+			        $("#total-time").text(moment(moment.duration(Popcorn("#video").duration(),'seconds')).format('mm:ss')) ;
 			    }else{
 			    	setTimeout( states, 10 );
 			    }
@@ -95,7 +95,7 @@ Popcorn("#video").on("pause", function(){
 
 /* update de current time */
 Popcorn("#video").on("timeupdate", function(){
-	$("#current-time").text( parseFloat(Popcorn("#video").currentTime()/60).toFixed(2));
+	$("#current-time").text(moment(moment.duration(Popcorn("#video").currentTime(),'seconds')).format('mm:ss'));
 });
 
 
