@@ -87,6 +87,7 @@
 						<button class="btn btn-success icon-play" id="playbutton"></button>
 						<button class="btn btn-success icon-pause" id="pausebutton" style="display:none;"></button>
 						<button class="btn btn-danger icon-stop" id="stopbutton"></button>
+						<span id="current-time">0:00</span>/<span id="total-time"></span>
 					</div>
 					
 					<!-- progress bar -->

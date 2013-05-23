@@ -65,6 +65,23 @@ $("#loading-img").show();
 			});
 
 
+			
+
+			/**** Sets the total time
+				  Bij een readystate van 4 is alle informatie van een video geladen.
+			 ***/
+			var states = function() {
+	    		// store the readyState
+			    var rdy = Popcorn("#video").readyState();
+		    	if(rdy===4){
+			        $("#total-time").text( parseFloat(Popcorn("#video").duration() / 60).toFixed(2) ) ;
+			    }else{
+			    	setTimeout( states, 10 );
+			    }
+			}
+    		states();
+
+//End document ready    		
 });
 
 Popcorn("#video").on("playing", function(){
@@ -75,6 +92,13 @@ Popcorn("#video").on("pause", function(){
 	$("#pausebutton").hide();
 	$("#playbutton").show();
 })
+
+/* update de current time */
+Popcorn("#video").on("timeupdate", function(){
+	$("#current-time").text( parseFloat(Popcorn("#video").currentTime()/60).toFixed(2));
+});
+
+
 
 function cleartags(){
 	$("#tag-cloud-inner").empty();
