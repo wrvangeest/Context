@@ -129,7 +129,9 @@
 					<!-- begin tagcloud -->
 					<div class="tag-cloud">
 							<button class="well well-header">Hot topics</button>
+							<input id="tag-search" type="search" placeholder="Search Tag">
 							<div id="loading-img" style="display:none;"><img src="img/ajax-loader.gif"/></div>
+
 							<div id="tag-cloud-inner">
 							</div>
 
@@ -184,6 +186,7 @@
 	<script src ="javascript/checktime.js"></script>
 	<script src ="javascript/geturlvars.js"></script>
 	<script src ="javascript/skiptime.js"></script>
+	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/main.js"></script>
 	
 	</body>

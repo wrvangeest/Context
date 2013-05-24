@@ -56,7 +56,7 @@
 .tag-cloud{
 }
 #tag-cloud-inner{
-	max-height:350px;
+	height:350px;
 	overflow: auto;
 }
 /*Size for tags in tag cloud*/
@@ -64,7 +64,9 @@
 	width: 100%;
 	height: 25px;
 }
-
+.btn.t0{
+	margin-top: 0;
+}
 /*comments styling*/
 .comments{
 	width:700px; 
@@ -88,4 +90,28 @@
 	width:45px; 
 	height:45px; 
 	float:left;
+}
+
+#tag-search{
+	padding-left: 0;
+	padding-right: 0;
+	width: 99%;
+}
+
+/*Style the scrollbars*/
+::-webkit-scrollbar {
+    width: 15px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+}
+ 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-corner       {  
+
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+
 }
