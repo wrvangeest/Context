@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	
+	//When something is entered in search field do function
   	$('#tag-search').keydown(function(){
     	setTimeout(function() {
       		var query = $('#tag-search').val();
@@ -11,10 +11,8 @@ $(document).ready(function(){
   	});
 });
 
-
-
+//filter tags by search query and tweetslider score
 function filterTagList(searchquery,score){
-
 
 	var hash = getUrlVars();
 	var vidid = hash['vidid'];
@@ -23,8 +21,6 @@ function filterTagList(searchquery,score){
 	var filteredTags = [];
 	var data = JSON.parse(localStorage.getItem(vidid));
 	var tweetdata = data.tweet;
-	console.log(searchquery + " " + score);
- 	console.log(tweetdata);
 
  	//filter the tags with given rerankingscore
 	for(var i = 0;i <= 100;i++){
@@ -42,11 +38,3 @@ function filterTagList(searchquery,score){
 	$("#tag-cloud-inner").empty();
 	createCloud(filteredTags);
 }
-/*
-//Appends cloud information to generate cloud
-function createCloud(data){
-	jQuery.each(data, function(index,item) {
-		$("#tag-cloud-inner").append('<button class="btn btn-info tager t' + index + '">' + item.term + "</button>" + " "  );
-	})
-	$("#loading-img").hide();
-}*/
