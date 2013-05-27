@@ -24,7 +24,6 @@ function colorTags() {
 		curR -= dR;
 		curG -= dG;
 		curB -= dB;
-		console.log(rgb);
 
 
 
