@@ -1,21 +1,4 @@
 $(document).ready(function(){
-	/*function snapshot(time){
-
-		var video2 = document.getElementById("snapvideo");
-		var canvas = document.createElement('canvas');
-
-		canvas.width  = 350;
-		canvas.height = 150;
-
-		video2.currentTime = time;
-
-		
-
-		var ctx = canvas.getContext('2d');
-		ctx.drawImage(video2, 0, 0, 350, 150); 
-
-		return canvas;
-	}*/
 
 //############# Mouse actions for zappoints ################# 
 	$("body").on("click",".zapPoint",function(){
@@ -189,7 +172,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.tweet, "tweet");
 		createCloud(filteredTemp.tweet);
-		checkTags(colorTags(),0);
+		checkTags(colorTags,0);
 		break;
 	case "visual" :
 		$("#visualPoints").empty();
@@ -229,7 +212,7 @@ function filterData(id, dur, type){
 		createZapCode(filteredTemp.visual, "visual");
 		//..tagcloud
 		createCloud(filteredTemp.tweet);
-		checkTags(colorTags(),0);
+		checkTags(colorTags,0);
 		break;
 	}
 }

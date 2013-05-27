@@ -10,10 +10,10 @@
 		<script src ="lib/javascript/moment.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
 		<!--  css files -->
-		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/nouisliderfox.css" type="text/css">
+		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		
 	</head>	
 	<body>
@@ -46,11 +46,15 @@
 
   					<div class="navbar-inner">
   						<div class="container">
-    						<a class="brand" href="#"></li> SocialZap</a>
-						    <ul class="navigation">
+    						<a class="brand" href="index.php"></li> SocialZap</a>
+						    <!--<ul class="navigation">
 			     			<li class="icon-th icon-2x navButton" id="browsebutton" style="cursor: pointer"></li>
 			     			<li class="icon-search icon-2x navButton" id="searchbutton" style="cursor: pointer"></li>
-			     			</ul>
+			     			</ul>-->
+			     			<div class="btn-group" id="navButtons">
+			     				<button class="btn navButton" id="browsebutton"><div class="icon-th icon-2x navButton"></button>
+			     				<button class="btn navButton" id="searchbutton"><div class="icon-search icon-2x navButton"></button>
+			     			</div>
   						</div>
 					</div>
 
@@ -60,17 +64,18 @@
 
 
 			<!-- begin main-page container -->
-			<div class="container" style="margin-top:15px;">
+			<div class="container">
+			<div id="video_top_filler">
+			</div>
 			<div class="row">
 				<!-- video area -->
 				<div class="video-area span9">
-					<button class="well well-header"><?php echo $_REQUEST['vidn'];?></button>
+					<div class="well well-header"><?php echo $_REQUEST['vidn'];?></div>
 					<div>
 						<video height="394" width="700" id="video" style="margin-top:4px;">
 				
 						<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4">
 						
-						nopppeeee
 						</video>
 					</div>
 					<!-- video for frame preview -->
@@ -110,7 +115,7 @@
 
 					<!-- begin advanced options -->
 					<div>
-						<button class="well well-header">Advanced options</button>
+						<div class="well well-header">Advanced options</div>
 
 						<div style="clear:right;">Set minimal reranking Score</div>
 							<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
@@ -128,8 +133,7 @@
 				<div class="span3">
 					<!-- begin tagcloud -->
 					<div class="tag-cloud">
-							<button class="well well-header">Hot topics</button>
-							<input id="tag-search" type="search" placeholder="Search Tag">
+							<div class="well well-header">Hot topics</div>
 							<div id="loading-img" style="display:none;"><img src="img/ajax-loader.gif"/></div>
 
 							<div id="tag-cloud-inner">
@@ -139,11 +143,13 @@
 					</div>
 
 					<div class="extrainfo">
-						<button class="well well-header">Extra information</button>
+						<div class="well well-header">Extra information</div>
 						<div id="extrainfo_inner" style="display:none;">
 						</div>
 					</div>
 				</div>
+			
+			
 			</div>
 			<!-- end demo video container -->
 
@@ -152,14 +158,15 @@
 					<div class="row">
 						<div class="span9">
 							<div class="comments">
-									<div><button class="well well-header">Comments</button></div>
+									<div class="well well-header">Comments</div>
 									<div class="fb-comments" data-href="http://localhost/context/Prototype5/" data-width="700" data-num-posts="10"></div>
 									
 							</div>
 						</div>
 					</div>
+					<div id="video_bot_filler">
+					</div>
 				</div>
-
 			<!-- end main-page container -->
 			</div>	
 		
