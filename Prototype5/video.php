@@ -134,6 +134,8 @@
 					<!-- begin tagcloud -->
 					<div class="tag-cloud">
 							<div class="well well-header">Hot topics</div>
+							<button id="changeTags"></button>
+							<input type="search" id="tagSearch" placeholder="Search Twitter Tags">
 							<div id="loading-img" style="display:none;"><img src="img/ajax-loader.gif"/></div>
 
 							<div id="tag-cloud-inner">
