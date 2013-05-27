@@ -19,7 +19,7 @@ $(document).ready(function(){
 		if($(this).hasClass("tweetPoint")){
 			$cloudClass = getAssocId(this);
 			$orTagColor = $($cloudClass).css("backgroundColor");
-			$($cloudClass).css("background-color", "#b98acf");
+			$($cloudClass).css("background-color", darkerColor($cloudClass));
 			//scroll tag to the right position when hovering over tag
 			scrollToTag($cloudClass);
 		}
@@ -56,7 +56,7 @@ $(document).ready(function(){
 
 		//Change background color
 		$orTagColor = $(this).css("backgroundColor");
-		$(this).css("background-color", "#b98acf");
+		$(this).css("background-color", darkerColor(this));
 
 		//Change ZapPoint color
 		$zapId = '#' + $zapId;
@@ -363,6 +363,23 @@ function getAssocId(obj){
 
 function hasClass(element, clss){
 	return (' ' + element.className + ' ').indexOf(' ' + clss + ' ') > -1;
+}
+
+function darkerColor(obj){
+	var colorChange = 50;
+	var str = $(obj).css("background-color");
+	var raw = str.match(/(\d+)/g);
+	var r = parseInt(raw[0]);
+	var g = parseInt(raw[1]);
+	var b = parseInt(raw[2]);
+	var hexr = r >= colorChange ? (r - colorChange).toString(16): (0).toString(16);
+	var hexg = g >= colorChange ? (g - colorChange).toString(16): (0).toString(16);;
+	var hexb = b >= colorChange ? (b - colorChange).toString(16): (0).toString(16);;
+	hexr = hexr.length == 1 ? '0' + hexr: hexr;
+	hexg = hexg.length == 1 ? '0' + hexg: hexg;
+	hexb = hexb.length == 1 ? '0' + hexb: hexb;
+	var hex = '#' + hexr + hexg + hexb;
+	return hex;
 }
 
 //##############################################################

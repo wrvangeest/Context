@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	checkTags(colorTags,0);
-
-
 });
 
 function colorTags() {
@@ -19,33 +17,10 @@ function colorTags() {
 	var curG = sG;
 	var curB = sB;
 	for(var i = 0; i < amountTags; i++){
-		var rgb = 'rgb('+ curR +',' + curG + ','+ curB + ')';
+		var rgb = '#' + curR.toString(16) + curG.toString(16) + curB.toString(16);
 		$('.t' + i).css("background-color", rgb);
 		curR -= dR;
 		curG -= dG;
 		curB -= dB;
-
-
-
-		/*
-		if (i < Math.floor(amountTags/2)){
-			var bovenhelft = Math.floor(amountTags/2);
-			var b = Math.floor((i*(140-70)/bovenhelft) + 70);
-			var r = 140;
-			var g = 70;
-			var rgb = 'rgb('+ r +',' + g + ','+ b + ')';
-			$('.t' +i).css("background-color",rgb);
-
-		}
-		if(i >= Math.floor(amountTags/2)){
-			var onderhelft = Math.floor(amountTags/2);
-			//r verdelen van 140 tot 70
-			var r = Math.floor( Math.abs( (i*(140-70)/onderhelft) - 210 ));
-			var b = 140;
-			var g = 70;
-			var rgb = 'rgb('+ r +',' +g+ ','+ b+ ')';
-			$('.t' +i).css("background-color",rgb);
-
-		}*/
 	}
 }
