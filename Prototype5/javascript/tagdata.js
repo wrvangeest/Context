@@ -245,7 +245,6 @@ function getNewTags(type){
 //Appends cloud information to generate cloud
 function createCloud(data,type){
 	var button = $('#tag-toggle-button').html();
-	console.log(type);
 	if(button == 'Tweets' && type == 'tweet'){
 		$("#tag-cloud-inner").empty();
 		jQuery.each(data, function(index,item) {
@@ -388,7 +387,7 @@ function getAssocId(obj){
 			}
 			else{
 				$tagId = obj.className;
-				$tagId = $tagId.slice(29,$tagId.length);
+				$tagId = $tagId.slice(28,$tagId.length);
 				return "visualPoint" + $tagId;
 			}
 	}
