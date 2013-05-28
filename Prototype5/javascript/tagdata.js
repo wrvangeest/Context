@@ -103,7 +103,9 @@ function updateExtraInfo(obj){
 		time = timeToMin(time);
 		//.append(snapshot(timeat))
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
-							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
+							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/><div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
+							 
+		getRating(obj);
 
 }
 //##############################################################

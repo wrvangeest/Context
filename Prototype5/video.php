@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/nouisliderfox.css" type="text/css">
 		<LINK rel="stylesheet" href="css/tagtoggler.css" type="text/css" >
+		<LINK rel="stylesheet" href="css/ratingbar.css" type="text/css" >	
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		
 	</head>	
@@ -202,6 +203,7 @@
 	<script src ="javascript/skiptime.js"></script>
 	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/togglebutton.js"></script>
+	<script src ="javascript/rating.js"></script>
 	<script src ="javascript/main.js"></script>
 	
 	</body>
