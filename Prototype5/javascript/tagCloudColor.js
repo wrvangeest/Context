@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	checkTags(colorTags,0);
-
-
 });
 
 function colorTags() {
@@ -19,9 +17,9 @@ function colorTags() {
 	var curG = sG;
 	var curB = sB;
 	for(var i = 0; i < amountTags; i++){
-		var rgb = 'rgb('+ curR +',' + curG + ','+ curB + ')';
+		var rgb = '#' + curR.toString(16) + curG.toString(16) + curB.toString(16);
 		if($('#tag-toggle-button').html()=='Tweets'){
-		$('.tweettag' + i).css("background-color", rgb);
+			$('.tweettag' + i).css("background-color", rgb);
 		}
 		else{
 			$('.visualtag' + i).css("background-color", rgb);

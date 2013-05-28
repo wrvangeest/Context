@@ -1,3 +1,4 @@
+var OFFSET = 6;
 $(document).ready(function(){
 
 //############# Mouse actions for zappoints ################# 
@@ -6,7 +7,7 @@ $(document).ready(function(){
 		$loc = $(this).css("margin-left");
 		$loc = $loc.substr(0,$loc.length - 2);
 		//Jump to given time
-		goToTime($loc);
+		goToTime(parseInt($loc) + OFFSET);
 	});
 
 	$("body").on("mouseenter",".zapPoint",function(){
@@ -18,7 +19,7 @@ $(document).ready(function(){
 		if($(this).hasClass("tweetPoint")){
 			$cloudClass = getAssocId(this);
 			$orTagColor = $($cloudClass).css("backgroundColor");
-			$($cloudClass).css("background-color", "#b98acf");
+			$($cloudClass).css("background-color", darkerColor($cloudClass));
 			//scroll tag to the right position when hovering over tag
 			scrollToTag($cloudClass);
 		}
@@ -43,7 +44,7 @@ $(document).ready(function(){
 		loc = $($zapId).css("margin-left");
 		loc = loc.substr(0,loc.length - 2);
 		//Jump to givesn time
-		goToTime(loc);
+		goToTime(parseInt(loc) + OFFSET);
 	});
 	$("body").on("mouseenter",".tager",function(){
 		//Gather ID information
@@ -55,7 +56,7 @@ $(document).ready(function(){
 
 		//Change background color
 		$orTagColor = $(this).css("backgroundColor");
-		$(this).css("background-color", "#b98acf");
+		$(this).css("background-color", darkerColor(this));
 
 		//Change ZapPoint color
 		$zapId = '#' + $zapId;
@@ -75,6 +76,8 @@ $(document).ready(function(){
 		$($zapId).removeClass("icon-large");
 	});
 });
+
+
 //############# Helper functions for mouse events #############
 //Go to time given by loc in pixels
 function goToTime(loc) {
@@ -87,7 +90,7 @@ function goToTime(loc) {
 
 //Update extra info using pixel offset in pixels as time indicator
 function updateExtraInfo(obj){
-		var time = calcTime(parseInt($(obj).css("margin-left")));
+		var time = calcTime(parseInt($(obj).css("margin-left")) + 4);
 		time = timeToMin(time);
 		//.append(snapshot(timeat))
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
@@ -150,7 +153,7 @@ function getZapData(dur){
 	});
 }		
 
-
+//Filters the relevent data from the stored data
 function filterData(id, dur, type){
 	data = JSON.parse(localStorage.getItem(id));
 	var filteredTemp = {};
@@ -218,6 +221,7 @@ function filterData(id, dur, type){
 	}
 }
 
+//Regenerates the tweet-/zappoints
 function getNewTags(type){
 	var hash = getUrlVars();
 	var vidid = hash['vidid'];
@@ -227,9 +231,7 @@ function getNewTags(type){
 	filterData(vidid, Popcorn("#video").duration(), type);
 }	
 
-function sortByScore(x,y){
-	return y.reranking_score - x.reranking_score;
-}
+
 
 //Appends cloud information to generate cloud
 function createCloud(data,type){
@@ -274,10 +276,8 @@ function createZapCode(data, type){
 				zap.style.color = "rgb(64, 153, 255)";
 				break;
 		}
-		//Set id for linking to cloud
-		
 		//Set location in pixels
-		zap.style.marginLeft = loc + "px";
+		zap.style.marginLeft = loc - OFFSET + "px";
 		//Set tag name as attribute
 		zap.setAttribute('term', item.term);
 		//Append item to list
@@ -289,7 +289,6 @@ function createZapCode(data, type){
 //Scroll tag to the right position 
 //give cloudTag id as paramater
 function scrollToTag(id){
-
 			$('#tag-cloud-inner').scrollTop(0);
 			var tagcloudTop = $('#tag-cloud-inner').position().top;
 			var tagTop = $(id).position().top;
@@ -297,6 +296,11 @@ function scrollToTag(id){
 			$('#tag-cloud-inner').animate({
 				scrollTop: tagTop - tagcloudTop
 			},500);
+}
+
+//Sets sorting type
+function sortByScore(x,y){
+	return y.reranking_score - x.reranking_score;
 }
 //##############################################################
 
@@ -371,6 +375,23 @@ function getAssocId(obj){
 
 function hasClass(element, clss){
 	return (' ' + element.className + ' ').indexOf(' ' + clss + ' ') > -1;
+}
+
+function darkerColor(obj){
+	var colorChange = 50;
+	var str = $(obj).css("background-color");
+	var raw = str.match(/(\d+)/g);
+	var r = parseInt(raw[0]);
+	var g = parseInt(raw[1]);
+	var b = parseInt(raw[2]);
+	var hexr = r >= colorChange ? (r - colorChange).toString(16): (0).toString(16);
+	var hexg = g >= colorChange ? (g - colorChange).toString(16): (0).toString(16);;
+	var hexb = b >= colorChange ? (b - colorChange).toString(16): (0).toString(16);;
+	hexr = hexr.length == 1 ? '0' + hexr: hexr;
+	hexg = hexg.length == 1 ? '0' + hexg: hexg;
+	hexb = hexb.length == 1 ? '0' + hexb: hexb;
+	var hex = '#' + hexr + hexg + hexb;
+	return hex;
 }
 
 //##############################################################

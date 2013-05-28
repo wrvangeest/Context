@@ -45,16 +45,16 @@
 					</div>
 
 
-  					<div class="navbar-inner">
+  					<div class="navbar-inner" id="mainNavBar">
   						<div class="container">
-    						<a class="brand" href="index.php"></li> SocialZap</a>
+    						<a class="brand" href="index.php"></li>SocialZap</a>
 						    <!--<ul class="navigation">
 			     			<li class="icon-th icon-2x navButton" id="browsebutton" style="cursor: pointer"></li>
 			     			<li class="icon-search icon-2x navButton" id="searchbutton" style="cursor: pointer"></li>
 			     			</ul>-->
 			     			<div class="btn-group" id="navButtons">
-			     				<button class="btn navButton" id="browsebutton"><div class="icon-th icon-2x navButton"></button>
-			     				<button class="btn navButton" id="searchbutton"><div class="icon-search icon-2x navButton"></button>
+			     				<button class="btn navButton" id="browsebutton"><div class="icon-th navButton"></button>
+			     				<button class="btn navButton" id="searchbutton"><div class="icon-search navButton"></button>
 			     			</div>
   						</div>
 					</div>
