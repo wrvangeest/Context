@@ -23,8 +23,14 @@ $(document).ready(function(){
 			//scroll tag to the right position when hovering over tag
 			scrollToTag($cloudClass);
 		}
-
-
+		if($(this).hasClass("visualPoint")){
+			$cloudClass = getAssocId(this);
+			console.log($cloudClass);
+			$orTagColor = $($cloudClass).css("backgroundColor");
+			$($cloudClass).css("background-color", darkerColor($cloudClass));
+			//scroll tag to the right position when hovering over tag
+			scrollToTag($cloudClass);
+		}
 	});
 
 	$("body").on("mouseout",".zapPoint",function(){
@@ -32,6 +38,9 @@ $(document).ready(function(){
 		$("#extrainfo_inner").html("");
 
 		if($(this).hasClass("tweetPoint")){
+			$($cloudClass).css("background-color", $orTagColor);
+		}
+		if($(this).hasClass("visualPoint")){
 			$($cloudClass).css("background-color", $orTagColor);
 		}
 	});
@@ -365,11 +374,23 @@ function getAssocId(obj){
 		case "twe":
 			$zapId = obj.id;
 			$zapId = $zapId.slice(10,$zapId.length);
-			return ".btn.t" + $zapId;
+			return ".btn.tweettag" + $zapId;
+		case "vis":
+			$zapId = obj.id;
+			$zapId = $zapId.slice(11,$zapId.length);
+			return ".btn.visualtag" + $zapId;
 		case "":
-			$tagId = obj.className;
-			$tagId = $tagId.slice(20,$tagId.length);
-			return "tweetPoint" + $tagId;
+			//if its a tag element , check wether its on tweets or tags and return the right zappoint id
+			if($('#tag-toggle-button').html() == "Tweets"){
+				$tagId = obj.className;
+				$tagId = $tagId.slice(27,$tagId.length);
+				return "tweetPoint" + $tagId;
+			}
+			else{
+				$tagId = obj.className;
+				$tagId = $tagId.slice(29,$tagId.length);
+				return "visualPoint" + $tagId;
+			}
 	}
 }
 
