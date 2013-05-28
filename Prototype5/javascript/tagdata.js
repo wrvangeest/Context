@@ -107,7 +107,7 @@ function getZapData(dur){
 	$.post("php/zappoints.php?id=" + vidid)
 		.done(function (data) {
 			//localStorage.setItem(vidid,data);
-			var obj = JSON.parse(data);
+		var obj = JSON.parse(data);
 		var filtered = {};
 		filtered.visual = [];
 		filtered.tweet = [];
@@ -159,7 +159,6 @@ function filterData(id, dur, type){
 	var j = 0;
 	switch(type){
 	case "tweet" :
-		$("#tag-cloud-inner").empty();
 		$("#tweetPoints").empty();
 		for(var i = 0; i < Math.min(100, data.tweet.length); i++){
 			if(i < data.tweet.length && data.tweet[i].reranking_score >= $("#tweet_value").val()){
@@ -171,7 +170,7 @@ function filterData(id, dur, type){
 			}
 		}
 		createZapCode(filteredTemp.tweet, "tweet");
-		createCloud(filteredTemp.tweet);
+		createCloud(filteredTemp.tweet,type);
 		checkTags(colorTags,0);
 		break;
 	case "visual" :
@@ -186,6 +185,8 @@ function filterData(id, dur, type){
 			}
 		}
 		createZapCode(filteredTemp.visual, "visual");
+		createCloud(filteredTemp.visual,type);
+		checkTags(colorTags,0);
 		break;
 	default : 
 		for(var i = 0; i < Math.min(100, Math.max(data.visual.length, data.tweet.length)); i++){
@@ -211,7 +212,7 @@ function filterData(id, dur, type){
 		createZapCode(filteredTemp.tweet, "tweet");
 		createZapCode(filteredTemp.visual, "visual");
 		//..tagcloud
-		createCloud(filteredTemp.tweet);
+		createCloud(filteredTemp.tweet,'tweet');
 		checkTags(colorTags,0);
 		break;
 	}
@@ -231,10 +232,21 @@ function sortByScore(x,y){
 }
 
 //Appends cloud information to generate cloud
-function createCloud(data){
-	jQuery.each(data, function(index,item) {
-		$("#tag-cloud-inner").append('<button class="btn btn-info tager t' + index + '">' + item.term + "</button>" + " "  );
-	})
+function createCloud(data,type){
+	var button = $('#tag-toggle-button').html();
+	console.log(type);
+	if(button == 'Tweets' && type == 'tweet'){
+		$("#tag-cloud-inner").empty();
+		jQuery.each(data, function(index,item) {
+			$("#tag-cloud-inner").append('<button class="btn btn-info tager tweettag' + index + '">' + item.term + "</button>" + " "  );
+		})
+	}
+	if(button == 'Visual' && type == 'visual'){
+		$("#tag-cloud-inner").empty();
+		jQuery.each(data, function(index,item) {
+			$("#tag-cloud-inner").append('<button class="btn btn-info tager visualtag' + index + '">' + item.term + "</button>" + " "  );
+		})
+	}	
 	$("#loading-img").hide();
 }
 

@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/nouisliderfox.css" type="text/css">
+		<LINK rel="stylesheet" href="css/tagtoggler.css" type="text/css" >
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		
 	</head>	
@@ -134,7 +135,11 @@
 					<!-- begin tagcloud -->
 					<div class="tag-cloud">
 							<div class="well well-header">Hot topics</div>
-							<button id="changeTags"></button>
+							<div id="tag-toggle">
+							    <span id="tag-toggle-button">Tweets</span>
+							</div>
+
+
 							<input type="search" id="tagSearch" placeholder="Search Twitter Tags">
 							<div id="loading-img" style="display:none;"><img src="img/ajax-loader.gif"/></div>
 
@@ -196,6 +201,7 @@
 	<script src ="javascript/geturlvars.js"></script>
 	<script src ="javascript/skiptime.js"></script>
 	<script src ="javascript/filtertaglist.js"></script>
+	<script src ="javascript/togglebutton.js"></script>
 	<script src ="javascript/main.js"></script>
 	
 	</body>

@@ -20,11 +20,16 @@ function colorTags() {
 	var curB = sB;
 	for(var i = 0; i < amountTags; i++){
 		var rgb = 'rgb('+ curR +',' + curG + ','+ curB + ')';
-		$('.t' + i).css("background-color", rgb);
+		if($('#tag-toggle-button').html()=='Tweets'){
+		$('.tweettag' + i).css("background-color", rgb);
+		}
+		else{
+			$('.visualtag' + i).css("background-color", rgb);
+		}
 		curR -= dR;
 		curG -= dG;
 		curB -= dB;
-		console.log(rgb);
+		//console.log(rgb);
 
 
 

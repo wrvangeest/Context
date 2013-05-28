@@ -59,14 +59,6 @@ $("#loading-img").show();
 				}
 			});
 
-			$("#update-tag-button").click(function(){
-				cleartags();
-				getNewTags();
-			});
-
-
-			
-
 			/**** Sets the total time
 				  Bij een readystate van 4 is alle informatie van een video geladen.
 			 ***/
