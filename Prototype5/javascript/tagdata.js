@@ -74,7 +74,7 @@ $(document).ready(function(){
 		$($zapId).addClass("icon-large");
 	});	
 
-	$("body").on("mouseout",".tager",function(){
+	$("body").on("mouseout",".tager", function() {
 		//Clear extra info
 		$("#extrainfo_inner").html("");
 		//Restore original colors
@@ -85,6 +85,46 @@ $(document).ready(function(){
 	});
 });
 
+//############# Mouse actions for ratings #################
+
+	$("body").on("mouseenter",".rating", function() {
+		if($(this).hasClass("icon-star")){
+			var child = this;
+			$(child).removeClass("icon-star");
+			$(child).addClass("icon-star-empty");
+			while(child.nextSibling){
+				child = child.nextSibling;
+				$(child).removeClass("icon-star");
+				$(child).addClass("icon-star-empty");
+			}
+		}
+
+		if($(this).hasClass("icon-star-empty")){	
+			var child = this;
+			while(child.previousSibling){
+				$(child).removeClass("icon-star-empty");
+				$(child).addClass("icon-star");
+				child = child.previousSibling;
+			}
+		}
+	});
+
+	$("body").on("mouseout",".rating", function() {
+		var rating = this.id.substr(6,1);
+		var children = $(this).parent().children();
+		for(var i = 0; i < rating; i++){
+			$(children[i]).removeClass("icon-star-empty");
+			$(children[i]).addClass("icon-star");
+		}
+		for(var i = rating; i <= 5; i++){
+			$(children[i]).removeClass("icon-star");
+			$(children[i]).addClass("icon-star-empty");
+		}
+	});
+
+	$("body").on("click",".rating", function() {
+
+	});
 
 //############# Helper functions for mouse events #############
 //Go to time given by loc in pixels
@@ -231,14 +271,13 @@ function createCloud(data,type){
 			tagButton.innerHTML = item.term + "    ";
 
 			var rating = item.rating;
-			console.log(item);
 
 			//Add stars
 			for(var i = 0; i < rating; i++){
-				tagButton.innerHTML += "<div class='icon-star'></div>"
+				tagButton.innerHTML += "<div class='icon-star ratingFull rating' id='rating" + rating + i + "'></div>"
 			}
-			for(var i = 0; i < 5 - rating; i++){
-				tagButton.innerHTML += "<div class='icon-star-empty'></div>"
+			for(var i = rating; i < 5; i++){
+				tagButton.innerHTML += "<div class='icon-star-empty ratingEmpty rating' id='rating" + rating + i + "'></div>"
 			}
 			
 			tagCloudInner.appendChild(tagButton);
@@ -247,8 +286,21 @@ function createCloud(data,type){
 	if(button == 'Visual' && type == 'visual'){
 		$("#tag-cloud-inner").empty();
 		jQuery.each(data, function(index,item) {
-			var rating = getTagRating(item.term);
-			$("#tag-cloud-inner").append('<button class="btn btn-info tager visualtag' + index + '">' + item.term + "</button>" + " "  );
+			//Create the button
+			var tagButton = document.createElement("button");
+			tagButton.className = "btn btn-info tager visualtag" + index;
+			tagButton.innerHTML = item.term + "    ";
+			var rating = item.rating;
+
+			//Add stars
+			for(var i = 0; i < rating; i++){
+				tagButton.innerHTML += "<div class='icon-star ratingFull rating' id='rating" + rating + i + "'></div>"
+			}
+			for(var i = rating; i < 5; i++){
+				tagButton.innerHTML += "<div class='icon-star-empty ratingEmpty rating' id='rating" + rating + i + "'></div>"
+			}
+			
+			tagCloudInner.appendChild(tagButton);
 		})
 	}	
 	$("#loading-img").hide();
