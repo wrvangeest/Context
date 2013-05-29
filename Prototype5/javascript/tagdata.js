@@ -158,9 +158,8 @@ function getZapData(dur){
 	$.post("php/zappoints.php?id=" + vidid + "&dur=" + dur)
 		.done(function (data) {
 			var obj = JSON.parse(data);
-			console.log(obj);
-			obj.visual.sort(sortByScore);
-			obj.tweet.sort(sortByScore);
+			obj.visual.sort(sortByRerankingScore);
+			obj.tweet.sort(sortByRerankingScore);
 			jFiltered = JSON.stringify(obj);
 			localStorage.setItem(vidid, jFiltered);
 			filterData(vidid, dur, "" );
@@ -236,6 +235,7 @@ function filterData(id, dur, type){
 		//..zappoints()
 		createZapCode(filteredTemp.tweet, "tweet");
 		createZapCode(filteredTemp.visual, "visual");
+		console.log(data.visual);
 		//..tagcloud
 		createCloud(filteredTemp.tweet,'tweet');
 		checkTags(colorTags,0);
@@ -353,9 +353,13 @@ function scrollToTag(id){
 }
 
 //Sets sorting type
-function sortByScore(x,y){
+function sortByRerankingScore(x,y){
 	return y.reranking_score - x.reranking_score;
 }
+function sortByConfidenceScore(x,y){
+	return y.confidence_score - x.reranking_score;
+}
+
 //##############################################################
 
 //############# Helper functions for conversion #############
