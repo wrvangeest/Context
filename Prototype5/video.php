@@ -202,7 +202,9 @@
 	<script src ="javascript/skiptime.js"></script>
 	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/togglebutton.js"></script>
+	<script src ="javascript/rating.js"></script>
 	<script src ="javascript/main.js"></script>
+
 	
 	</body>
 	</html>

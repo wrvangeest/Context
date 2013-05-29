@@ -25,7 +25,6 @@ $(document).ready(function(){
 		}
 		if($(this).hasClass("visualPoint")){
 			$cloudClass = getAssocId(this);
-			console.log($cloudClass);
 			$orTagColor = $($cloudClass).css("backgroundColor");
 			$($cloudClass).css("background-color", darkerColor($cloudClass));
 			//scroll tag to the right position when hovering over tag
@@ -116,47 +115,17 @@ function updateExtraInfo(obj){
 function getZapData(dur){
 	var hash = getUrlVars();
 	var vidid = hash['vidid'];
-	$.post("php/zappoints.php?id=" + vidid)
+	$.post("php/zappoints.php?id=" + vidid + "&dur=" + dur)
 		.done(function (data) {
-			//localStorage.setItem(vidid,data);
-		var obj = JSON.parse(data);
-		var filtered = {};
-		filtered.visual = [];
-		filtered.tweet = [];
-		var visCount = 0;
-		var twtCount = 0;
-		for(var i = 0; i < obj.scores.length; i++){
-			if(timeToSec(obj.scores[i].time_jump_in_point) <= dur){
-				if(obj.scores[i].tweet_score > 0){
-					var x = {};
-					x.term = obj.scores[i].term;
-					x.time_jump_in_point = obj.scores[i].time_jump_in_point;
-					x.reranking_score = obj.scores[i].reranking_score;
-					filtered.tweet.push(x);
-				}
-				if(obj.scores[i].in_lscom == 1){
-					var x = {};
-					x.term = obj.scores[i].term;
-					x.time_jump_in_point = obj.scores[i].time_jump_in_point;
-					x.reranking_score = obj.scores[i].reranking_score;
-					x.visual_score = obj.scores[i].visual_score;
-					filtered.visual.push(x);
-					/*filtered.visual[visCount] = {
-						term : obj.scores[i].term,
-						time_jump_in_point : obj.scores[i].time_jump_in_point,
-						reranking_score : obj.scores[i].reranking_score
-					};
-					visCount++;*/
-				}
-			}
-		}
-		filtered.visual.sort(sortByScore);
-		filtered.tweet.sort(sortByScore);
-		jFiltered = JSON.stringify({visual: filtered.visual, tweet: filtered.tweet});
-		localStorage.setItem(vidid, jFiltered);
-		filterData(vidid, dur, "");
-	})
-	    //Give message when failed
+			var obj = JSON.parse(data);
+			console.log(obj);
+			obj.visual.sort(sortByScore);
+			obj.tweet.sort(sortByScore);
+			jFiltered = JSON.stringify(obj);
+			localStorage.setItem(vidid, jFiltered);
+			filterData(vidid, dur, "" );
+		})
+		    //Give message when failed
 	   	.fail(function() {
 	    	//alert("getZapData failed!");
 	});
@@ -178,6 +147,7 @@ function filterData(id, dur, type){
 				x.term = data.tweet[i].term;
 				x.time = data.tweet[i].time_jump_in_point;
 				x.reranking_score = data.tweet[i].reranking_score;
+				x.rating = data.tweet[i].rating;
 				filteredTemp.tweet.push(x);
 			}
 		}
@@ -193,6 +163,7 @@ function filterData(id, dur, type){
 				x.term = data.visual[i].term;
 				x.time = data.visual[i].time_jump_in_point;
 				x.reranking_score = data.visual[i].reranking_score;
+				x.rating = data.tweet[i].rating;
 				filteredTemp.visual.push(x);
 			}
 		}
@@ -208,6 +179,7 @@ function filterData(id, dur, type){
 					x.term = data.tweet[i].term;
 					x.time = data.tweet[i].time_jump_in_point;
 					x.reranking_score = data.tweet[i].reranking_score;
+					x.rating = data.tweet[i].rating;
 					filteredTemp.tweet.push(x);
 				}
 				if(i < data.visual.length && data.visual[i].visual_score > $("#visual_value").val()){
@@ -215,6 +187,7 @@ function filterData(id, dur, type){
 					x.term = data.visual[i].term;
 					x.time = data.visual[i].time_jump_in_point;
 					x.reranking_score = data.visual[i].reranking_score;
+					x.rating = data.tweet[i].rating;
 					filteredTemp.visual.push(x);
 				}
 			}
@@ -245,15 +218,36 @@ function getNewTags(type){
 //Appends cloud information to generate cloud
 function createCloud(data,type){
 	var button = $('#tag-toggle-button').html();
+	var tagCloudInner = document.getElementById("tag-cloud-inner");
+
+
 	if(button == 'Tweets' && type == 'tweet'){
 		$("#tag-cloud-inner").empty();
 		jQuery.each(data, function(index,item) {
-			$("#tag-cloud-inner").append('<button class="btn btn-info tager tweettag' + index + '">' + item.term + "</button>" + " "  );
+
+			//Create the button
+			var tagButton = document.createElement("button");
+			tagButton.className = "btn btn-info tager tweettag" + index;
+			tagButton.innerHTML = item.term + "    ";
+
+			var rating = item.rating;
+			console.log(item);
+
+			//Add stars
+			for(var i = 0; i < rating; i++){
+				tagButton.innerHTML += "<div class='icon-star'></div>"
+			}
+			for(var i = 0; i < 5 - rating; i++){
+				tagButton.innerHTML += "<div class='icon-star-empty'></div>"
+			}
+			
+			tagCloudInner.appendChild(tagButton);
 		})
 	}
 	if(button == 'Visual' && type == 'visual'){
 		$("#tag-cloud-inner").empty();
 		jQuery.each(data, function(index,item) {
+			var rating = getTagRating(item.term);
 			$("#tag-cloud-inner").append('<button class="btn btn-info tager visualtag' + index + '">' + item.term + "</button>" + " "  );
 		})
 	}	
