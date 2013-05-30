@@ -1,4 +1,6 @@
 var OFFSET = 6;
+var zapclicked = false;
+var tagclicked = false;
 $(document).ready(function(){
 
 //############# Mouse actions for zappoints ################# 
@@ -8,10 +10,17 @@ $(document).ready(function(){
 		$loc = $loc.substr(0,$loc.length - 2);
 		//Jump to given time
 		goToTime(parseInt($loc) + OFFSET);
+		zapclicked = true;
+		$("#extrainfo_inner").html("");
+		updateExtraInfo(this);
 	});
 
 	$("body").on("mouseenter",".zapPoint",function(){
 		//Displays extra information on the right
+		if(zapclicked){
+			$("#extrainfo_inner").html("");
+			zapclicked = false;
+		}
 		updateExtraInfo(this);
 		$("#extrainfo_inner").css("display", "block");
 
@@ -35,8 +44,9 @@ $(document).ready(function(){
 
 	$("body").on("mouseout",".zapPoint",function(){
 		//Clear extra info
-		$("#extrainfo_inner").html("");
-
+		if(!zapclicked){
+			$("#extrainfo_inner").html("");
+		}
 		if($(this).hasClass("tweetPoint")){
 			$($cloudClass).css("background-color", $orTagColor);
 		}
@@ -47,8 +57,13 @@ $(document).ready(function(){
 
 //############# Mouse actions for tags #################
 	$("body").on("click",".tager",function(){
-		//Gather ID information
-		var zapId = getAssocId(this);
+
+		$zapId = getAssocId(this);
+
+		tagclicked = true;
+		$("#extrainfo_inner").html("");
+		updateExtraInfo($zapId);
+
 		//Get pixel location
 		loc = $($zapId).css("margin-left");
 		loc = loc.substr(0,loc.length - 2);
@@ -60,6 +75,10 @@ $(document).ready(function(){
 		$zapId = getAssocId(this);
 
 		//Displays extra information on the right
+		if(tagclicked){
+			$("#extrainfo_inner").html("");
+			tagclicked = false;
+		}
 		updateExtraInfo(document.getElementById($zapId));
 		$("#extrainfo_inner").css("display", "block");
 
@@ -77,7 +96,9 @@ $(document).ready(function(){
 
 	$("body").on("mouseout",".tager",function(){
 		//Clear extra info
-		$("#extrainfo_inner").html("");
+		if(!tagclicked){
+			$("#extrainfo_inner").html("");
+		}
 		//Restore original colors
 		$(this).css("background-color", $orTagColor);
 		$($zapId).css("color", $orZapColor);
