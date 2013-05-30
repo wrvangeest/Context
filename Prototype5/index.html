@@ -8,9 +8,10 @@
 		<script src ="lib/javascript/bootstrap.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
 		<!--  css files -->
-		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
+		
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
+		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		
 	</head>
 	
@@ -28,13 +29,16 @@
 					</div>
 
 
-  					<div class="navbar-inner">
+  					<div class="navbar-inner" id="mainNavBar">
   						<div class="container">
-    						<a class="brand" href="#"></li> SocialZap</a>
-						    <ul class="navigation">
+    						<a class="brand" href="index.php"></li>SocialZap</a>
+						<!--    <ul class="navigation">
 			     			<li class="icon-th icon-2x" id="browsebutton"></li>
 			     			<li class="icon-search icon-2x" id="searchbutton"></li>
-			     			</ul>
+			     			</ul> -->
+			     		<div class="btn-group" id="navButtons">
+			     			<button class="btn navButton" id="browsebutton"><div class="icon-th navButton"></button>
+			     			<button class="btn navButton" id="searchbutton"><div class="icon-search navButton"></button>
   						</div>
 					</div>
 				</div>
@@ -43,6 +47,7 @@
 
 
 			<div class="container" style="margin-top:15px;">
+			<div id="video_top_filler"></div>
 				<div class="row">
 					<div class="span4">
 						<button class="well well-header">Browse all videos</button>
@@ -101,11 +106,21 @@
 					</div>
 
 				</div>
+
+					<div id="video_bot_filler">
+					</div>
+
+				<!-- footer -->
+				<footer>
+					<div class="footer">
+						<div class="container">
+							Made by a Team at TU Delft, The Netherlands. Copyright 2013
+						</div>
+					</div>
+				</footer>
 			
 				
 			</div>
-
-
 		<!-- end page wrapper -->
 		</div>
 		<script>

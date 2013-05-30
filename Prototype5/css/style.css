@@ -1,6 +1,5 @@
 @import url('//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700');
 
-
 /*
  -----------------------------------------
 |         Navigation bar styling          |
@@ -116,6 +115,8 @@
 	background-position: bottom;
 }
 
+
+
 /*
  -----------------------------------------
 |               Main body                 |
@@ -126,6 +127,7 @@
 	background-color:#f3f3f3;
 	min-width: 100%;
 	margin:0 auto;
+	min-height: 1080px;
 }
 /*-------- Headers -----------*/
 .well-header{
