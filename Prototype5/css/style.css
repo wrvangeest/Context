@@ -32,6 +32,9 @@
 	margin-top:8px;
 }
 
+#nav-bar-form{
+	float:right;
+}
 /*
  -----------------------------------------
 |              Video Thumbs               |
@@ -155,7 +158,7 @@
 .extrainfo{
 	width: 220px;
 	height: 125px;
-	position: absolute;
+	margin-top: 15px;
 
 }
 #extra-info-remove{
