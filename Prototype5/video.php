@@ -116,7 +116,7 @@
 					</div>
 
 					<!-- begin advanced options -->
-					<div>
+					<div id="adv-options">
 						<div class="well well-header">Advanced options</div>
 
 						<div style="clear:right;">Set minimal reranking Score</div>

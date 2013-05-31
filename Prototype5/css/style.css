@@ -57,7 +57,7 @@
 /*----------------------------*/
 
 #tag-cloud-inner{
-	height:350px;
+	height:410px;
 	overflow: auto;
 }
 /*----Size for tags in tag cloud----*/
@@ -139,10 +139,23 @@
 /*----------------------------*/
 
 .extrainfo{
+	width: 220px;
 	height: 125px;
-	margin-top:10px;
-}
+	position: absolute;
 
+}
+#extra-info-remove{
+	float:right;
+}
+#extrainfo_inner{
+	margin-top: 0px;
+}
+#extrainfo_inner_top{
+	margin-top: -14px;
+}
+#adv-options{
+
+}
 /*----------Comments----------*/
 .comments{
 	width:700px; 
@@ -168,6 +181,7 @@
 	float:left;
 }
 /*-----------------------------*/
+
 
 /*
  -----------------------------------------

@@ -5,25 +5,24 @@ $(document).ready(function(){
 
 //############# Mouse actions for zappoints ################# 
 	$("body").on("click",".zapPoint",function(){
+		zapclicked = true;
 		//Get pixel location
 		$loc = $(this).css("margin-left");
 		$loc = $loc.substr(0,$loc.length - 2);
 		//Jump to given time
 		goToTime(parseInt($loc) + OFFSET);
-		zapclicked = true;
+		
 		$("#extrainfo_inner").html("");
 		updateExtraInfo(this);
 	});
 
 	$("body").on("mouseenter",".zapPoint",function(){
 		//Displays extra information on the right
-		if(zapclicked){
-			$("#extrainfo_inner").html("");
-			zapclicked = false;
+		//if no tag or zappoint is clicked
+		if(!zapclicked && !tagclicked){
+			$("#extrainfo_inner").css("display", "block");
+			updateExtraInfo(this);
 		}
-		updateExtraInfo(this);
-		$("#extrainfo_inner").css("display", "block");
-
 		//Highlights tag in cloud for tweetpoints
 		if($(this).hasClass("tweetPoint")){
 			$cloudClass = getAssocId(this);
@@ -44,7 +43,7 @@ $(document).ready(function(){
 
 	$("body").on("mouseout",".zapPoint",function(){
 		//Clear extra info
-		if(!zapclicked){
+		if(!zapclicked&&!tagclicked){
 			$("#extrainfo_inner").html("");
 		}
 		if($(this).hasClass("tweetPoint")){
@@ -56,31 +55,16 @@ $(document).ready(function(){
 	});
 
 //############# Mouse actions for tags #################
-	$("body").on("click",".tager",function(){
-
-		$zapId = getAssocId(this);
-
-		tagclicked = true;
-		$("#extrainfo_inner").html("");
-		updateExtraInfo($zapId);
-
-		//Get pixel location
-		loc = $($zapId).css("margin-left");
-		loc = loc.substr(0,loc.length - 2);
-		//Jump to givesn time
-		goToTime(parseInt(loc) + OFFSET);
-	});
+	
 	$("body").on("mouseenter",".tager",function(){
 		//Gather ID information
 		$zapId = getAssocId(this);
 
 		//Displays extra information on the right
-		if(tagclicked){
-			$("#extrainfo_inner").html("");
-			tagclicked = false;
+		if(!zapclicked && !tagclicked){
+			$("#extrainfo_inner").css("display", "block");
+			updateExtraInfo(document.getElementById($zapId));
 		}
-		updateExtraInfo(document.getElementById($zapId));
-		$("#extrainfo_inner").css("display", "block");
 
 		//Change background color
 		$orTagColor = $(this).css("backgroundColor");
@@ -96,15 +80,44 @@ $(document).ready(function(){
 
 	$("body").on("mouseout",".tager",function(){
 		//Clear extra info
-		if(!tagclicked){
+		if(!zapclicked&&!tagclicked){
 			$("#extrainfo_inner").html("");
 		}
 		//Restore original colors
 		$(this).css("background-color", $orTagColor);
+		
+		//Gather ID information
+		$zapId = getAssocId(this);
+		$zapId = '#' + $zapId;
+
 		$($zapId).css("color", $orZapColor);
 		$($zapId).css("z-index", 1);
 		$($zapId).removeClass("icon-large");
 	});
+
+	$("body").on("click",".tager",function(){
+
+		$zapId = getAssocId(this);
+
+		tagclicked = true;
+		$("#extrainfo_inner").html("");
+		updateExtraInfo(document.getElementById($zapId));
+		//Get pixel location
+		loc = $('#' + $zapId).css("margin-left");
+		loc = loc.substr(0,loc.length - 2);
+		//Jump to givesn time
+		goToTime(parseInt(loc) + OFFSET);
+	});
+
+//############# Mouse actions for extra info close button#################
+	$('body').on('click', '#extra-info-remove', function() {
+		if(zapclicked || tagclicked){
+			$("#extrainfo_inner").html("");
+		}
+		tagclicked = false;
+		zapclicked = false;
+	});
+
 });
 
 
@@ -123,9 +136,17 @@ function updateExtraInfo(obj){
 		var time = calcTime(parseInt($(obj).css("margin-left")) + 4);
 		time = timeToMin(time);
 		//.append(snapshot(timeat))
+		if(zapclicked || tagclicked){
+		$("#extrainfo_inner").append('<div id="extrainfo_inner_top"><i class="icon-remove" id="extra-info-remove"></i></div>')
+							 .append('<img src=http://placehold.it/350x150><br/>')
+							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
+							 .append('<div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
+		$("#extrainfo_inner").css('margin-top','-4px');
+		}else{
 		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
-							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/><div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
-							 
+							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
+							 .append('<div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
+		}				 
 		getRating(obj);
 
 }
