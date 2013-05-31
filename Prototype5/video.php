@@ -162,7 +162,7 @@
 
 				<?php
 						function curPageURL() {
-						 $pageURL = 'http';
+						 $pageURL = '';
 						 
 						 //DELETED BECAUSE OF LOCALHOST
 						 /*if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
