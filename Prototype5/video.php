@@ -160,13 +160,31 @@
 				</div>
 				<!-- end demo video container -->
 
+				<?php
+						function curPageURL() {
+						 $pageURL = 'http';
+						 
+						 //DELETED BECAUSE OF LOCALHOST
+						 /*if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+						 $pageURL .= "://";
+						 */ 
+
+						 if ($_SERVER["SERVER_PORT"] != "80") {
+						  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+						 } else {
+						  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+						 }
+						 return $pageURL;
+						}
+					?>
+
 					<!-- middle part with comments -->
 					<div class="middle-part-wrapper">
 						<div class="row">
 							<div class="span9">
 								<div class="comments">
 										<div class="well well-header">Comments</div>
-										<div class="fb-comments" data-href="http://localhost/context/Prototype5/" data-width="700" data-num-posts="10"></div>
+										<div class="fb-comments" data-href= <?php echo curPageURL(); ?> data-width="700" data-num-posts="10"></div>
 										
 								</div>
 							</div>
