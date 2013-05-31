@@ -155,7 +155,15 @@ $(document).ready(function(){
 	});
 
 	$("body").on("click",".rating", function() {
-
+		var user_id = 2;
+		var value = this.id.substr(7,1);
+		var term = this.parentNode.innerHTML;
+		term = term.substr(0,term.indexOf("<") - 1);
+		console.log(term);
+		$.post("php/setRating.php?term=" + term + "&user_id=" + user_id + "&score=" + value)
+			.done(function (result) {
+				console.log(result);
+			});
 	});
 
 });
@@ -279,7 +287,6 @@ function filterData(id, dur, type){
 		//..zappoints()
 		createZapCode(filteredTemp.tweet, "tweet");
 		createZapCode(filteredTemp.visual, "visual");
-		console.log(data.visual);
 		//..tagcloud
 		createCloud(filteredTemp.tweet,'tweet');
 		checkTags(colorTags,0);
@@ -312,7 +319,7 @@ function createCloud(data,type){
 			//Create the button
 			var tagButton = document.createElement("button");
 			tagButton.className = "btn btn-info tager tweettag" + index;
-			tagButton.innerHTML = item.term + "    ";
+			tagButton.innerHTML = item.term + " ";
 
 			var rating = item.rating;
 

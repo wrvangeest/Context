@@ -13,9 +13,9 @@ function getRating(){
 
 		for(var i = 0 ; i < 5;i++){
 			if(i < rating){
-				$('.ratingbar').append('<i class="icon-star icon-3x ster"></i>');
+				$('.ratingbar').append('<i class="icon-star ster ster"' + i + '></i>');
 			}else{
-				$('.ratingbar').append('<i class="icon-star-empty icon-3x ster"></i>');
+				$('.ratingbar').append('<i class="icon-star-empty ster"' + i + '></i>');
 			}
 
 		}	

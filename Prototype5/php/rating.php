@@ -10,7 +10,7 @@
 		mysql_select_db("users", $con);	
 	}
 
-	function runQuery($term){
+	function getRatings($term){
 		//Query
 		$qry = "SELECT AVG(rating) AS rating
 		FROM ratings
@@ -36,8 +36,8 @@
 		return json_encode($rows);
 	}
 
-	//Calls function
+	/*//Calls function
 	if(isset($_REQUEST['term'])){
-		echo runQuery($_REQUEST['term']);
-	}
+		echo getRatings($_REQUEST['term']);
+	}*/
 ?>

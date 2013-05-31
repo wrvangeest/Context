@@ -37,7 +37,7 @@ include("rating.php");
 
 	for($i = 0; $i < count($decoded); $i++){
 		if(timeToSec($decoded[$i]["time_jump_in_point"]) <= $dur){
-			$rating = runQuery($decoded[$i]["term"]);
+			$rating = getRatings($decoded[$i]["term"]);
 			$rating = json_decode($rating,true);
 			$rating = intval($rating[0]['rating']);
 			if($rating == null){
@@ -65,7 +65,7 @@ include("rating.php");
 
 	for($i = 0; $i < count($visualDecoded); $i++){
 		if(timeToSec($visualDecoded[$i]["start"]) <= $dur){
-			$rating = json_decode(runQuery($decoded[$i]["term"]),true);
+			$rating = json_decode(getRatings($decoded[$i]["term"]),true);
 			$rating = intval($rating[0]['rating']);
 			if($rating == null){
 				$rating = 3;
