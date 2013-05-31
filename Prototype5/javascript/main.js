@@ -59,8 +59,10 @@ $("#loading-img").show();
 				}
 			});
 
+			/*
 			var top = $('#adv-options').position().top;
-			$('.extrainfo').css('top',top);
+			$('.extrainfo').css('top',top);*/
+			
 			/**** Sets the total time
 				  Bij een readystate van 4 is alle informatie van een video geladen.
 			 ***/
