@@ -177,12 +177,12 @@ function updateExtraInfo(obj){
 		//.append(snapshot(timeat))
 		if(zapclicked || tagclicked){
 		$("#extrainfo_inner").append('<div id="extrainfo_inner_top"><i class="icon-remove" id="extra-info-remove"></i></div>')
-							 .append('<img src=http://placehold.it/350x150><br/>')
+							 .append('<br/>')
 							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
 							 .append('<div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
 		$("#extrainfo_inner").css('margin-top','-4px');
 		}else{
-		$("#extrainfo_inner").append('<img src=http://placehold.it/350x150><br/>')
+		$("#extrainfo_inner").append('<br/>')
 							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
 							 .append('<div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
 		}				 
