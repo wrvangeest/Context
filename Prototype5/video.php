@@ -110,21 +110,14 @@
 						<!-- is filled dynamically with zappoint.js-->
 						</div>
 
-<<<<<<< HEAD
 						<!-- Visual zappoints -->
 						<div id="visualPoints" style="height:22px; width:700px;">
 						<!-- is filled dynamically with zappoint.js-->
 						</div>
-=======
+
 					<!-- begin advanced options -->
 					<div id="adv-options">
 						<div class="well well-header">Advanced options</div>
->>>>>>> origin/comment-rating
-
-						<!-- begin advanced options -->
-						<div>
-							<div class="well well-header">Advanced options</div>
-
 							<div style="clear:right;">Set minimal reranking Score</div>
 								<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
 								<input id="tweet_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">

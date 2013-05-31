@@ -117,8 +117,6 @@ $(document).ready(function(){
 		zapclicked = false;
 	});
 
-});
-
 //############# Mouse actions for ratings #################
 
 	$("body").on("mouseenter",".rating", function() {
@@ -159,6 +157,8 @@ $(document).ready(function(){
 	$("body").on("click",".rating", function() {
 
 	});
+
+});
 
 //############# Helper functions for mouse events #############
 //Go to time given by loc in pixels
