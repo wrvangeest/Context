@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/nouisliderfox.css" type="text/css">
 		<LINK rel="stylesheet" href="css/tagtoggler.css" type="text/css" >
+		<LINK rel="stylesheet" href="css/ratingbar.css" type="text/css" >	
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		
 	</head>	
@@ -109,10 +110,16 @@
 						<!-- is filled dynamically with zappoint.js-->
 						</div>
 
+<<<<<<< HEAD
 						<!-- Visual zappoints -->
 						<div id="visualPoints" style="height:22px; width:700px;">
 						<!-- is filled dynamically with zappoint.js-->
 						</div>
+=======
+					<!-- begin advanced options -->
+					<div id="adv-options">
+						<div class="well well-header">Advanced options</div>
+>>>>>>> origin/comment-rating
 
 						<!-- begin advanced options -->
 						<div>
