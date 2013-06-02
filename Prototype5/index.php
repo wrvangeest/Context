@@ -1,3 +1,12 @@
+<?php session_start(); 
+
+	if(isset($_SESSION['loginstatus'])){
+		$_SESSION['curpage'] = curPageName();
+	}
+ 	function curPageName() {
+ 		return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1).'?'.$_SERVER["QUERY_STRING"];
+	}
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -15,6 +24,8 @@
 	</head>
 	
 	<body>
+		<body>
+			 
 		<!--page wrapper -->
 		<div class="main-content-wrapper">
 			<!-- header -->
@@ -39,13 +50,24 @@
 				     			<button class="btn navButton" id="browsebutton"><div class="icon-th navButton"></button>
 				     			<button class="btn navButton" id="searchbutton"><div class="icon-search navButton"></button>
 	  						</div>
-
+	  							
 	  						<div id="nav-bar-form">
-		  						<form class="form-inline" id="inlog-form">
-								  <input name="email" type="text" class="input-small" id="login-email" placeholder="Email">
-								  <input name="password" type="password" class="input-small" id="login-passwd" placeholder="Password">
-								  <button type="submit" class="btn">Sign in</button>
-								</form>
+	  							
+	  							<?php if( isset($_SESSION['loginstatus'])) {?>
+	  							<!-- If there is a existing session greet the user -->
+		  							<div id="logged-in">
+		  								<span>Hello, <?php echo $_SESSION['name']; ?></span>
+		  								<a href='php/logout.php' id='logout'>Logout</a>
+		  							</div>
+	  							
+	  							<?php }else {?>
+	  							<!-- Else make it login form -->
+			  						<form class="form-inline" id="inlog-form" method="post">
+									  <input name="email" type="text" class="input-small" id="login-email" placeholder="Email">
+									  <input name="password" type="password" class="input-small" id="login-passwd" placeholder="Password">
+									  <button type="submit" class="btn" id="ok">Sign in</button>
+									</form>
+								<?php } ?>
 							</div>
 						</div>
 					</div>
@@ -145,12 +167,12 @@
 
 			//fix browsebutton
 			$("#browsebutton").click(function(){
-				location.href = "index.html";
+				location.href = "index.php";
 			});
 
 			//fix homebutton
 			$("#homebutton").click(function(){
-				location.href = "index.html";
+				location.href = "index.php";
 			});
 
 			$('img').click(function(){

@@ -35,6 +35,10 @@
 #nav-bar-form{
 	float:right;
 }
+#logged-in{
+	float:right;
+	color: #FFF;
+}
 /*
  -----------------------------------------
 |              Video Thumbs               |
