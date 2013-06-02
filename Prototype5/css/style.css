@@ -39,6 +39,10 @@
 .input-small{
 	margin-top:5px;
 }
+#logged-in{
+	float:right;
+	color: #FFF;
+}
 /*
  -----------------------------------------
 |              Video Thumbs               |

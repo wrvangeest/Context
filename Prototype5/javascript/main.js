@@ -23,12 +23,12 @@ $("#loading-img").show();
 
 			//fix browsebutton
 			$("#browsebutton").click(function(){
-				location.href = "index.html";
+				location.href = "index.php";
 			});
 
 			//fix homebutton
 			$("#homebutton").click(function(){
-				location.href = "index.html";
+				location.href = "index.php";
 			});
 
 			//make first slider

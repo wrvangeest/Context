@@ -1,8 +1,6 @@
 $(document).ready(function(){
 
-
-    $("#inlog-form").submit(function(){
-
+    $('#ok').click(function(){
     	var emailfilled = false;
     	var passwordfilled = false;
 
@@ -10,31 +8,27 @@ $(document).ready(function(){
     	if($('#login-email').val() !== ""){
     		emailfilled = true;
     	}
-    	if($('#login-email').val() !== ""){
+    	if($('#login-passwd').val() !== ""){
     		passwordfilled = true;
     	}
 
     	if(emailfilled && passwordfilled){
-    		var data = $('#inlog-form').serialize();
-			$.ajax({
-				 url: "php/formlogin.php",
-				 type: "post",
-				 data: data,
-				 dataType: "json",
-				 success: function(data) {
-					 if (data.success) {
-					   window.location = "../admin.php";
-					 }
-					 else {
-					   alert('Invalid Login');
-					  }
-				}
-			 });
+    		var url = $('#inlog-form').serialize();
+            
+            $.post("php/formlogin.php?"+url)
+                .done(function (data){
+                        $('#inlog-form').hide();
+                        $('#nav-bar-form').append('<div id="logged-in"><span>Hello ,'+ data.name +'</span><a href="php/logout.php"  id="logout">Logout</a></div>');
+
+                })
+                //Give message when failed
+                .fail(function() {
+
+                });
 
     	}else{
     		
     			alert('Vul uw gegevens goed in');
- 
     	}
 
     });

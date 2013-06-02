@@ -1,3 +1,12 @@
+<?php session_start(); 
+
+	if(isset($_SESSION['loginstatus'])){
+		$_SESSION['curpage'] = curPageName();
+	}
+ 	function curPageName() {
+ 		return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1).'?'.$_SERVER["QUERY_STRING"];
+	}
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -57,13 +66,23 @@
 			     				<button class="btn navButton" id="browsebutton"><div class="icon-th navButton"></button>
 			     				<button class="btn navButton" id="searchbutton"><div class="icon-search navButton"></button>
 			     			</div>
-
-			     			<div id="nav-bar-form">
-		  						<form class="form-inline" id="inlog-form">
-								  <input name="email" type="text" class="input-small" id="login-email" placeholder="Email">
-								  <input name="password" type="password" class="input-small" id="login-passwd" placeholder="Password">
-								  <button type="submit" class="btn">Sign in</button>
-								</form>
+	  						<div id="nav-bar-form">
+	  							
+	  							<?php if( isset($_SESSION['loginstatus'])) {?>
+	  							<!-- If there is a existing session greet the user -->
+		  							<div id="logged-in">
+		  								<span>Hello, <?php echo $_SESSION['name']; ?></span>
+		  								<a href='php/logout.php' id='logout'>Logout</a>
+		  							</div>
+	  							
+	  							<?php }else {?>
+	  							<!-- Else make it login form -->
+			  						<form class="form-inline" id="inlog-form" method="post">
+									  <input name="email" type="text" class="input-small" id="login-email" placeholder="Email">
+									  <input name="password" type="password" class="input-small" id="login-passwd" placeholder="Password">
+									  <button type="submit" class="btn" id="ok">Sign in</button>
+									</form>
+								<?php } ?>
 							</div>
   						</div>
 					</div>
@@ -175,19 +194,19 @@
 
 				<?php
 						function curPageURL() {
-						 $pageURL = 'http';
-						 
-						 //DELETED BECAUSE OF LOCALHOST
-						 /*if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-						 $pageURL .= "://";
-						 */ 
+							 $pageURL = '';
+							 
+							 //DELETED BECAUSE OF LOCALHOST
+							 /*if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+							 $pageURL .= "://";
+							 */ 
 
-						 if ($_SERVER["SERVER_PORT"] != "80") {
-						  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-						 } else {
-						  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-						 }
-						 return $pageURL;
+							 if ($_SERVER["SERVER_PORT"] != "80") {
+							  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+							 } else {
+							  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+							 }
+							 return $pageURL;
 						}
 					?>
 
@@ -234,6 +253,7 @@
 	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/togglebutton.js"></script>
 	<script src ="javascript/rating.js"></script>
+	<script src="javascript/loginform.js" type="text/javascript"></script>
 	<script src ="javascript/main.js"></script>
 
 	
