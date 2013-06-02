@@ -57,6 +57,14 @@
 			     				<button class="btn navButton" id="browsebutton"><div class="icon-th navButton"></button>
 			     				<button class="btn navButton" id="searchbutton"><div class="icon-search navButton"></button>
 			     			</div>
+
+			     			<div id="nav-bar-form">
+		  						<form class="form-inline" id="inlog-form">
+								  <input name="email" type="text" class="input-small" id="login-email" placeholder="Email">
+								  <input name="password" type="password" class="input-small" id="login-passwd" placeholder="Password">
+								  <button type="submit" class="btn">Sign in</button>
+								</form>
+							</div>
   						</div>
 					</div>
 
@@ -141,6 +149,11 @@
 
 
 								<input type="search" id="tagSearch" placeholder="Search Twitter Tags">
+								<div id="tagTitles" class="well well-header" style="margin-bottom:0px;height:100%">
+									<div id="termTitle" style="float:left; margin-left:auto; margin-right:auto; width:50%; line-height:140%">Term</div>
+									<div id="ratingTitle" style="float:left; margin-left:auto; margin-right:auto;width:50%; line-height:140%">Rating</div>
+									<div id="titleFiller" style="width:10px"></div>
+								</div>
 								<div id="loading-img" style="display:none;"><img src="img/ajax-loader.gif"/></div>
 
 								<div id="tag-cloud-inner">

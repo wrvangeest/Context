@@ -23,7 +23,7 @@ function checkTags(callback, times){
 
 	//Gives error message when timed out
 	if(!isNaN(times) && times > 500){
-		callback(-1);
+		setTimeout(callback(-1), 100);
 	}
 	else if(i <= 0 || isNaN(i)) {
 		//Wait 100ms

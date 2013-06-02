@@ -254,7 +254,7 @@ function filterData(id, dur, type){
 				x.term = data.visual[i].term;
 				x.time = data.visual[i].time_jump_in_point;
 				x.reranking_score = data.visual[i].reranking_score;
-				x.rating = data.tweet[i].rating;
+				x.rating = data.visual[i].rating;
 				filteredTemp.visual.push(x);
 			}
 		}
@@ -319,18 +319,39 @@ function createCloud(data,type){
 			//Create the button
 			var tagButton = document.createElement("button");
 			tagButton.className = "btn btn-info tager tweettag" + index;
-			tagButton.innerHTML = item.term + " ";
+			
+			var termDiv = document.createElement("div");
+			termDiv.innerHTML = item.term;
+			termDiv.style.float = 'left';
+			termDiv.style.marginLeft = 'auto';
+			termDiv.style.marginRight = 'auto';
+			termDiv.style.width = '50%';
+			termDiv.style.lineHeight = '100%';
 
+			var ratingDiv = document.createElement("div");
+			ratingDiv.style.float = 'left';
+			ratingDiv.style.marginLeft = 'auto';
+			ratingDiv.style.marginRight = 'auto';
+			ratingDiv.style.width = '50%';
+			ratingDiv.style.lineHeight = '100%';
 			var rating = item.rating;
-
 			//Add stars
 			for(var i = 0; i < rating; i++){
-				tagButton.innerHTML += "<div class='icon-star ratingFull rating' id='rating" + rating + i + "'></div>"
+				var starDiv = document.createElement("div");
+				starDiv.className = "icon-star ratingFull rating";
+				starDiv.id = "rating" + rating + i;
+				ratingDiv.appendChild(starDiv);
+				//tagButton.innerHTML += "<div class='icon-star ratingFull rating' id='rating" + rating + i + "'></div>"
 			}
 			for(var i = rating; i < 5; i++){
-				tagButton.innerHTML += "<div class='icon-star-empty ratingEmpty rating' id='rating" + rating + i + "'></div>"
+				var starDiv = document.createElement("div");
+				starDiv.className = "icon-star-empty ratingFull rating";
+				starDiv.id = "rating" + rating + i;
+				ratingDiv.appendChild(starDiv);
+				//tagButton.innerHTML += "<div class='icon-star-empty ratingEmpty rating' id='rating" + rating + i + "'></div>"
 			}
-			
+			tagButton.appendChild(termDiv);
+			tagButton.appendChild(ratingDiv);
 			tagCloudInner.appendChild(tagButton);
 		})
 	}

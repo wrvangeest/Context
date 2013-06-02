@@ -35,6 +35,10 @@
 #nav-bar-form{
 	float:right;
 }
+/*Should be set more accurately! (Demo purposes)*/
+.input-small{
+	margin-top:5px;
+}
 /*
  -----------------------------------------
 |              Video Thumbs               |
