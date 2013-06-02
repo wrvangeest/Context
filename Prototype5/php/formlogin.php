@@ -18,19 +18,19 @@
 	
 	if (is_null($_REQUEST['email']) || is_null($_REQUEST['password'])) {
 	    redirect_url("../index.php");
-	} else {
+	} 
+	else {
     
+	    $query =  "SELECT * FROM registered_users WHERE email = '$email' AND password = '$password'";
 
-    $query =  "SELECT * FROM registered_users WHERE email = '$email' AND password = '$password'";
-
-    $result = mysql_query($query)or die(mysql_error("Failed!"));
-		 	
-	$row = mysql_fetch_assoc($result);
-		   
-	$_SESSION['id'] = $row['id'];
-	$_SESSION['email']=$row['email'];
-	$_SESSION['name']=$row['name'];
-	$_SESSION['loginstatus'] = true;
-	
-	echo json_encode($row);
+	    $result = mysql_query($query)or die(mysql_error());
+		$row = mysql_fetch_assoc($result);
+		
+		$_SESSION['id'] = $row['id'];
+		$_SESSION['email']=$row['email'];
+		$_SESSION['name']=$row['name'];
+		$_SESSION['loginstatus'] = true;
+			
+		echo json_encode($row);
+	}
 ?>
