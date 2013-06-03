@@ -2,7 +2,6 @@ var OFFSET = 6;
 var zapclicked = false;
 var tagclicked = false;
 $(document).ready(function(){
-
 //############# Mouse actions for zappoints ################# 
 	$("body").on("click",".zapPoint",function(){
 		zapclicked = true;
@@ -140,8 +139,7 @@ function goToTime(loc) {
 	//Calculate seconds
 	var time = calcTime(loc);
 	//Jump to time
-	Popcorn("#video").currentTime(time);
-	Popcorn("#video").play();
+	npoplayer("socialzap-player").seek(time)
 }
 
 //##############################################################
@@ -248,7 +246,8 @@ function getNewTags(type){
 
 	var rerankingscore = $("#tweet_value").val();
 	var visualscore = $("#visual_value").val();
-	filterData(vidid, Popcorn("#video").duration(), type);
+	filterData(vidid, window.videodur, type);
+
 }	
 
 
@@ -393,10 +392,8 @@ function sortByConfidenceScore(x,y){
 function calcDist(val){
 	//Convert time ("m:(s)s") to seconds
 	var secs = timeToSec(val.time);
-	//Grab duration of video
-	var dur = Popcorn("#video").duration();
 	//Calculate ratio of time/duration
-	var ratio = secs / dur;
+	var ratio = secs / window.videodur;
 	//Grab width of timeline in pixels
 	var wdth = document.getElementById("visualPoints").style.width;
 	//Trim for calculations
@@ -408,8 +405,6 @@ function calcDist(val){
 
 //Calculates the time in seconds from the offset in pixels
 function calcTime(dist){
-	//Get duration of the video
-	var dur = Popcorn("#video").duration();
 	//Get width of timeline in pixels
 	var wdth = document.getElementById("visualPoints").style.width;
 	//Trim for calculations
@@ -417,7 +412,7 @@ function calcTime(dist){
 	//Calculate pixel/total ratio
 	var ratio = dist / wdth;
 	//Return time value in seconds calculated using ratio
-	return (ratio * dur);
+	return ratio * window.videodur;
 }
 
 //Converts int seconds into string min:sec

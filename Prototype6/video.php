@@ -17,8 +17,7 @@
 		<script src ="lib/javascript/bootstrap.js"></script>
 		<script src ="lib/javascript/nouislider.js"></script>
 		<script src ="lib/javascript/moment.js"></script>
-		<script src ="lib/javascript/moment.js"></script>
-		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
+		<script type="text/javascript" src="//ida.omroep.nl/npoplayer/npoplayer-min.js"></script>
 		<!--  css files -->
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
@@ -40,7 +39,7 @@
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 	
-	
+
 
 		<!--page wrapper -->
 		<div class="main-content-wrapper">
@@ -102,21 +101,15 @@
 					<div class="video-area span9">
 						<div class="well well-header"><?php echo $_REQUEST['vidn'];?></div>
 						<div>
-							<video height="394" width="700" id="video" style="margin-top:4px;">
+							<video id="socialzap-player" style="margin-top:4px;">
 					
-							<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4">
+							<!--source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4"-->
 							
-							</video>
-						</div>
-						<!-- video for frame preview -->
-						<div>
-							<video height="0" width="0" id="snapvideo" onclick="play()" style="display:none;">
-							<source type="video/mp4" src="videos/<?php echo $_REQUEST['videoname']; ?>.mp4">
 							</video>
 						</div>
 					
 						<!-- video controls -->								
-						<div id="video_controls" style="margin-bottom:5px;">
+						<div id="video_controls" style="margin-top:10px;margin-bottom:5px;">
 							<!-- twitter button -->
 							<span style="float:right;height:20px;"> <button class="btn btn-mini" type="button" onclick="sendTweet();"><img src = "img\tweet.png" \>Tweet</button></span>
 							<!-- play, pause and stop -->
@@ -131,6 +124,7 @@
 						<div class="progress" id="popcorn-progbar-wrapper" style="width:700px; height:15px; background-color:grey; margin-bottom:5px; cursor: pointer;">
 							
 						<div class="bar" id="popcorn-progbar" style="width: 0%;"></div>
+						<div class="bar bar-warning" style="width: 0%;"></div>
 						</div>
 
 						<!-- Tweet zappoints -->
@@ -146,15 +140,11 @@
 					<!-- begin advanced options -->
 					<div id="adv-options">
 						<div class="well well-header">Advanced options</div>
-							<div style="clear:right;">Set minimal reranking Score 
-								<a href="#" id="popo" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The reranking score is a combination of a visual score and tweet scores. The tweet scores are calculated by comparing the tweets with the images and subjects in the video." title="Reranking Score" data-original-title="Popover on top">?</a>
-							</div>
+							<div style="clear:right;">Set minimal reranking Score</div>
 								<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
 								<input id="tweet_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
 
-							<div style="clear:right;">Set minimal visual Score
-								<a href="#" id="popo2" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The visual score is calculated by comparing the keyframes with the tags. The higher the correspondence, the higher the score." title="Visual Score" data-original-title="Popover on top">?</a>
-							</div>
+								<div style="clear:right;">Set minimal visual Score</div>
 								<div class="noUiSlider" id="slider2" style="float:left; margin-top:10px;"></div>
 								<input id="visual_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
 						</div>
@@ -184,6 +174,12 @@
 								</div>
 
 						<!-- end tagcloud -->
+						</div>
+
+						<div class="extrainfo">
+							<div class="well well-header">Extra information</div>
+							<div id="extrainfo_inner" style="display:none;">
+							</div>
 						</div>
 					</div>
 			
@@ -239,7 +235,6 @@
 
 		<!-- end page wrapper -->
 		</div>
-
 
 
 	<script src ="javascript/video.js"></script>

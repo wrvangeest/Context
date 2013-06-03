@@ -1,20 +1,17 @@
 //Function that returns duration after video is loaded
 function checkTime(callback, times){
-	
-	//Load duration
-	var dur = Popcorn("#video").duration();
 
 	//Gives error message when timed out
 	if(!isNaN(times) && times > 500){
 		callback(-1);
 	}
-	else if(isNaN(dur)){
+	else if(isNaN(window.videodur)){
 		//Wait 100ms
 		setTimeout( function() { checkTime(callback, times + 1); } , 100);
 	}
 	else {
 		//Video is loaded, callback
-		callback(dur);
+		callback(window.videodur);
 	}
 }
 
