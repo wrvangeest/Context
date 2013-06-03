@@ -51,15 +51,6 @@ include("getRating.php");
 				$tw->{'rating'} = $rating;
 				array_push($filtered->{'tweet'}, $tw);
 			}
-			/*if($decoded[$i]["in_lscom"] == 1){
-				$vi = new Visual;
-				$vi->{'term'}  = $decoded[$i]["term"];
-				$vi->{'time_jump_in_point'} = $decoded[$i]["time_jump_in_point"];
-				$vi->{'reranking_score'} = $decoded[$i]["reranking_score"];
-				$vi->{'visual_score'} = $decoded[$i]["visual_score"];
-				$vi->{'rating'} = $rating;
-				array_push($filtered->{'visual'}, $vi);
-			}*/
 		}
 	}
 

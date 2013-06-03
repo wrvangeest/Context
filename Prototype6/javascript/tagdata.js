@@ -157,12 +157,9 @@ $(document).ready(function(){
 	$("body").on("click",".rating", function() {
 		var user_id = 2;
 		var value = this.id.substr(7,1);
-		var term = this.parentNode.innerHTML;
-		term = term.substr(0,term.indexOf("<") - 1);
-		console.log(term);
+		var term = this.parentNode.parentNode.children[0].innerHTML;
 		$.post("php/setRating.php?term=" + term + "&score=" + value)
 			.done(function (result) {
-				console.log(result);
 			});
 	});
 
@@ -209,7 +206,6 @@ function getZapData(dur){
 	var vidid = hash['vidid'];
 	$.post("php/zappoints.php?id=" + vidid + "&dur=" + dur)
 		.done(function (data) {
-			console.log(data);
 			var obj = JSON.parse(data);
 			obj.visual.sort(sortByRerankingScore);
 			obj.tweet.sort(sortByRerankingScore);
