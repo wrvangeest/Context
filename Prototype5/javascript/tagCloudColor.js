@@ -4,7 +4,6 @@ $(document).ready(function(){
 
 function colorTags() {
 	var amountTags = $('#tag-cloud-inner').children().length;
-	console.log(amountTags);
 	var sR = 55;
 	var sG = 159;
 	var sB = 21;
@@ -17,7 +16,7 @@ function colorTags() {
 	var curR = sR;
 	var curG = sG;
 	var curB = sB;
-	for(var i = 0; i < amountTags - 1; i++){
+	for(var i = 0; i < amountTags; i++){
 		//var rgb = '#' + curR.toString(16) + curG.toString(16) + curB.toString(16);
 		var rgb = "rgb(" + curR + "," + curG + "," + curB + ")";
 		if($('#tag-toggle-button').html()=='Tweets'){
@@ -29,11 +28,5 @@ function colorTags() {
 		curR -= dR;
 		curG -= dG;
 		curB -= dB;
-	}
-	if($('#tag-toggle-button').html()=='Tweets'){
-		$('.tweettag' + amountTags-1).css("background-color", "rgb(" + eR + "," + eG + "," + eB + ")");
-	}
-	else{
-		$('.visualtag' + amountTags-1).css("background-color", "rgb(" + eR + "," + eG + "," + eB + ")");
 	}
 }
