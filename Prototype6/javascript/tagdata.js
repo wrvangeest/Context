@@ -11,9 +11,6 @@ $(document).ready(function(){
 		$loc = $loc.substr(0,$loc.length - 2);
 		//Jump to given time
 		goToTime(parseInt($loc) + OFFSET);
-		
-		$("#extrainfo_inner").html("");
-		updateExtraInfo(this);
 	});
 
 	$("body").on("mouseenter",".zapPoint",function(){
@@ -24,6 +21,7 @@ $(document).ready(function(){
 			updateExtraInfo(this);
 		}
 		var toggle = $('#tag-toggle-button').html();
+
 		//Highlights tag in cloud for tweetpoints
 		if($(this).hasClass("tweetPoint") && toggle == 'Tweets'){
 			$cloudClass = getAssocId(this);
@@ -61,12 +59,6 @@ $(document).ready(function(){
 		//Gather ID information
 		$zapId = getAssocId(this);
 
-		//Displays extra information on the right
-		if(!zapclicked && !tagclicked){
-			$("#extrainfo_inner").css("display", "block");
-			updateExtraInfo(document.getElementById($zapId));
-		}
-
 		//Change background color
 		$orTagColor = $(this).css("backgroundColor");
 		$(this).css("background-color", darkerColor(this));
@@ -80,10 +72,6 @@ $(document).ready(function(){
 	});	
 
 	$("body").on("mouseout",".tager", function() {
-		//Clear extra info
-		if(!zapclicked&&!tagclicked){
-			$("#extrainfo_inner").html("");
-		}
 		//Restore original colors
 		$(this).css("background-color", $orTagColor);
 		
@@ -101,22 +89,11 @@ $(document).ready(function(){
 		$zapId = getAssocId(this);
 
 		tagclicked = true;
-		$("#extrainfo_inner").html("");
-		updateExtraInfo(document.getElementById($zapId));
 		//Get pixel location
 		loc = $('#' + $zapId).css("margin-left");
 		loc = loc.substr(0,loc.length - 2);
 		//Jump to givesn time
 		goToTime(parseInt(loc) + OFFSET);
-	});
-
-//############# Mouse actions for extra info close button#################
-	$('body').on('click', '#extra-info-remove', function() {
-		if(zapclicked || tagclicked){
-			$("#extrainfo_inner").html("");
-		}
-		tagclicked = false;
-		zapclicked = false;
 	});
 
 //############# Mouse actions for ratings #################
@@ -159,12 +136,9 @@ $(document).ready(function(){
 	$("body").on("click",".rating", function() {
 		var user_id = 2;
 		var value = this.id.substr(7,1);
-		var term = this.parentNode.innerHTML;
-		term = term.substr(0,term.indexOf("<") - 1);
-		console.log(term);
+		var term = this.parentNode.parentNode.children[0].innerHTML;
 		$.post("php/setRating.php?term=" + term + "&score=" + value)
 			.done(function (result) {
-				console.log(result);
 			});
 	});
 
@@ -180,25 +154,6 @@ function goToTime(loc) {
 	Popcorn("#video").play();
 }
 
-//Update extra info using pixel offset in pixels as time indicator
-function updateExtraInfo(obj){
-		var time = calcTime(parseInt($(obj).css("margin-left")) + 4);
-		time = timeToMin(time);
-		//.append(snapshot(timeat))
-		if(zapclicked || tagclicked){
-		$("#extrainfo_inner").append('<div id="extrainfo_inner_top"><i class="icon-remove" id="extra-info-remove"></i></div>')
-							 .append('<br/>')
-							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
-							 .append('<div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
-		$("#extrainfo_inner").css('margin-top','-4px');
-		}else{
-		$("#extrainfo_inner").append('<br/>')
-							 .append(obj.getAttribute('term') + ' at approximately ' + time + '<br/>')
-							 .append('<div class="ratingbar" id="rating'+ obj.getAttribute('term') +'"></div>')
-		}				 
-		getRating(obj);
-
-}
 //##############################################################
 
 
