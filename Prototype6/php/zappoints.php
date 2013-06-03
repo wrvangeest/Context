@@ -1,7 +1,7 @@
 <?php
 //Make connection
 include("config.php");
-include("rating.php");
+include("getRating.php");
 
 	$dur = $_GET["dur"];
 	$data = file_get_contents("http://socialzapapi.demo.auxilium.nl/analyzer/" .  $_GET["id"] . "/scores?format=json");

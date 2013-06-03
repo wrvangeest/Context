@@ -209,6 +209,7 @@ function getZapData(dur){
 	var vidid = hash['vidid'];
 	$.post("php/zappoints.php?id=" + vidid + "&dur=" + dur)
 		.done(function (data) {
+			console.log(data);
 			var obj = JSON.parse(data);
 			obj.visual.sort(sortByRerankingScore);
 			obj.tweet.sort(sortByRerankingScore);
