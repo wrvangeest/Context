@@ -14,12 +14,6 @@ $(document).ready(function(){
 	});
 
 	$("body").on("mouseenter",".zapPoint",function(){
-		//Displays extra information on the right
-		//if no tag or zappoint is clicked
-		if(!zapclicked && !tagclicked){
-			$("#extrainfo_inner").css("display", "block");
-			updateExtraInfo(this);
-		}
 		var toggle = $('#tag-toggle-button').html();
 
 		//Highlights tag in cloud for tweetpoints
@@ -41,10 +35,6 @@ $(document).ready(function(){
 
 	$("body").on("mouseout",".zapPoint",function(){
 		var toggle = $('#tag-toggle-button').html();
-		//Clear extra info
-		if(!zapclicked&&!tagclicked){
-			$("#extrainfo_inner").html("");
-		}
 		if($(this).hasClass("tweetPoint") && toggle == 'Tweets' ){
 			$($cloudClass).css("background-color", $orTagColor);
 		}
