@@ -10,24 +10,23 @@ else
 	mysql_select_db("users", $con);	
 }
 
-function postRatings($term, $user_id, $score){
-	$result = mysql_query(" SELECT COUNT( user_id ) 
-							FROM (
-								SELECT user_id
-								FROM ratings
-								WHERE tag_name = '$term'
-								AND user_id = $user_id
-							) AS ids");
-	if(/*intval($result) > 0*/ 1==2){
-		$qry = "UPDATE ratings
-				SET rating='$score'
-				WHERE tag_name='$term' 
-				AND user_id='$user_id'";
-	}
-	else{
-		$qry = "INSERT INTO ratings(tag_name,user_id,rating)
-				VALUES('$term','$user_id','$score')";
-	}
+function postRatings($term, $score){
+	//Error codes:
+	//	1: Error
+	//	2: Success
+	//	3: Not logged in
+	$return = 1;
+	$id = $_SESSION['id'];
+
+	$qry = "DELETE * 
+			FROM ratings
+			WHERE user_id ='$id'
+		    AND tag_name = '$term';
+		    INSERT INTO ratings (tag_name,user_id,rating)
+		    VALUES ($term,$id,$score)";
+
+	$result = mysql_query($qry);
+
 	$success = mysql_query($qry);
 
 	return $result;

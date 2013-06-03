@@ -160,7 +160,7 @@ $(document).ready(function(){
 		var term = this.parentNode.innerHTML;
 		term = term.substr(0,term.indexOf("<") - 1);
 		console.log(term);
-		$.post("php/setRating.php?term=" + term + "&user_id=" + user_id + "&score=" + value)
+		$.post("php/setRating.php?term=" + term + "&score=" + value)
 			.done(function (result) {
 				console.log(result);
 			});
