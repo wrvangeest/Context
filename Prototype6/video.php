@@ -17,6 +17,7 @@
 		<script src ="lib/javascript/bootstrap.js"></script>
 		<script src ="lib/javascript/nouislider.js"></script>
 		<script src ="lib/javascript/moment.js"></script>
+		<script src ="lib/javascript/moment.js"></script>
 		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
 		<!--  css files -->
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
@@ -145,11 +146,15 @@
 					<!-- begin advanced options -->
 					<div id="adv-options">
 						<div class="well well-header">Advanced options</div>
-							<div style="clear:right;">Set minimal reranking Score</div>
+							<div style="clear:right;">Set minimal reranking Score 
+								<a href="#" id="popo" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The reranking score is a combination of a visual score and tweet scores. The tweet scores are calculated by comparing the tweets with the images and subjects in the video." title="Reranking Score" data-original-title="Popover on top">?</a>
+							</div>
 								<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
 								<input id="tweet_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
 
-								<div style="clear:right;">Set minimal visual Score</div>
+							<div style="clear:right;">Set minimal visual Score
+								<a href="#" id="popo2" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The visual score is calculated by comparing the keyframes with the tags. The higher the correspondence, the higher the score." title="Visual Score" data-original-title="Popover on top">?</a>
+							</div>
 								<div class="noUiSlider" id="slider2" style="float:left; margin-top:10px;"></div>
 								<input id="visual_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
 						</div>
@@ -179,12 +184,6 @@
 								</div>
 
 						<!-- end tagcloud -->
-						</div>
-
-						<div class="extrainfo">
-							<div class="well well-header">Extra information</div>
-							<div id="extrainfo_inner" style="display:none;">
-							</div>
 						</div>
 					</div>
 			

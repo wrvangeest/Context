@@ -10,6 +10,10 @@ $("#loading-img").show();
 				getSkipTime();
 			},0);
 
+			//POPOVER
+			$('#popo').popover();
+			$('#popo2').popover();
+
 			//fix search button
 			$("#searchbutton").click(function(){
 				var xyz = $("#search-animate-bar").css("margin-top");
