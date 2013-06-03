@@ -23,15 +23,16 @@ $(document).ready(function(){
 			$("#extrainfo_inner").css("display", "block");
 			updateExtraInfo(this);
 		}
+		var toggle = $('#tag-toggle-button').html();
 		//Highlights tag in cloud for tweetpoints
-		if($(this).hasClass("tweetPoint")){
+		if($(this).hasClass("tweetPoint") && toggle == 'Tweets'){
 			$cloudClass = getAssocId(this);
 			$orTagColor = $($cloudClass).css("backgroundColor");
 			$($cloudClass).css("background-color", darkerColor($cloudClass));
 			//scroll tag to the right position when hovering over tag
 			scrollToTag($cloudClass);
 		}
-		if($(this).hasClass("visualPoint")){
+		if($(this).hasClass("visualPoint") && toggle == 'Visual'){
 			$cloudClass = getAssocId(this);
 			$orTagColor = $($cloudClass).css("backgroundColor");
 			$($cloudClass).css("background-color", darkerColor($cloudClass));
@@ -41,14 +42,15 @@ $(document).ready(function(){
 	});
 
 	$("body").on("mouseout",".zapPoint",function(){
+		var toggle = $('#tag-toggle-button').html();
 		//Clear extra info
 		if(!zapclicked&&!tagclicked){
 			$("#extrainfo_inner").html("");
 		}
-		if($(this).hasClass("tweetPoint")){
+		if($(this).hasClass("tweetPoint") && toggle == 'Tweets' ){
 			$($cloudClass).css("background-color", $orTagColor);
 		}
-		if($(this).hasClass("visualPoint")){
+		if($(this).hasClass("visualPoint") && toggle == 'Visual' ){
 			$($cloudClass).css("background-color", $orTagColor);
 		}
 	});
@@ -209,7 +211,6 @@ function getZapData(dur){
 	var vidid = hash['vidid'];
 	$.post("php/zappoints.php?id=" + vidid + "&dur=" + dur)
 		.done(function (data) {
-			console.log(data);
 			var obj = JSON.parse(data);
 			obj.visual.sort(sortByRerankingScore);
 			obj.tweet.sort(sortByRerankingScore);
@@ -322,19 +323,11 @@ function createCloud(data,type){
 			tagButton.className = "btn btn-info tager tweettag" + index;
 			
 			var termDiv = document.createElement("div");
+			$(termDiv).addClass('term');
 			termDiv.innerHTML = item.term;
-			termDiv.style.float = 'left';
-			termDiv.style.marginLeft = 'auto';
-			termDiv.style.marginRight = 'auto';
-			termDiv.style.width = '50%';
-			termDiv.style.lineHeight = '100%';
 
 			var ratingDiv = document.createElement("div");
-			ratingDiv.style.float = 'left';
-			ratingDiv.style.marginLeft = 'auto';
-			ratingDiv.style.marginRight = 'auto';
-			ratingDiv.style.width = '50%';
-			ratingDiv.style.lineHeight = '100%';
+			$(ratingDiv).addClass('rating-all');
 			var rating = item.rating;
 			//Add stars
 			for(var i = 0; i < rating; i++){
@@ -362,17 +355,31 @@ function createCloud(data,type){
 			//Create the button
 			var tagButton = document.createElement("button");
 			tagButton.className = "btn btn-info tager visualtag" + index;
-			tagButton.innerHTML = item.term + "    ";
-			var rating = item.rating;
+			
+			var termDiv = document.createElement("div");
+			$(termDiv).addClass('term');
+			termDiv.innerHTML = item.term;
 
+			var ratingDiv = document.createElement("div");
+			$(ratingDiv).addClass('rating-all');
+			var rating = item.rating;
 			//Add stars
 			for(var i = 0; i < rating; i++){
-				tagButton.innerHTML += "<div class='icon-star ratingFull rating' id='rating" + rating + i + "'></div>"
+				var starDiv = document.createElement("div");
+				starDiv.className = "icon-star ratingFull rating";
+				starDiv.id = "rating" + rating + i;
+				ratingDiv.appendChild(starDiv);
+				//tagButton.innerHTML += "<div class='icon-star ratingFull rating' id='rating" + rating + i + "'></div>"
 			}
 			for(var i = rating; i < 5; i++){
-				tagButton.innerHTML += "<div class='icon-star-empty ratingEmpty rating' id='rating" + rating + i + "'></div>"
+				var starDiv = document.createElement("div");
+				starDiv.className = "icon-star-empty ratingFull rating";
+				starDiv.id = "rating" + rating + i;
+				ratingDiv.appendChild(starDiv);
+				//tagButton.innerHTML += "<div class='icon-star-empty ratingEmpty rating' id='rating" + rating + i + "'></div>"
 			}
-			
+			tagButton.appendChild(termDiv);
+			tagButton.appendChild(ratingDiv);
 			tagCloudInner.appendChild(tagButton);
 		})
 	}	

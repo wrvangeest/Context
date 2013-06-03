@@ -9,3 +9,18 @@
 	color: black;
 	margin-left:5px;
 }
+.term{
+	float: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	line-height: 100%;
+}
+
+.rating-all{
+	float: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	line-height: 100%;
+}
