@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$con = mysql_connect("localhost", "root", "root");
+include("config.php");
 
 if(!$con)
 {

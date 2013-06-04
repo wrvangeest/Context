@@ -1,14 +1,5 @@
 <?php
-	$con = mysql_connect("localhost", "root", "root");
-
-	if(!$con)
-	{
-		echo mysql_error();
-	}
-	else
-	{
-		mysql_select_db("users", $con);	
-	}
+	include("config.php");
 
 	function getRatings($term){
 		//Query

@@ -1,13 +1,10 @@
 <?php
  	session_start();
+ 	include("config.php");
 
     $email = $_REQUEST['email'];
     $password = $_REQUEST['password'];
     $name = $_REQUEST['name'];
-
- 
-
-	$con = mysql_connect("localhost", "root", "root");
 
 	if(!$con)
 	{

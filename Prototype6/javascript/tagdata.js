@@ -161,7 +161,7 @@ function getZapData(dur){
 			obj.tweet.sort(sortByRerankingScore);
 			jFiltered = JSON.stringify(obj);
 			localStorage.setItem(vidid, jFiltered);
-			filterData(vidid, dur, "" );
+			filterData(vidid, dur, "");
 		})
 		    //Give message when failed
 	   	.fail(function() {

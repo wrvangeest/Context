@@ -1,11 +1,9 @@
 <?php
-//Make connection
-include("config.php");
 include("getRating.php");
 
 	$dur = $_GET["dur"];
-	$data = file_get_contents("http://socialzapapi.demo.auxilium.nl/analyzer/" .  $_GET["id"] . "/scores?format=json");
-	$visualData = file_get_contents("http://socialzapapi.demo.auxilium.nl/videos/" . $_GET["id"] . "/zap_points");
+	$data = file_get_contents("http://socialzapapi2.demo.auxilium.nl/analyzer/" .  $_GET["id"] . "/scores?format=json");
+	$visualData = file_get_contents("http://socialzapapi2.demo.auxilium.nl/videos/" . $_GET["id"] . "/zap_points");
 
 	class Filtered {
 		public $visual = array();
@@ -70,7 +68,6 @@ include("getRating.php");
 			array_push($filtered->{'visual'}, $vi);
 		}
 	}
-
 	echo json_encode($filtered);
 
 	function timeToSec($minutes){
