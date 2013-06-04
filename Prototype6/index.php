@@ -111,7 +111,7 @@
 					</div>	
 					<div class="span4" style="padding-top:15px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="5" data-videoname="dwdd18052012" src="img/videothumb/dwdd18052012.png"/>
+						<img data-videoid="6" data-videoname="dwdd18052012" src="img/videothumb/dwdd18052012.png"/>
 						</div>
 						<span>dwdd-18052012</span>
 					</div>
