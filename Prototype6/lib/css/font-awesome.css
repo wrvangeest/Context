@@ -31,11 +31,11 @@
   font-style: normal;
 }*/
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('../FontAwesome/font/fontawesome-webfont.eot');
-  src: url('../FontAwesome/font/fontawesome-webfont.eot') format('embedded-opentype'),
-    url('../FontAwesome/font/fontawesome-webfont.woff') format('woff'),
-    url('../FontAwesome/font/fontawesome-webfont.ttf') format('truetype');
+  font-family: 'Fontawesome';
+  src: url('../Fontawesome/font/fontawesome-webfont.eot');
+  src: url('../Fontawesome/font/fontawesome-webfont.eot') format('embedded-opentype'),
+    url('../Fontawesome/font/fontawesome-webfont.woff') format('woff'),
+    url('../Fontawesome/font/fontawesome-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
