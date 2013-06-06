@@ -16,3 +16,22 @@ function search(searchTerm){
 function searchObject(object){
 	
 }
+
+
+$(document).ready(function(){
+
+	$('#top-search').keyup(function(e){
+		if(e.keyCode == 13)
+		{
+			if($(this).val() == "")
+			{
+				$(this).attr('placeholder','You need to fill something in here....');
+				e.stopImmediatePropagation();
+			}else
+			{
+				location.href = "search.php?query=" + $(this).val();
+			}
+		}
+	});
+
+});
