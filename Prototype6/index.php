@@ -97,53 +97,53 @@
 
 
 				<div class="row">
-					<div class="span4" style="padding-top:15px;">
+					<div class="span4" style="padding-top:15px; margin-left:32px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
 						<img data-videoid="3" data-videoname="dwdd14052012" src="img/videothumb/dwdd14052012.png" />
 						</div>
-						<span>dwdd-14052012</span>
+						<span>De Wereld Draait Door - 14-05-2012</span>
 					</div>		
 					<div class="span4" style="padding-top:15px; height:150px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
 						<img data-videoid="4" data-videoname="dwdd15052012" src="img/videothumb/dwdd15052012.png" />	
 						</div>
-						<span>dwdd-15052012</span>
+						<span>De Wereld Draait Door - 15-05-2012</span>
 					</div>	
 					<div class="span4" style="padding-top:15px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
 						<img data-videoid="6" data-videoname="dwdd18052012" src="img/videothumb/dwdd18052012.png"/>
 						</div>
-						<span>dwdd-18052012</span>
+						<span>De Wereld Draait Door - 18-05-2012</span>
 					</div>
 				</div>
 				<div class="row">
 
-						<div class="span4" style="padding-top:15px;">
+						<div class="span4" style="padding-top:15px;; margin-left:32px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">	
 						<img data-videoid="7" data-videoname="pow14052012" src="img/videothumb/pow14052012.png"/>
 						</div>
-						<span>pow-14052012</span>
+						<span>PowNed - 14-05-2012</span>
 					</div>		
 					<div class="span4" style="padding-top:15px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
 						<img data-videoid="8" data-videoname="pow15052012" src="img/videothumb/pow15052012.png"/>
 						</div>
-						<span>pow-15052012</span>
+						<span>PowNed - 15-05-2012</span>
 					</div>	
 					<div class="span4" style="padding-top:15px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
 						<img data-videoid="9" data-videoname="pow16052012" src="img/videothumb/pow16052012.png"/>
 						</div>
-						<span>pow-16052012</span>
+						<span>PowNed - 16-05-2012</span>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="span4" style="padding-top:15px;">
+					<div class="span4" style="padding-top:15px;; margin-left:32px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
 						<img data-videoid="10" data-videoname="pow18052012" src="img/videothumb/pow18052012.png"/>
 						</div>
-						<span>pow-18052012</span>
+						<span>PowNed - 18-05-2012</span>
 					</div>
 
 				</div>
@@ -154,7 +154,7 @@
 				<footer>
 					<div class="footer">
 						<div class="container">
-							Made by a Team at TU Delft, The Netherlands. Copyright 2013
+							Made by a Team at TU Delft, The Netherlands. Copyright 2013-2014
 						</div>
 					</div>
 				</footer>
