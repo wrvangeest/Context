@@ -99,19 +99,19 @@
 				<div class="row">
 					<div class="span4" style="padding-top:15px; margin-left:32px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="3" data-videoname="dwdd14052012" src="img/videothumb/dwdd14052012.png" />
+						<img data-videoid="3" data-videoname="dwdd14052012" data-title="De Wereld Draait Door - 14-05-2012" src="img/videothumb/dwdd14052012.png" />
 						</div>
 						<span>De Wereld Draait Door - 14-05-2012</span>
 					</div>		
 					<div class="span4" style="padding-top:15px; height:150px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="4" data-videoname="dwdd15052012" src="img/videothumb/dwdd15052012.png" />	
+						<img data-videoid="4" data-videoname="dwdd15052012" data-title="De Wereld Draait Door - 15-05-2012" src="img/videothumb/dwdd15052012.png" />	
 						</div>
 						<span>De Wereld Draait Door - 15-05-2012</span>
 					</div>	
 					<div class="span4" style="padding-top:15px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="6" data-videoname="dwdd18052012" src="img/videothumb/dwdd18052012.png"/>
+						<img data-videoid="6" data-videoname="dwdd18052012" data-title="De Wereld Draait Door - 18-05-2012" src="img/videothumb/dwdd18052012.png"/>
 						</div>
 						<span>De Wereld Draait Door - 18-05-2012</span>
 					</div>
@@ -120,19 +120,19 @@
 
 						<div class="span4" style="padding-top:15px;; margin-left:32px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">	
-						<img data-videoid="7" data-videoname="pow14052012" src="img/videothumb/pow14052012.png"/>
+						<img data-videoid="7" data-videoname="pow14052012" data-title="PowNed - 14-05-2012" src="img/videothumb/pow14052012.png"/>
 						</div>
 						<span>PowNed - 14-05-2012</span>
 					</div>		
 					<div class="span4" style="padding-top:15px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="8" data-videoname="pow15052012" src="img/videothumb/pow15052012.png"/>
+						<img data-videoid="8" data-videoname="pow15052012" data-title="PowNed - 15-05-2012" src="img/videothumb/pow15052012.png"/>
 						</div>
 						<span>PowNed - 15-05-2012</span>
 					</div>	
 					<div class="span4" style="padding-top:15px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="9" data-videoname="pow16052012" src="img/videothumb/pow16052012.png"/>
+						<img data-videoid="9" data-videoname="pow16052012" data-title="PowNed - 16-05-2012" src="img/videothumb/pow16052012.png"/>
 						</div>
 						<span>PowNed - 16-05-2012</span>
 					</div>
@@ -141,7 +141,7 @@
 				<div class="row">
 					<div class="span4" style="padding-top:15px;; margin-left:32px;">
 						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="10" data-videoname="pow18052012" src="img/videothumb/pow18052012.png"/>
+						<img data-videoid="10" data-videoname="pow18052012" data-title="PowNed - 18-05-2012" src="img/videothumb/pow18052012.png"/>
 						</div>
 						<span>PowNed - 18-05-2012</span>
 					</div>
@@ -191,7 +191,8 @@
 			$('img').click(function(){
 				var videoid = $(this).attr("data-videoid");
 				var videoname = $(this).attr("data-videoname");
-				location.href = "video.php?vidid=" + videoid + "&vidn=" + videoname;
+				var videotitle = $(this).attr("data-title");
+				location.href = "video.php?vidid=" + videoid + "&vidn=" + videoname + "&title=" + videotitle;
 			});
 
 		});

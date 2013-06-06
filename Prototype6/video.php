@@ -100,7 +100,7 @@
 				<div class="row">
 					<!-- video area -->
 					<div class="video-area span9">
-						<div class="well well-header"><?php echo $_REQUEST['vidn'];?></div>
+						<div class="well well-header"><?php echo $_REQUEST['title'];?></div>
 						<div>
 							<video height="394" width="700" id="video" style="margin-top:4px;">
 					
