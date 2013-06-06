@@ -327,7 +327,10 @@ function createCloud(data,type){
 			tagButton.appendChild(ratingDiv);
 			tagCloudInner.appendChild(tagButton);
 		})
-	}	
+	}
+	if(data.length < 1){
+		$('#tag-cloud-inner').append("<span>No tags found,change search query!</span>");
+	}
 	$("#loading-img").hide();
 }
 

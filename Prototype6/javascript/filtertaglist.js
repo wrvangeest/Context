@@ -25,6 +25,7 @@ function filterTagList(searchquery){
       		var tweetdata = data.tweet;
       		var type  = 'tweet';
       		var score = $("#tweet_value").val();
+
     }else{
       		var tweetdata = data.visual;
    			var type = 'visual';
@@ -36,13 +37,13 @@ function filterTagList(searchquery){
 	for(var i = 0;i < length;i++){
 		var tag = {};
 		tag.term = tweetdata[i].term;
+		tag.rating = tweetdata[i].rating;
 		if (type == 'tweet'){
 		tag.score = tweetdata[i].reranking_score;
 		}else{
-			tag.score = tweetdata[i].visual_score;
+		tag.score = tweetdata[i].visual_score;
 		}	
-		if(tag.score > score){
-
+		if(tag.score > score){			
 			if(tag.term.indexOf(searchquery) != -1){
 				filteredTags.push(tag);
 			}
