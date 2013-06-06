@@ -215,7 +215,7 @@
 							<div class="span9">
 								<div class="comments">
 										<div class="well well-header">Comments</div>
-										<div class="fb-comments" data-href= <?php echo curPageURL(); ?> data-width="700" data-num-posts="10"></div>
+										<div><input id="comments-input" type="text" placeholder="Write a comment...."></div>
 										
 								</div>
 							</div>
