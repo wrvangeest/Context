@@ -214,10 +214,10 @@
 						<div class="row">
 							<div class="span9">
 								<div class="comments">
-										<div class="well well-header">Comments</div>
-										<div class="fb-comments" data-href= <?php echo curPageURL(); ?> data-width="700" data-num-posts="10"></div>
-										
-								</div>
+									<div><button class="well well-header">Comments</button></div>
+									<div><input id="comments-input" type="text" placeholder="Write a comment...."></div>
+
+							</div>
 							</div>
 						</div>
 						<div id="video_bot_filler">
@@ -252,7 +252,8 @@
 	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/togglebutton.js"></script>
 	<script src ="javascript/rating.js"></script>
-	<script src="javascript/loginform.js" type="text/javascript"></script>
+	<script src ="javascript/loginform.js"></script>
+	<script src ="javascript/comments.js"></script>
 	<script src ="javascript/main.js"></script>
 
 	
