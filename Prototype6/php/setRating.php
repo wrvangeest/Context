@@ -25,7 +25,7 @@ function postRatings($term, $score){
 		$deleteQry = "DELETE  
 				FROM ratings
 				WHERE user_id ='$id'
-			    AND tag_name = '$term'";
+			    AND tag_name = '$term'";/
 		$qry = "INSERT INTO ratings (tag_name,user_id,rating)
 			    VALUES ('$term','$id','$score')";
 		$delSuccess = mysql_query($deleteQry);
