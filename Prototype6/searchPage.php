@@ -91,45 +91,12 @@
 
 			<div class="container" style="margin-top:15px;">
 				<div id="video_top_filler"> </div>
-				<div class="row">
+				<div class="row" id="topsearchheader">
 						<div class="well well-header" style="width:900px; margin-left:50px">Results for "<?php echo $_REQUEST['query'] ?>"</div>
 				</div>
-
-							<div class="row">
-					<div class="span4" style="padding-top:15px;">
-						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="3" data-videoname="dwdd14052012" src="img/videothumb/dwdd14052012.png" />
-						</div>
-						<span>dwdd-14052012</span>
-					</div>			
-					<div class="span4 offset1" style="padding-top:15px;">
-						<span><strong><i>Matched tags</i></strong></span>
-						<div>
-						Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag
-						</div>
-					</div>
+						
+				<div id="video_bot_filler">
 				</div>
-
-							<div class="row">
-					<div class="span4" style="padding-top:15px;">
-						<div style="height:160px; overflow:hidden;" class="vidThumb">
-						<img data-videoid="3" data-videoname="dwdd14052012" src="img/videothumb/dwdd14052012.png" />
-						</div>
-						<span>dwdd-14052012</span>
-					</div>			
-					<div class="span4 offset1" style="padding-top:15px;">
-						<span><strong><i>Matched tags</i></strong></span>
-						<div>
-						Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag Tag
-						</div>
-					</div>
-				</div>
-				
-				
-
-				
-					<div id="video_bot_filler">
-					</div>
 
 				<!-- footer -->
 				<footer>
@@ -169,13 +136,13 @@
 				location.href = "index.php";
 			});
 
-			$('img').click(function(){
+			$('body').on("click",'.searchImg',function(){
 				var videoid = $(this).attr("data-videoid");
 				var videoname = $(this).attr("data-videoname");
 				var videotitle = $(this).attr("data-title");
 				location.href = "video.php?vidid=" + videoid + "&vidn=" + videoname + "&title=" + videotitle;
-			});
-
+				});
+				
 		});
 
 		</script>
