@@ -30,7 +30,6 @@ function searchObject(searchTerm, object){
 			results.tweet.push(object.tweet[zapPoint]);
 		}
 	}
-	console.log(results);
 }
 
 
