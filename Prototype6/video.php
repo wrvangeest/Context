@@ -265,6 +265,7 @@
 	<script src ="javascript/setComment.js"></script>
 	<script src="javascript/loginform.js" type="text/javascript"></script>
 	<script src ="javascript/main.js"></script>
+	<script src ="javascript/comments.js"></script>
 	<script src="javascript/search.js" type="text/javascript"></script>
 
 
