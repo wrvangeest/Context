@@ -1,0 +1,29 @@
+<?php
+	include("config.php");
+
+	$vidid = $_REQUEST['vidid'];
+	
+	//Query
+	$qry = "SELECT * 
+			FROM comments 
+			WHERE vid_id = '$vidid'";
+
+	//Get data from table
+	$result = mysql_query($qry);
+
+	//If error
+	if(!$result){
+		$result = "Failed!";
+		exit();
+	}
+
+	$rows = array();
+
+	//Convert result to array
+	while($row = mysql_fetch_assoc($result)){
+		$rows[] = $row;
+	}
+
+	//Return a JSON string
+	echo json_encode($rows);
+?>
