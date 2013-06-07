@@ -6,7 +6,8 @@
 	//Query
 	$qry = "SELECT * 
 			FROM comments, registered_users 
-			WHERE vid_id = '$vidid'";
+			WHERE vid_id = '$vidid'
+			AND comments.user_id = registered_users.id";
 
 	//Get data from table
 	$result = mysql_query($qry);
