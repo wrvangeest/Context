@@ -6,6 +6,7 @@ include("getRating.php");
 	$visualData = file_get_contents("http://socialzapapi2.demo.auxilium.nl/videos/" . $_GET["id"] . "/zap_points");
 
 	class Filtered {
+		public $id = "";
 		public $visual = array();
 		public $tweet = array();
 	}
@@ -32,16 +33,17 @@ include("getRating.php");
 	$visualDecoded = $visualDecoded["zap_points"];
 
 	$filtered = new Filtered;
+	$filtered->{'id'} = $_GET["id"];
 
 	for($i = 0; $i < count($decoded); $i++){
-		if(timeToSec($decoded[$i]["time_jump_in_point"]) <= $dur){
+		if(timeToSec($decoded[$i]["time_jump_in_point"]) <= $dur && $decoded[$i]["term"] != ""){
 			$rating = getRatings($decoded[$i]["term"]);
 			$rating = json_decode($rating,true);
 			$rating = intval($rating[0]['rating']);
 			if($rating == null){
 				$rating = 3;
 			}
-			if($decoded[$i]["tweet_score"] > 0){
+			if($decoded[$i]["tweet_score"] > 0 ){
 				$tw = new Tweet;
 				$tw->{'term'} = $decoded[$i]["term"];
 				$tw->{'time_jump_in_point'} = $decoded[$i]["time_jump_in_point"];
@@ -53,7 +55,7 @@ include("getRating.php");
 	}
 
 	for($i = 0; $i < count($visualDecoded); $i++){
-		if(timeToSec($visualDecoded[$i]["start"]) <= $dur){
+		if(timeToSec($visualDecoded[$i]["start"]) <= $dur && $visualDecoded[$i]["term"] != ""){
 			$rating = json_decode(getRatings($decoded[$i]["term"]),true);
 			$rating = intval($rating[0]['rating']);
 			if($rating == null){
