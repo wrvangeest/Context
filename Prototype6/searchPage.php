@@ -148,7 +148,7 @@
 		</script>
 	</body>
 	<script src="javascript/geturlvars.js" type="text/javascript"></script>
-	<script src = "javascript/tempSearch.js" type="text/javascript"></script>
+	<script src = "javascript/initializeSearch.js" type="text/javascript"></script>
 	<script src="javascript/loginform.js" type="text/javascript"></script>
 	<script src="javascript/search.js" type="text/javascript"></script>
 	</html>
