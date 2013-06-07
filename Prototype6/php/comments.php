@@ -5,7 +5,7 @@
 	
 	//Query
 	$qry = "SELECT * 
-			FROM comments 
+			FROM comments, registered_users 
 			WHERE vid_id = '$vidid'";
 
 	//Get data from table

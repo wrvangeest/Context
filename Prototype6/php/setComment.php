@@ -24,11 +24,11 @@ else
 	}
 	else{
 
-		$name = $_SESSION['name'];
+		$user_id = $_SESSION['id'];
 		$vidid = $_REQUEST['vidid'];
 		
 		//Query
-		$qry = "INSERT INTO `comments`(`name`, `vid_id`, `text`) VALUES ('$name','$vidid','$comment')";
+		$qry = "INSERT INTO `comments`(`user_id`, `vid_id`, `text`) VALUES ('$user_id','$vidid','$comment')";
 
 
 		if(!mysql_query($qry))
