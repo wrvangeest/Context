@@ -215,7 +215,17 @@
 							<div class="span9">
 								<div class="comments">
 										<div class="well well-header">Comments</div>
-										<div class="fb-comments" data-href= <?php echo curPageURL(); ?> data-width="700" data-num-posts="10"></div>
+										<div>
+
+
+											<form class="form-inline" id="comments-input" method="post"> 
+												<input name="comment" type="text" class="input medium" id="inputcomment" placeholder="Type your comment here">
+												<button type="submit" class="btn" id="commentbutton">Comment!</button>
+											</form>
+										
+
+										</div>
+
 										
 								</div>
 							</div>
@@ -252,9 +262,12 @@
 	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/togglebutton.js"></script>
 	<script src ="javascript/rating.js"></script>
+	<script src ="javascript/setComment.js"></script>
 	<script src="javascript/loginform.js" type="text/javascript"></script>
 	<script src ="javascript/main.js"></script>
+	<script src ="javascript/comments.js"></script>
 	<script src="javascript/search.js" type="text/javascript"></script>
+
 
 	
 	</body>
