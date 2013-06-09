@@ -42,7 +42,7 @@ function loadComments(){
 			
 		var commentinfo = $(document.createElement('div'));
 		commentinfo.addClass("comment-info");
-		commentinfo.html('naam: '+ item.id + ' ' + datumformat + ' , ' + geleden);
+		commentinfo.html('naam: '+ item.name + ' ' + datumformat + ' , ' + geleden);
 
 		var commenttext = $(document.createElement('div'));
 		commenttext.addClass("comment-text");
