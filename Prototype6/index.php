@@ -56,8 +56,8 @@
 	  							<?php if( isset($_SESSION['loginstatus'])) {?>
 	  							<!-- If there is a existing session greet the user -->
 		  							<div id="logged-in">
-		  								<span>Hello, <?php echo $_SESSION['name']; ?></span>
-		  								<a href='php/logout.php' id='logout'>Logout</a>
+		  								<span>Hallo, <?php echo $_SESSION['name']; ?></span>
+		  								<a href='php/logout.php' id='logout'>Log uit</a>
 		  							</div>
 	  							
 	  							<?php }else {?>
@@ -70,15 +70,15 @@
 
 									  <label class="radio" id="loginlabel">
 										  <input type="radio" name="optionsRadios" id="loginradio" value="option1" checked>
-										  <span style="color:white;">Login</span>
+										  <span style="color:white;">Log in</span>
 										</label>
 										<label class="radio" id="registerlabel">
 										  <input type="radio" name="optionsRadios" id="registerradio" value="option2">
-										   <span style="color:white;">Register</span>
+										   <span style="color:white;">Registreer</span>
 										</label>
 
-									  <button type="submit" class="btn" id="ok">Sign in</button>
-									  <button type="submit" class="btn" id="ok-reg">Register</button>
+									  <button type="submit" class="btn" id="ok">Log in</button>
+									  <button type="submit" class="btn" id="ok-reg">Registreer</button>
 									</form>
 								<?php } ?>
 							</div>
@@ -92,7 +92,7 @@
 			<div class="container" style="margin-top:15px;">
 				<div id="video_top_filler"> </div>
 				<div class="row">
-						<div class="well well-header" style="width:900px; margin-left:50px">Browse all videos</div>
+						<div class="well well-header" style="width:900px; margin-left:50px">Verken alle video's</div>
 				</div>
 
 
@@ -154,7 +154,7 @@
 				<footer>
 					<div class="footer">
 						<div class="container">
-							Made by a Team at TU Delft, The Netherlands. Copyright 2013-2014
+							Gemaakt door het SocialZap Team van TU Delft, Nederland. Copyright 2013
 						</div>
 					</div>
 				</footer>
@@ -163,43 +163,9 @@
 			</div>
 		<!-- end page wrapper -->
 		</div>
-		<script>
-		$(document).ready(function(){
-
-
-				//fix search button
-			$("#searchbutton").click(function(){
-				var xyz = $("#search-animate-bar").css("margin-top");
-				if(parseInt(xyz) < 0){
-				$("#search-animate-bar").animate({ marginTop: '0px'}, 1000);
-				}else{
-					$("#search-animate-bar").animate({ marginTop: '-50px'}, 1000);
-				}
-
-			});
-
-			//fix browsebutton
-			$("#browsebutton").click(function(){
-				location.href = "index.php";
-			});
-
-			//fix homebutton
-			$("#homebutton").click(function(){
-				location.href = "index.php";
-			});
-
-			$('img').click(function(){
-				var videoid = $(this).attr("data-videoid");
-				var videoname = $(this).attr("data-videoname");
-				var videotitle = $(this).attr("data-title");
-				location.href = "video.php?vidid=" + videoid + "&vidn=" + videoname + "&title=" + videotitle;
-			});
-
-		});
-
-		</script>
 	</body>
 	<script src="javascript/loginform.js" type="text/javascript"></script>
 	<script src="javascript/search.js" type="text/javascript"></script>
+	<script src="javascript/initializeIndex.js" type= "text/javascript"></script>
 	<script src="javascript/main.js" type="text/javascript"></script>
 	</html>

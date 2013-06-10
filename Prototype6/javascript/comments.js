@@ -5,7 +5,7 @@ $(document).ready(function(){
 			e.preventDefault();
 
 			if($('#inputcomment').val() === ""){
-				alert("commentbox is empty");
+				alert("Geef je mening in het invoervak.");
 			}else{
 
 				var hash = getUrlVars();
@@ -13,7 +13,7 @@ $(document).ready(function(){
 				var text = $('#inputcomment').val();
 
 				$.post("php/setComment.php?", {vidid:vidid, comment:text}, function(data){
-					if(data == "succesfully commented!"){
+					if(data == "Opmerking is geplaatst!"){
 						$('#comments-real').html('');
 						loadComments();
 
@@ -85,7 +85,7 @@ function getPostTime(datumpost){
 	if(minuut <10){
 		minuut = '0'+minuut;
 	}
-	var datumformat = dag+"/"+maand+"/"+jaar+" around "+uur+":"+minuut;
+	var datumformat = dag+"/"+maand+"/"+jaar+" rond "+uur+":"+minuut;
 	return datumformat;
 }
 
@@ -97,18 +97,18 @@ function getPostPast(datumpost){
 	var verschildatum = nu - datumpost;
 	
 	if(verschildatum<1000){
-	    return Math.floor(verschildatum/1000) + " seconds ago";
+	    return Math.floor(verschildatum/1000) + " seconden geleden";
 	}
 	if(verschildatum<(60*60*1000)){
-	    return Math.floor(verschildatum/(60*1000)) +" minutes ago";
+	    return Math.floor(verschildatum/(60*1000)) +" minuten geleden";
 	}
 	if(verschildatum<(24*60*60*1000)){
-		return Math.floor(verschildatum/(60*60*1000)) +" hours ago";
+		return Math.floor(verschildatum/(60*60*1000)) +" uren geleden";
 	}
 	if(verschildatum<(365*24*60*60*1000)){
-		return Math.floor(verschildatum/(24*60*60*1000))+" days ago";
+		return Math.floor(verschildatum/(24*60*60*1000))+" dagen geleden";
 	}
 	else{
-	  	return "once upon a time";
+	  	return "lang, lang geleden";
 	}
 }
