@@ -30,3 +30,20 @@ function colorTags() {
 		curB -= dB;
 	}
 }
+
+function darkerColor(obj){
+	var colorChange = 50;
+	var str = $(obj).css("background-color");
+	var raw = str.match(/(\d+)/g);
+	var r = parseInt(raw[0]);
+	var g = parseInt(raw[1]);
+	var b = parseInt(raw[2]);
+	var hexr = r >= colorChange ? (r - colorChange).toString(16): (0).toString(16);
+	var hexg = g >= colorChange ? (g - colorChange).toString(16): (0).toString(16);;
+	var hexb = b >= colorChange ? (b - colorChange).toString(16): (0).toString(16);;
+	hexr = hexr.length == 1 ? '0' + hexr: hexr;
+	hexg = hexg.length == 1 ? '0' + hexg: hexg;
+	hexb = hexb.length == 1 ? '0' + hexb: hexb;
+	var hex = '#' + hexr + hexg + hexb;
+	return hex;
+}

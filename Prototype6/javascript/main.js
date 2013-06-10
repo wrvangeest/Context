@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-$("#loading-img").show();
+			$("#loading-img").show();
 			checkTime(function(dur) {
 				//Starts chain to construct ZapPoints
 				getZapData(dur);
@@ -62,10 +62,6 @@ $("#loading-img").show();
 					getNewTags("visual");
 				}
 			});
-
-			/*
-			var top = $('#adv-options').position().top;
-			$('.extrainfo').css('top',top);*/
 			
 			/**** Sets the total time
 				  Bij een readystate van 4 is alle informatie van een video geladen.
@@ -83,22 +79,6 @@ $("#loading-img").show();
 
 //End document ready    		
 });
-
-Popcorn("#video").on("playing", function(){
-	$("#pausebutton").show();
-	$("#playbutton").hide();
-});
-Popcorn("#video").on("pause", function(){
-	$("#pausebutton").hide();
-	$("#playbutton").show();
-})
-
-/* update de current time */
-Popcorn("#video").on("timeupdate", function(){
-	$("#current-time").text(moment(moment.duration(Popcorn("#video").currentTime(),'seconds')).format('mm:ss'));
-});
-
-
 
 function cleartags(){
 	$("#tag-cloud-inner").empty();
