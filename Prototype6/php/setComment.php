@@ -20,7 +20,7 @@ else
 
 
 	if(!isset($_SESSION['loginstatus'])){
-		echo "not logged in";
+		echo "niet ingelogd";
 	}
 	else{
 
@@ -33,11 +33,11 @@ else
 
 		if(!mysql_query($qry))
 		{
-			echo "something went wrong...";
+			echo "er ging iets verkeerd...";
 		}
 		else
 		{
-			echo "succesfully commented!";
+			echo "Opmerking is geplaatst!";
 		}
 
 
