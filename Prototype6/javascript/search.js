@@ -6,9 +6,7 @@ function searchTerms(searchTerm){
 			var obj = JSON.parse(data);
 			searchObject(searchTerm, obj);
 		})
-		    //Give message when failed
 	   	.fail(function() {
-	    	//alert("getZapData failed!");
 		});
 	}
 }
@@ -17,25 +15,29 @@ function searchObject(searchTerm, object){
 	var results = {};
 	results.visual = [];
 	results.tweet = [];
+	results.total = [];
 	results.id = object.id;
 	//Process visual
 	for(zapPoint in object.visual){
 		if(object.visual[zapPoint].term.search(searchTerm) >= 0){
-			results.visual.push(object.visual[zapPoint]);
+			results.total.push(object.visual[zapPoint]);
 		}
 	}
 	//Process tweet
 	for(zapPoint in object.tweet){
 		if(object.tweet[zapPoint].term.search(searchTerm) >= 0){
-			results.tweet.push(object.tweet[zapPoint]);
+			results.total.push(object.tweet[zapPoint]);
 		}
 	}
+	results.visual.sort(sortByRerankingScore);
+	results.tweet.sort(sortByRerankingScore);
+	results.total.sort(sortByRerankingScore);
 	putResultInPage(results);
 }
 
 
 function putResultInPage(object){
-	if(object.visual.length > 0 || object.tweet.length > 0){
+	if(object.visual.length > 0 || object.tweet.length > 0 || object.total.length > 0){
 
 		var imgSrc = '';
 		var vidTitle = '';
@@ -92,11 +94,16 @@ function putResultInPage(object){
 		imgdiv.addClass("vidThumb");
 
 		var img = $('<img></img>');
+		img.attr('id', 'img' + object.id);
 		img.attr('data-videoid', object.id);
 		img.attr('data-videoname',vidName);
 		img.attr('data-title',vidTitle);
 		img.attr('src', 'img/videothumb/' + imgSrc + '.png');
 		img.addClass('searchImg');
+		img.click(function(){
+			location.href = "video.php?vidid=" + object.id + "&vidn=" + vidName + "&title=" + vidTitle;
+		});
+		console.log(img);
 
 
 		var tagsContainer = $('<div></div>');
@@ -109,9 +116,12 @@ function putResultInPage(object){
 		tagsContainerTitle.append("Matched tags");
 
 		var tags = $('<div></div>');
-		for(tag in object.tweet){
+		tags.attr('id','tag-cloud-inner' + object.id);
+		tags.css('max-height','150px');
+		tags.css('overflow', 'auto');
+		/*for(tag in object.tweet){
 			tags.append(object.tweet[tag].term + "<br>");
-		}
+		}*/
 
 
 		imgdiv.append(img);
@@ -123,12 +133,61 @@ function putResultInPage(object){
 		container.append(tagsContainer);
 
 		$("#topsearchheader").after(container);
+
+		createSearchCloud(object);
 	}
 }
 
+function createSearchCloud(object){
+	var tagCloudInner = document.getElementById("tag-cloud-inner" + object.id);
+	var total = object.total;
+	jQuery.each(total, function(index,item) {
+		//Create the button
+		var tagButton = document.createElement("button");
+		tagButton.className = "btn btn-info tager tag" + object.id + index;
+		$(tagButton).attr('time_jump_in_point', timeToSec(item.time_jump_in_point));
+		tagButton.onclick = function(){
+				var helpImg = document.getElementById("img" + object.id);
+				window.location= "video.php?vidid=" + object.id + "&vidn=" + $(helpImg).attr('data-videoname') + 
+					"&title=" + $(helpImg).attr('data-title') + '&time=' + timeToSec(item.time_jump_in_point);
+		};
+		
+		var termDiv = document.createElement("div");
+		$(termDiv).addClass('term');
+		termDiv.innerHTML = item.term;
 
+		var ratingDiv = document.createElement("div");
+		$(ratingDiv).addClass('rating-all');
+		var rating = item.rating;
+		//Add stars
+		for(var i = 0; i < rating; i++){
+			var starDiv = document.createElement("div");
+			starDiv.className = "icon-star ratingFull rating";
+			starDiv.id = "rating" + rating + i;
+			ratingDiv.appendChild(starDiv);
+		}
+		for(var i = rating; i < 5; i++){
+			var starDiv = document.createElement("div");
+			starDiv.className = "icon-star-empty ratingFull rating";
+			starDiv.id = "rating" + rating + i;
+			ratingDiv.appendChild(starDiv);
+		}
+		tagButton.appendChild(termDiv);
+		tagButton.appendChild(ratingDiv);
+		tagCloudInner.appendChild(tagButton);
+		colorTags($(tagCloudInner).children().length, object.id);
+	})
+}
 
+//Sets sorting type
+function sortByRerankingScore(x,y){
+	return y.reranking_score - x.reranking_score;
+}
 
+function timeToSec(minutes){
+	var time = minutes.split(":");
+	return ((parseInt(time[0]) * 60) + parseInt(time[1]));
+}
 
 $(document).ready(function(){
 

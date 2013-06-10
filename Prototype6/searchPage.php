@@ -19,6 +19,7 @@
 		<!--  css files -->
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
+		<link rel="stylesheet" href="css/ratingbar.css" type="text/css">
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
 		
 	</head>
@@ -135,14 +136,6 @@
 			$("#homebutton").click(function(){
 				location.href = "index.php";
 			});
-
-			$('body').on("click",'.searchImg',function(){
-				var videoid = $(this).attr("data-videoid");
-				var videoname = $(this).attr("data-videoname");
-				var videotitle = $(this).attr("data-title");
-				location.href = "video.php?vidid=" + videoid + "&vidn=" + videoname + "&title=" + videotitle;
-				});
-				
 		});
 
 		</script>
@@ -151,4 +144,6 @@
 	<script src = "javascript/initializeSearch.js" type="text/javascript"></script>
 	<script src="javascript/loginform.js" type="text/javascript"></script>
 	<script src="javascript/search.js" type="text/javascript"></script>
+	<script src="javascript/tagCloudColor.js" type="text/javascript"></script>
+	<script src="javascript/checktime.js" type="text/javascript"></script>
 	</html>

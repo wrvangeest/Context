@@ -191,7 +191,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.tweet, "tweet");
 		createCloud(filteredTemp.tweet,type);
-		checkTags(colorTags,0);
+		colorTags($('#tag-cloud-inner').children().length,0);
 		break;
 	case "visual" :
 		$("#visualPoints").empty();
@@ -207,7 +207,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.visual, "visual");
 		createCloud(filteredTemp.visual,type);
-		checkTags(colorTags,0);
+		colorTags($('#tag-cloud-inner').children().length,0);
 		break;
 	default : 
 		for(var i = 0; i < Math.min(100, Math.max(data.visual.length, data.tweet.length)); i++){
@@ -236,7 +236,7 @@ function filterData(id, dur, type){
 		createZapCode(filteredTemp.visual, "visual");
 		//..tagcloud
 		createCloud(filteredTemp.tweet,'tweet');
-		checkTags(colorTags,0);
+		colorTags($('#tag-cloud-inner').children().length,0);
 		break;
 	}
 }
@@ -331,6 +331,7 @@ function createCloud(data,type){
 	if(data.length < 1){
 		$('#tag-cloud-inner').append("<span>No tags found,change search query!</span>");
 	}
+	colorTags($(tagCloudInner).children().length);
 	$("#loading-img").hide();
 }
 

@@ -1,9 +1,13 @@
 $(document).ready(function(){
-	checkTags(colorTags,0);
+	//checkTags(colorTags($('#tag-cloud-inner').children().length),0);
 });
 
-function colorTags() {
-	var amountTags = $('#tag-cloud-inner').children().length;
+function colorTags(amountTags) {
+	colorTags(amountTags, "");
+}
+
+function colorTags(amountTags, windowCounter) {
+	//var amountTags = $('#tag-cloud-inner').children().length;
 	var sR = 55;
 	var sG = 159;
 	var sB = 21;
@@ -22,8 +26,11 @@ function colorTags() {
 		if($('#tag-toggle-button').html()=='Tweets'){
 			$('.tweettag' + i).css("background-color", rgb);
 		}
-		else{
+		if($('#tag-toggle-button').html()=='Visual'){
 			$('.visualtag' + i).css("background-color", rgb);
+		}
+		else{
+			$('.tag' + windowCounter + i).css("background-color", rgb);
 		}
 		curR -= dR;
 		curG -= dG;
