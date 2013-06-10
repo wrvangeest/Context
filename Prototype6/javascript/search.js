@@ -83,7 +83,7 @@ function putResultInPage(object){
 
 		var container = $('<div></div>');
 		container.addClass("row");
-		//container.css('margin-left', '0px');
+		container.css('margin-left', '0px');
 
 		var imgContainer = $('<div></div>');
 		imgContainer.css('padding-top',"15px");
@@ -132,7 +132,7 @@ function putResultInPage(object){
 		container.append(imgContainer);
 		container.append(tagsContainer);
 
-		$("#topsearchheader").after(container);
+		$("#topsearchheader").append(container);
 
 		createSearchCloud(object);
 	}
@@ -176,6 +176,7 @@ function createSearchCloud(object){
 		tagButton.appendChild(ratingDiv);
 		tagCloudInner.appendChild(tagButton);
 		colorTags($(tagCloudInner).children().length, object.id);
+		$("#loading-img").hide();
 	})
 }
 

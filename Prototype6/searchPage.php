@@ -94,8 +94,9 @@
 				<div id="video_top_filler"> </div>
 				<div class="row" id="topsearchheader">
 						<div class="well well-header" style="width:900px; margin-left:50px">Results for "<?php echo $_REQUEST['query'] ?>"</div>
+				<div id="loading-img" style="width:30px; margin:0 auto; display:none;"><img src="img/ajax-loader.gif"/></div>
+				
 				</div>
-						
 				<div id="video_bot_filler">
 				</div>
 
