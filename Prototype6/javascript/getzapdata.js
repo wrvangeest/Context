@@ -16,10 +16,6 @@ function getZapData(dur){
 			localStorage.setItem(vidid, jFiltered);
 			filterData(vidid, dur, "");
 		})
-		    //Give message when failed
-	   	.fail(function() {
-	    	//alert("getZapData failed!");
-	});
 }		
 
 //Sets sorting type

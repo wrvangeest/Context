@@ -1,7 +1,4 @@
-$(document).ready(function(){
-	//checkTags(colorTags($('#tag-cloud-inner').children().length),0);
-});
-
+//Colors the tags in taglists
 function colorTags(amountTags) {
 	colorTags(amountTags, "");
 }
@@ -38,6 +35,7 @@ function colorTags(amountTags, windowCounter) {
 	}
 }
 
+//Creates a darker color of the current background color
 function darkerColor(obj){
 	var colorChange = 50;
 	var str = $(obj).css("background-color");

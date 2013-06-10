@@ -1,5 +1,6 @@
+//Initialization functions for every page
 $(document).ready(function(){
-	//fix search button
+	//Set search button
 	$("#searchbutton").click(function(){
 		var xyz = $("#search-animate-bar").css("margin-top");
 		if(parseInt(xyz) < 0){
@@ -7,10 +8,14 @@ $(document).ready(function(){
 		}else{
 			$("#search-animate-bar").animate({ marginTop: '-50px'}, 1000);
 		}
-
 	});
 
-	//fix browsebutton
+	//Set homebutton
+	$("#homebutton").click(function(){
+		location.href = "index.php";
+	});	
+
+	//Set browsebutton
 	$("#browsebutton").click(function(){
 		location.href = "index.php";
 	});
@@ -33,14 +38,5 @@ $(document).ready(function(){
 	});
 	//###############################################################
 
-	//fix homebutton
-	$("#homebutton").click(function(){
-		location.href = "index.php";
-	});		
+		
 });
-
-function cleartags(){
-	$("#tag-cloud-inner").empty();
-	$("#tweetPoints").empty();
-	$("#visualPoints").empty();
-}

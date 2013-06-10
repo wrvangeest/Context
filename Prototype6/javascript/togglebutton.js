@@ -1,7 +1,5 @@
+//Defines toggle button behaviour
 $(document).ready(function(){
-
- 
- 
 	$('#tag-toggle-button').click(function(){
         if($(this).html() == 'Tweets'){
         	$('#tag-toggle-button').animate({

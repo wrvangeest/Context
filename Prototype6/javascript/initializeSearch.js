@@ -1,3 +1,4 @@
+//Starts all functions on search page
 $(document).ready(function(){
 	//Grabs search term from URL
 	var term = getUrlVars();

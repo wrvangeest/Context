@@ -261,7 +261,7 @@
 	<script src ="javascript/helperfunctions.js"></script>
 	<script src ="javascript/tagCloudColor.js"></script>
 	<script src ="javascript/social.js"></script>
-		<script src ="javascript/checktime.js"></script>
+	<script src ="javascript/checktime.js"></script>
 
 
 	<script src ="javascript/geturlvars.js"></script>
@@ -270,7 +270,6 @@
 	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/togglebutton.js"></script>
 	<script src ="javascript/rating.js"></script>
-	<script src ="javascript/setComment.js"></script>
 	<script src="javascript/loginform.js"></script>
 	<script src ="javascript/comments.js"></script>
 

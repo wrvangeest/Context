@@ -1,3 +1,4 @@
+//Runs functions for the login form
 $(document).ready(function(){
 
 //################### Functions to properly display login forms #########################

@@ -61,24 +61,7 @@ $(document).ready(function(){
 			getNewTags("visual");
 		}
 	});
-
-	/**** Sets the total time
-		  Bij een readystate van 4 is alle informatie van een video geladen.
-	 ***/
-	/*var states = function() {
-		// store the readyState
-	    var rdy = Popcorn("#video").readyState();
-    	if(rdy===4){
-	        $("#total-time").text(moment(moment.duration(Popcorn("#video").duration(),'seconds')).format('mm:ss')) ;
-	    }else{
-	    	setTimeout( states, 10 );
-	    }
-	}
-	states(); */
-
-
-
-
+	
 	//When played show pause button, and when paused show play button
 	Popcorn("#video").on("playing", function(){
 		$("#pausebutton").show();

@@ -79,7 +79,17 @@ function getAssocId(obj){
 	}
 }
 
+//Checks if an element has class clss
 function hasClass(element, clss){
 	return (' ' + element.className + ' ').indexOf(' ' + clss + ' ') > -1;
+}
+
+//Set video to time in url (if any)
+function getSkipTime(){
+	var hash = getUrlVars();
+
+	if(!isNaN(hash['time'])){
+		Popcorn("#video").currentTime(hash['time']).play();
+	}
 }
 //##############################################################

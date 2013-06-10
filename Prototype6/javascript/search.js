@@ -116,7 +116,8 @@ function putResultInPage(object){
 		//Explanation div
 		var explainDiv = document.createElement('div');
 		$(explainDiv).css('float', 'left');
-		$(explainDiv).css('width','100%');
+		explainDiv.style.width = '90%';
+		explainDiv.style.marginLeft = '12px';
 		var iconDiv = document.createElement('div');
 		$(iconDiv).addClass('icon');
 		iconDiv.innerHTML = "Type";
@@ -143,6 +144,7 @@ function putResultInPage(object){
 		tags.css('max-height','150px');
 		tags.css('overflow', 'auto');
 		tags.css('float','left');
+		tags.css('width','100%');
 
 		//Append all items
 		imgdiv.append(img);

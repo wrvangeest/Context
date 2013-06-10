@@ -13,13 +13,16 @@ $(document).ready(function(){
 //filter tags by search query and tweetslider score
 function filterTagList(searchquery){
 
+	//Get the video ID from URL
 	var hash = getUrlVars();
 	var vidid = hash['vidid'];
 
-	
+	//Create object
 	var filteredTags = [];
+	//Grab data from localstorage
 	var data = JSON.parse(localStorage.getItem(vidid));
 	 
+	//Check button state
 	var button = $('#tag-toggle-button').html();
 	if(button == 'Tweets'){
       		var tweetdata = data.tweet;
@@ -49,5 +52,6 @@ function filterTagList(searchquery){
 			}
 		}
 	}
+	//Generate the cloud
 	createCloud(filteredTags,type);
 }
