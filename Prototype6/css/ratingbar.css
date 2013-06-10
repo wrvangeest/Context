@@ -9,18 +9,26 @@
 	color: black;
 	margin-left:5px;
 }
+.icon{
+	float:left;
+	width:14%;
+	line-height: 100%;
+	text-align: center;
+}
 .term{
 	float: left;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+	width: 43%;
 	line-height: 100%;
+	text-align: center;
 }
 
 .rating-all{
 	float: left;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+	width: 43%;
 	line-height: 100%;
+	text-align: center;
 }

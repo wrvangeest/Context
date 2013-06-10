@@ -20,7 +20,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.tweet, "tweet");
 		createCloud(filteredTemp.tweet,type);
-		checkTags(colorTags,0);
+		checkTags(colorTags($('#tag-cloud-inner').children().length,0),0);
 		break;
 	case "visual" :
 		$("#visualPoints").empty();
@@ -36,7 +36,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.visual, "visual");
 		createCloud(filteredTemp.visual,type);
-		checkTags(colorTags,0);
+		checkTags(colorTags($('#tag-cloud-inner').children().length,0),0);
 		break;
 	default : 
 		for(var i = 0; i < Math.min(100, Math.max(data.visual.length, data.tweet.length)); i++){
@@ -65,7 +65,7 @@ function filterData(id, dur, type){
 		createZapCode(filteredTemp.visual, "visual");
 		//..tagcloud
 		createCloud(filteredTemp.tweet,'tweet');
-		checkTags(colorTags,0);
+		checkTags(colorTags($('#tag-cloud-inner').children().length,0),0);
 		break;
 	}
 }

@@ -3,6 +3,10 @@
 function getZapData(dur){
 	var hash = getUrlVars();
 	var vidid = hash['vidid'];
+	var local = localStorage.getItem(vidid);
+	if(local != null){
+		filterData(vidid, dur, "");
+	}
 	$.post("php/zappoints.php?id=" + vidid + "&dur=" + dur)
 		.done(function (data) {
 			var obj = JSON.parse(data);

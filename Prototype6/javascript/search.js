@@ -110,15 +110,34 @@ function putResultInPage(object){
 		tagsContainer.css('padding-top',"15px");
 		tagsContainer.addClass("span4 offset1");
 
+		var explainDiv = document.createElement('div');
+		$(explainDiv).css('float', 'left');
+		$(explainDiv).css('width','100%');
+		var iconDiv = document.createElement('div');
+		$(iconDiv).addClass('icon');
+		iconDiv.innerHTML = "Type";
+		var termDiv = document.createElement("div");
+		$(termDiv).addClass('term');
+		termDiv.innerHTML = "Term";
+		var ratingDiv = document.createElement("div");
+		$(ratingDiv).addClass('rating-all');
+		ratingDiv.innerHTML = "Rating";
+		explainDiv.appendChild(iconDiv);
+		explainDiv.appendChild(termDiv);
+		explainDiv.appendChild(ratingDiv);
+
+
 		var tagsContainerTitle = $('<span></span>');
 		tagsContainerTitle.css('font-weight','bold');
 		tagsContainerTitle.css('font-style','italic');
-		tagsContainerTitle.append("Matched tags");
+		tagsContainerTitle.append("<div>Matched tags</div>");
+		tagsContainerTitle.append(explainDiv);
 
 		var tags = $('<div></div>');
 		tags.attr('id','tag-cloud-inner' + object.id);
 		tags.css('max-height','150px');
 		tags.css('overflow', 'auto');
+		tags.css('float','left');
 		/*for(tag in object.tweet){
 			tags.append(object.tweet[tag].term + "<br>");
 		}*/
@@ -151,6 +170,16 @@ function createSearchCloud(object){
 				window.location= "video.php?vidid=" + object.id + "&vidn=" + $(helpImg).attr('data-videoname') + 
 					"&title=" + $(helpImg).attr('data-title') + '&time=' + timeToSec(item.time_jump_in_point);
 		};
+
+		var iconDiv = document.createElement("div");
+		$(iconDiv).addClass('icon');
+		if(item.visual_score != null){
+			iconDiv.innerHTML = "<div class='icon-eye-open'></div>";
+		}
+		else{
+			iconDiv.innerHTML = "<div class='icon-twitter-sign'></div>";
+		}
+
 		
 		var termDiv = document.createElement("div");
 		$(termDiv).addClass('term');
@@ -172,6 +201,7 @@ function createSearchCloud(object){
 			starDiv.id = "rating" + rating + i;
 			ratingDiv.appendChild(starDiv);
 		}
+		tagButton.appendChild(iconDiv);
 		tagButton.appendChild(termDiv);
 		tagButton.appendChild(ratingDiv);
 		tagCloudInner.appendChild(tagButton);
