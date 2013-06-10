@@ -119,13 +119,13 @@ function putResultInPage(object){
 		explainDiv.style.width = '90%';
 		explainDiv.style.marginLeft = '12px';
 		var iconDiv = document.createElement('div');
-		$(iconDiv).addClass('icon');
+		$(iconDiv).addClass('icon search');
 		iconDiv.innerHTML = "Type";
 		var termDiv = document.createElement("div");
-		$(termDiv).addClass('term');
+		$(termDiv).addClass('term search');
 		termDiv.innerHTML = "Term";
 		var ratingDiv = document.createElement("div");
-		$(ratingDiv).addClass('rating-all');
+		$(ratingDiv).addClass('rating-all search');
 		ratingDiv.innerHTML = "Rating";
 		explainDiv.appendChild(iconDiv);
 		explainDiv.appendChild(termDiv);

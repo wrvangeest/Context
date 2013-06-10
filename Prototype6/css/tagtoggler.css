@@ -10,8 +10,12 @@
   -webkit-box-shadow: inset 0px 0px 4px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0px 0px 4px 0 rgba(0, 0, 0, 0.25);
   box-shadow: inset 0px 0px 4px 0 rgba(0, 0, 0, 0.75);
+  cursor:pointer;
 }
 #tag-toggle-button{
+  z-index: 4;
+  position: absolute;
+  float:left;
   display: block;
   width: 50%;
   height: 30px;
@@ -27,8 +31,33 @@
   font-size:11px;
   font-weight:bold;
   text-align: center;
-  cursor: pointer;
   -webkit-box-shadow: inset 0px 0px 4px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0px 0px 4px 0 rgba(0, 0, 0, 0.25);
   box-shadow: inset 0px 0px 4px 0 rgba(0, 0, 0, 0.75);
+}
+
+#tag-toggle-achtergrond{
+  z-index:3;
+  width:100%;
+  float:left;
+  line-height: 27px;
+  position: absolute;
+  color:#778899;
+  font-style: italic;
+  font-size: 0.7em;
+}
+
+.links{
+  width:50%;
+  float:left;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.rechts{
+  width:50%;
+  float:right;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }

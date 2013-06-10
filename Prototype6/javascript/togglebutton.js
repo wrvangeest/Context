@@ -1,7 +1,7 @@
 //Defines toggle button behaviour
 $(document).ready(function(){
-	$('#tag-toggle-button').click(function(){
-        if($(this).html() == 'Tweets'){
+	$('#tag-toggle').click(function(){
+        if($('#tag-toggle-button').html() == 'Tweets'){
         	$('#tag-toggle-button').animate({
              	marginLeft: '50%'
         	},0.1);

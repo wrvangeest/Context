@@ -181,6 +181,10 @@
 						<div class="tag-cloud">
 								<div class="well well-header">Populaire onderwerpen</div>
 								<div id="tag-toggle">
+									<div id="tag-toggle-achtergrond">
+							             <span class="links">Tweets</span>
+							             <span class="rechts">Visual</span>
+						            </div>
 								    <span id="tag-toggle-button">Tweets</span>
 								</div>
 
