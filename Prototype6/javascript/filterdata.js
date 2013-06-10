@@ -67,8 +67,7 @@ function filterData(id, dur, type){
 		createZapCode(filteredTemp.visual, "visual");
 		//..tagcloud
 		createCloud(filteredTemp.tweet,'tweet');
-		var number = $('#tag-cloud-inner').children().length;
-		checkTags(colorTags(number,""),0);
+		checkTags(colorTags($('#tag-cloud-inner').children().length,""),0);
 		break;
 	}
 }
