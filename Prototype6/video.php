@@ -243,7 +243,7 @@
 			<footer>
 				<div class="footer">
 					<div class="container">
-						Made by a Team at TU Delft, The Netherlands. Copyright 2013
+						Made by the SocialZap Team at TU Delft, The Netherlands. Copyright 2013
 					</div>
 				</div>
 			</footer>
@@ -264,9 +264,7 @@
 	<script src ="javascript/checktime.js"></script>
 
 
-	<script src ="javascript/geturlvars.js"></script>
-	<script src ="javascript/skiptime.js"></script>
-	
+	<script src ="javascript/geturlvars.js"></script>	
 	<script src ="javascript/filtertaglist.js"></script>
 	<script src ="javascript/togglebutton.js"></script>
 	<script src ="javascript/rating.js"></script>

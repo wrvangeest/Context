@@ -5,7 +5,6 @@ $(document).ready(function(){
     	setTimeout(function() {
       		var query = $('#tagSearch').val();
       		filterTagList(query);
-      		colorTags();
     	}, 50);
   	});
 });
@@ -54,4 +53,5 @@ function filterTagList(searchquery){
 	}
 	//Generate the cloud
 	createCloud(filteredTags,type);
+	checkTags(function(){colorTags($('#tag-cloud-inner').children().length)},0);
 }

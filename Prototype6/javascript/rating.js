@@ -2,25 +2,22 @@ $(document).ready(function(){
 
 //############# Mouse actions for ratings #################
 	$("body").on("mouseenter",".rating", function() {
-		if($(this).hasClass("icon-star")){
-			var child = this;
+		var orChild = this;
+		var child = orChild;
+		while(child.nextSibling){
 			$(child).removeClass("icon-star");
 			$(child).addClass("icon-star-empty");
-			while(child.nextSibling){
-				child = child.nextSibling;
-				$(child).removeClass("icon-star");
-				$(child).addClass("icon-star-empty");
-			}
+			child = child.nextSibling;
 		}
+		child = orChild;
+		while(child.previousSibling){
+			$(child).removeClass("icon-star-empty");
+			$(child).addClass("icon-star");
+			child = child.previousSibling;
+		}
+		$(orChild).removeClass("icon-star-empty");
+		$(orChild).addClass("icon-star");
 
-		if($(this).hasClass("icon-star-empty")){	
-			var child = this;
-			while(child.previousSibling){
-				$(child).removeClass("icon-star-empty");
-				$(child).addClass("icon-star");
-				child = child.previousSibling;
-			}
-		}
 	});
 
 	$("body").on("mouseout",".rating", function() {
@@ -42,6 +39,11 @@ $(document).ready(function(){
 		var term = this.parentNode.parentNode.children[0].innerHTML;
 		$.post("php/setRating.php?term=" + term + "&score=" + value)
 			.done(function (result) {
+				switch(result){
+					case '1': alert("Er is iets mis gegaan"); break;
+					case '2': alert("Rating toegevoegd."); break;
+					case '3': alert("Je moet eerst ingelogd zijn om een rating te geven."); break;
+				}
 			});
 	});
 //#########################################################
