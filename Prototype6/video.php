@@ -67,7 +67,7 @@
 			     				<button class="btn navButton" id="browsebutton"><div class="icon-th navButton"></button>
 			     				<button class="btn navButton" id="searchbutton"><div class="icon-search navButton"></button>
 			     			</div>
-	  						<div id="nav-bar-form">
+	  						<div id="nav-bar-form" style="margin-top:0px; float:right;">
 	  							
 	  							<?php if( isset($_SESSION['loginstatus'])) {?>
 	  							<!-- If there is a existing session greet the user -->
@@ -81,7 +81,20 @@
 			  						<form class="form-inline" id="inlog-form" method="post">
 									  <input name="email" type="text" class="input-small" id="login-email" placeholder="Email">
 									  <input name="password" type="password" class="input-small" id="login-passwd" placeholder="Password">
+									  <input name="name" type="text" class="input-small" id="reg-name" placeholder="Name">
+
+
+									  <label class="radio" id="loginlabel">
+										  <input type="radio" name="optionsRadios" id="loginradio" value="option1" checked>
+										  <span style="color:white;">Log in</span>
+										</label>
+										<label class="radio" id="registerlabel">
+										  <input type="radio" name="optionsRadios" id="registerradio" value="option2">
+										   <span style="color:white;">Registreer</span>
+										</label>
+
 									  <button type="submit" class="btn" id="ok">Log in</button>
+									  <button type="submit" class="btn" id="ok-reg">Registreer</button>
 									</form>
 								<?php } ?>
 							</div>
