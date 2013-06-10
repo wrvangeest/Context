@@ -1,3 +1,4 @@
+//Function to initialize the process
 function searchTerms(searchTerm){
 	var videos = [3,4,6,7,8,9,10];
 	for(video in videos){
@@ -11,10 +12,9 @@ function searchTerms(searchTerm){
 	}
 }
 
+//Generates the JSON object of search results
 function searchObject(searchTerm, object){
 	var results = {};
-	results.visual = [];
-	results.tweet = [];
 	results.total = [];
 	results.id = object.id;
 	//Process visual
@@ -29,13 +29,11 @@ function searchObject(searchTerm, object){
 			results.total.push(object.tweet[zapPoint]);
 		}
 	}
-	results.visual.sort(sortByRerankingScore);
-	results.tweet.sort(sortByRerankingScore);
 	results.total.sort(sortByRerankingScore);
 	putResultInPage(results);
 }
 
-
+//Generates result page skeleton
 function putResultInPage(object){
 	if(object.visual.length > 0 || object.tweet.length > 0 || object.total.length > 0){
 
@@ -43,6 +41,7 @@ function putResultInPage(object){
 		var vidTitle = '';
 		var vidName = '';
 
+		//!!!!! Hardcoded associated video names and titles
 		switch(object.id){
 			case '3':
 				imgSrc = 'dwdd14052012';
@@ -81,18 +80,22 @@ function putResultInPage(object){
 				break;
 		}
 
+		//Big container
 		var container = $('<div></div>');
 		container.addClass("row");
 		container.css('margin-left', '0px');
 
+		//Image container
 		var imgContainer = $('<div></div>');
 		imgContainer.css('padding-top',"15px");
 		imgContainer.addClass("span4 offset1");
 
+		//Image div
 		var imgdiv = $('<div></div>');
 		imgdiv.css('overflow', 'hidden');
 		imgdiv.addClass("vidThumb");
 
+		//Image
 		var img = $('<img></img>');
 		img.attr('id', 'img' + object.id);
 		img.attr('data-videoid', object.id);
@@ -105,11 +108,12 @@ function putResultInPage(object){
 		});
 		console.log(img);
 
-
+		//Tags container
 		var tagsContainer = $('<div></div>');
 		tagsContainer.css('padding-top',"15px");
 		tagsContainer.addClass("span4 offset1");
 
+		//Explanation div
 		var explainDiv = document.createElement('div');
 		$(explainDiv).css('float', 'left');
 		$(explainDiv).css('width','100%');
@@ -126,23 +130,21 @@ function putResultInPage(object){
 		explainDiv.appendChild(termDiv);
 		explainDiv.appendChild(ratingDiv);
 
-
+		//Tags title
 		var tagsContainerTitle = $('<span></span>');
 		tagsContainerTitle.css('font-weight','bold');
 		tagsContainerTitle.css('font-style','italic');
 		tagsContainerTitle.append("<div>Matched tags</div>");
 		tagsContainerTitle.append(explainDiv);
 
+		//Tags div
 		var tags = $('<div></div>');
 		tags.attr('id','tag-cloud-inner' + object.id);
 		tags.css('max-height','150px');
 		tags.css('overflow', 'auto');
 		tags.css('float','left');
-		/*for(tag in object.tweet){
-			tags.append(object.tweet[tag].term + "<br>");
-		}*/
 
-
+		//Append all items
 		imgdiv.append(img);
 		imgdiv.append(vidTitle);
 		tagsContainer.append(tagsContainerTitle);
@@ -150,16 +152,20 @@ function putResultInPage(object){
 		imgContainer.append(imgdiv);
 		container.append(imgContainer);
 		container.append(tagsContainer);
-
 		$("#topsearchheader").append(container);
 
+		//Call to function that generates result list
 		createSearchCloud(object);
 	}
 }
 
+//Generates result list
 function createSearchCloud(object){
+	//Get div to append to
 	var tagCloudInner = document.getElementById("tag-cloud-inner" + object.id);
+	//Array with results
 	var total = object.total;
+	//For each result in object
 	jQuery.each(total, function(index,item) {
 		//Create the button
 		var tagButton = document.createElement("button");
@@ -171,6 +177,7 @@ function createSearchCloud(object){
 					"&title=" + $(helpImg).attr('data-title') + '&time=' + timeToSec(item.time_jump_in_point);
 		};
 
+		//Div containing type icon
 		var iconDiv = document.createElement("div");
 		$(iconDiv).addClass('icon');
 		if(item.visual_score != null){
@@ -180,11 +187,12 @@ function createSearchCloud(object){
 			iconDiv.innerHTML = "<div class='icon-twitter-sign'></div>";
 		}
 
-		
+		//Div containing term
 		var termDiv = document.createElement("div");
 		$(termDiv).addClass('term');
 		termDiv.innerHTML = item.term;
 
+		//Div containing rating stars
 		var ratingDiv = document.createElement("div");
 		$(ratingDiv).addClass('rating-all');
 		var rating = item.rating;
@@ -201,11 +209,14 @@ function createSearchCloud(object){
 			starDiv.id = "rating" + rating + i;
 			ratingDiv.appendChild(starDiv);
 		}
+		//Append all items
 		tagButton.appendChild(iconDiv);
 		tagButton.appendChild(termDiv);
 		tagButton.appendChild(ratingDiv);
 		tagCloudInner.appendChild(tagButton);
+		//Call to function that colors tags
 		colorTags($(tagCloudInner).children().length, object.id);
+		//Remove loading icon
 		$("#loading-img").hide();
 	})
 }
@@ -215,26 +226,8 @@ function sortByRerankingScore(x,y){
 	return y.reranking_score - x.reranking_score;
 }
 
+//Converts 'minutes:seconds' to seconds
 function timeToSec(minutes){
 	var time = minutes.split(":");
 	return ((parseInt(time[0]) * 60) + parseInt(time[1]));
 }
-
-$(document).ready(function(){
-
-	$('#top-search').keyup(function(e){
-		if(e.keyCode == 13)
-		{
-			if($(this).val() == "")
-			{
-				$(this).attr('placeholder','Please enter a search term....');
-				e.stopImmediatePropagation();
-			}else
-			{
-				location.href = "searchPage.php?query=" + $(this).val();
-				searchTerms($(this).val());
-			}
-		}
-	});
-
-});

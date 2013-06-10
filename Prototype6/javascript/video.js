@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$("#loading-img").show();
 
 	/*########################### begin update progressbar  ###########*/
 
@@ -31,7 +32,52 @@ $(document).ready(function(){
 		pop.pause();
 	});
 
-	/*########################### end update progresar ################*/
+	/*########################### end update progressbar ################*/
+
+	//make first slider
+	$("#slider1").noUiSlider({
+		range: [0, 1]
+	   ,start: 0.5
+	   ,handles: 1
+	   ,connect: "lower"
+	   ,serialization: {
+	      to: [$("#tweet_value")]
+	   }
+	   ,slide: function(){
+			getNewTags("tweet");
+		}
+	});
+
+	//make second slider
+	$("#slider2").noUiSlider({
+	    range: [0, 1]
+	   ,start: 0.5
+	   ,handles: 1
+	   ,connect: "lower"
+	   ,serialization: {
+	      to: [$("#visual_value")]
+	   }
+	   ,slide: function(){
+			getNewTags("visual");
+		}
+	});
+
+	/**** Sets the total time
+		  Bij een readystate van 4 is alle informatie van een video geladen.
+	 ***/
+	/*var states = function() {
+		// store the readyState
+	    var rdy = Popcorn("#video").readyState();
+    	if(rdy===4){
+	        $("#total-time").text(moment(moment.duration(Popcorn("#video").duration(),'seconds')).format('mm:ss')) ;
+	    }else{
+	    	setTimeout( states, 10 );
+	    }
+	}
+	states(); */
+
+
+
 
 	//When played show pause button, and when paused show play button
 	Popcorn("#video").on("playing", function(){
@@ -47,6 +93,21 @@ $(document).ready(function(){
 	Popcorn("#video").on("timeupdate", function(){
 		$("#current-time").text(moment(moment.duration(Popcorn("#video").currentTime(),'seconds')).format('mm:ss'));
 	});
+
+	checkTime( function(dur) {
+		//Starts chain to construct ZapPoints
+		getZapData(dur);
+		//Creates the Twitter button
+		createTwit();
+		//Skips video to time specified in URL
+		getSkipTime();
+		//Sets the total time
+		$("#total-time").text(moment(moment.duration(Popcorn("#video").duration(),'seconds')).format('mm:ss'));
+	},0);
+
+	//POPOVER
+	$('#popo').popover();
+	$('#popo2').popover();
 
 });
 

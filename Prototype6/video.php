@@ -255,20 +255,15 @@
 
 
 
-	<script src ="javascript/video.js"></script>
-	<script src ="javascript/main.js"></script>
 
-	<script src ="javascript/tagdata.js"></script>
-	<script src ="javascript/createcloud.js"></script>
-	<script src ="javascript/createzapcode.js"></script>
-	<script src ="javascript/filterdata.js"></script>
-	<script src ="javascript/getzapdata.js"></script>
+	
 	
 	<script src ="javascript/helperfunctions.js"></script>
 	<script src ="javascript/tagCloudColor.js"></script>
 	<script src ="javascript/social.js"></script>
+		<script src ="javascript/checktime.js"></script>
 
-	<script src ="javascript/checktime.js"></script>
+
 	<script src ="javascript/geturlvars.js"></script>
 	<script src ="javascript/skiptime.js"></script>
 	
@@ -278,7 +273,16 @@
 	<script src ="javascript/setComment.js"></script>
 	<script src="javascript/loginform.js"></script>
 	<script src ="javascript/comments.js"></script>
-	<script src="javascript/search.js"></script>
+
+	<script src ="javascript/tagdata.js"></script>
+	<script src ="javascript/createcloud.js"></script>
+	<script src ="javascript/createzapcode.js"></script>
+	<script src ="javascript/filterdata.js"></script>
+	<script src ="javascript/getzapdata.js"></script>
+
+	<script src ="javascript/video.js"></script>
+	<script src ="javascript/main.js"></script>
+
 
 
 	

@@ -43,10 +43,6 @@
 	  					<div class="navbar-inner" id="mainNavBar">
 	  						<div class="container">
 	    						<a class="brand" href="index.php"></li>SocialZap</a>
-							<!--    <ul class="navigation">
-				     			<li class="icon-th icon-2x" id="browsebutton"></li>
-				     			<li class="icon-search icon-2x" id="searchbutton"></li>
-				     			</ul> -->
 				     		<div class="btn-group" id="navButtons">
 				     			<button class="btn navButton" id="browsebutton"><div class="icon-th navButton"></button>
 				     			<button class="btn navButton" id="searchbutton"><div class="icon-search navButton"></button>
@@ -147,4 +143,5 @@
 	<script src="javascript/search.js" type="text/javascript"></script>
 	<script src="javascript/tagCloudColor.js" type="text/javascript"></script>
 	<script src="javascript/checktime.js" type="text/javascript"></script>
+	<script src="javascript/main.js" type="text/javascript"></script>
 	</html>

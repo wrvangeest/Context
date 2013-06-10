@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+//################### Functions to properly display login forms #########################
     $("#ok-reg").hide();
         $("#reg-name").hide();
 
@@ -17,7 +18,9 @@ $(document).ready(function(){
 
         }); 
 
+//########################################################################################
 
+//Function to run the login
     $('#ok').click(function(){
     	var emailfilled = false;
     	var passwordfilled = false;
@@ -51,7 +54,7 @@ $(document).ready(function(){
 
     });
 
-
+//Function to run registration
     $("#ok-reg").click(function(e){
         e.preventDefault();
         var emailfilled = false;

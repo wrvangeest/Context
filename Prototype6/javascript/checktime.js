@@ -20,7 +20,6 @@ function checkTime(callback, times){
 
 function checkTags(callback, times){
 	var i = $('#tag-cloud-inner').children().length;
-
 	//Gives error message when timed out
 	if(!isNaN(times) && times > 500){
 		setTimeout(callback(-1), 100);

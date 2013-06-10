@@ -1,8 +1,9 @@
 $(document).ready(function(){
-
+	//Initializes comment display
 	loadComments();
 });
 
+//Retrieves comment data
 function loadComments(){
 
 	var hash = getUrlVars();
@@ -14,6 +15,7 @@ function loadComments(){
 		})
 }
 
+//Generates comments
 function putComments(data){
 		jQuery.each(data, function(index,item) {
 
@@ -63,7 +65,7 @@ function getPostTime(datumpost){
 					return datumformat;
 }
 
-//returns the differance in time with now and the given date: datumpost
+//returns the difference in time with now and the given date: datumpost
 // extends with the correct extension
 function getPostPast(datumpost){
 

@@ -5,6 +5,8 @@ function filterData(id, dur, type){
 	filteredTemp.visual = [];
 	filteredTemp.tweet = [];
 	var j = 0;
+	
+	//Used to generate lists in combination with toggle button
 	switch(type){
 	case "tweet" :
 		$("#tweetPoints").empty();
@@ -20,7 +22,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.tweet, "tweet");
 		createCloud(filteredTemp.tweet,type);
-		checkTags(colorTags($('#tag-cloud-inner').children().length,0),0);
+		checkTags(colorTags($('#tag-cloud-inner').children().length,""),0);
 		break;
 	case "visual" :
 		$("#visualPoints").empty();
@@ -36,7 +38,7 @@ function filterData(id, dur, type){
 		}
 		createZapCode(filteredTemp.visual, "visual");
 		createCloud(filteredTemp.visual,type);
-		checkTags(colorTags($('#tag-cloud-inner').children().length,0),0);
+		checkTags(colorTags($('#tag-cloud-inner').children().length,""),0);
 		break;
 	default : 
 		for(var i = 0; i < Math.min(100, Math.max(data.visual.length, data.tweet.length)); i++){
@@ -65,7 +67,8 @@ function filterData(id, dur, type){
 		createZapCode(filteredTemp.visual, "visual");
 		//..tagcloud
 		createCloud(filteredTemp.tweet,'tweet');
-		checkTags(colorTags($('#tag-cloud-inner').children().length,0),0);
+		var number = $('#tag-cloud-inner').children().length;
+		checkTags(colorTags(number,""),0);
 		break;
 	}
 }

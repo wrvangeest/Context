@@ -49,6 +49,5 @@ function filterTagList(searchquery){
 			}
 		}
 	}
-	//$("#tag-cloud-inner").empty();
 	createCloud(filteredTags,type);
 }
