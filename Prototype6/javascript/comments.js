@@ -10,7 +10,6 @@ function loadComments(){
 	
 	$.post("php/comments.php?vidid=" + vidid)
 		.done(function (data) {
-			console.log(data);
 			putComments(JSON.parse(data));
 		})
 }
@@ -46,7 +45,7 @@ function putComments(data){
 					   .append(commentinfo)
 					   .append(commenttext)
 
-			$('.comments').append(acomment)
+			$('#comments-real').append(acomment)
 		})
 }
 //return the date in a clearer format

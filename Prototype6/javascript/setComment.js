@@ -9,10 +9,13 @@ $('#commentbutton').click(
 			var hash = getUrlVars();
 			var vidid = hash['vidid'];
 			var text = $('#inputcomment').val();
-			console.log(text);
 
 			$.post("php/setComment.php?", {vidid:vidid, comment:text}, function(data){
-				alert(data);
+				if(data == "succesfully commented!"){
+					$('#comments-real').html('');
+					loadComments();
+
+				}
 			});
 		}
 	} 

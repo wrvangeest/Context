@@ -4,7 +4,7 @@
 	$vidid = $_REQUEST['vidid'];
 	
 	//Query
-	$qry = "SELECT * 
+	$qry = "SELECT comments.text,registered_users.name,comments.datum
 			FROM comments, registered_users 
 			WHERE vid_id = '$vidid'
 			AND comments.user_id = registered_users.id";

@@ -223,7 +223,10 @@
 												<button type="submit" class="btn" id="commentbutton">Comment!</button>
 											</form>
 										
+											<div id="comments-real">
 
+
+											</div>
 										</div>
 
 										
