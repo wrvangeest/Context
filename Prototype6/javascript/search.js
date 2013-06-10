@@ -35,7 +35,7 @@ function searchObject(searchTerm, object){
 
 //Generates result page skeleton
 function putResultInPage(object){
-	if(object.visual.length > 0 || object.tweet.length > 0 || object.total.length > 0){
+	if(object.total.length > 0){
 
 		var imgSrc = '';
 		var vidTitle = '';
