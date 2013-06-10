@@ -18,10 +18,6 @@ $(document).ready(function(){
         }); 
 
 
-
-
-
-
     $('#ok').click(function(){
     	var emailfilled = false;
     	var passwordfilled = false;
@@ -56,10 +52,7 @@ $(document).ready(function(){
     });
 
 
-
-
-
-        $("#ok-reg").click(function(e){
+    $("#ok-reg").click(function(e){
         e.preventDefault();
         var emailfilled = false;
         var passwordfilled = false;
@@ -76,21 +69,17 @@ $(document).ready(function(){
         }
 
         if(emailfilled && passwordfilled && namefilled){
-        var url = $('#inlog-form').serialize();
-            
-        $.post("php/register.php",url, function(data){
-            if(data === "goed"){
-                alert("je bent nu geregistreerd, log nu in");
-                location.href = "index.php";
-            }
-        });
-          
-        }else{
-            
-                alert('Vul uw gegevens goed in');
+            var url = $('#inlog-form').serialize();
+                
+            $.post("php/register.php",url, function(data){
+                if(data === "goed"){
+                    alert("je bent nu geregistreerd, log nu in");
+                    location.href = "index.php";
+                }
+            });      
+        }else{            
+            alert('Vul uw gegevens goed in');
         }
-
-
     });
 
 
