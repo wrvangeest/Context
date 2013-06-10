@@ -181,7 +181,7 @@ function createSearchCloud(object){
 
 		//Div containing type icon
 		var iconDiv = document.createElement("div");
-		$(iconDiv).addClass('icon');
+		$(iconDiv).addClass('icon search');
 		if(item.visual_score != null){
 			iconDiv.innerHTML = "<div class='icon-eye-open'></div>";
 		}
@@ -191,12 +191,12 @@ function createSearchCloud(object){
 
 		//Div containing term
 		var termDiv = document.createElement("div");
-		$(termDiv).addClass('term');
+		$(termDiv).addClass('term search');
 		termDiv.innerHTML = item.term;
 
 		//Div containing rating stars
 		var ratingDiv = document.createElement("div");
-		$(ratingDiv).addClass('rating-all');
+		$(ratingDiv).addClass('rating-all search');
 		var rating = item.rating;
 		//Add stars
 		for(var i = 0; i < rating; i++){
