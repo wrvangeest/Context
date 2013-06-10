@@ -33,7 +33,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$("body").on("mouseout",".zapPoint",function(){
+	$("body").on("mouseleave",".zapPoint",function(){
 		var toggle = $('#tag-toggle-button').html();
 		if($(this).hasClass("tweetPoint") && toggle == 'Tweets' ){
 			$($cloudClass).css("background-color", $orTagColor);
@@ -61,7 +61,7 @@ $(document).ready(function(){
 		$($zapId).addClass("icon-large");
 	});	
 
-	$("body").on("mouseout",".tager", function() {
+	$("body").on("mouseleave",".tager", function() {
 		//Restore original colors
 		$(this).css("background-color", $orTagColor);
 		
