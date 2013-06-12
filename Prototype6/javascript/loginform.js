@@ -22,7 +22,25 @@ $(document).ready(function(){
 //########################################################################################
 
 //Function to run the login
-    $('#ok').click(function(){
+    $('#ok').click(function(e){
+        document.getElementById("ok").innerHTML = "Logging in...";
+
+        e.preventDefault(); // prevents default submit action
+        document.getElementById("ok").disabled = true;
+
+
+        var phpUrl = "php/formlogin.php?"+ $('#inlog-form').serialize();
+
+        console.log("hey");
+        $.ajax( {
+            type: 'POST',
+            url: phpUrl,
+            data: $('#inlog-form').serialize(),
+            success: function(data) {
+                location.reload();
+            }
+        } );
+
     	var emailfilled = false;
     	var passwordfilled = false;
 
@@ -36,11 +54,12 @@ $(document).ready(function(){
 
     	if(emailfilled && passwordfilled){
     		var url = $('#inlog-form').serialize();
+
             
             $.post("php/formlogin.php?"+url)
                 .done(function (data){
-                        $('#inlog-form').hide();
-                        $('#nav-bar-form').append('<div id="logged-in"><span>Hello ,'+ data.name +'</span><a href="php/logout.php"  id="logout">Logout</a></div>');
+                        //$('#inlog-form').hide();
+                        //$('#nav-bar-form').append('<div id="logged-in"><span>Hello ,'+ data.name +'</span><a href="php/logout.php"  id="logout">Logout</a></div>');
 
                 })
                 //Give message when failed
@@ -53,7 +72,8 @@ $(document).ready(function(){
     			alert('Vul uw gegevens goed in');
     	}
 
-    });
+    }); 
+
 
 //Function to run registration
     $("#ok-reg").click(function(e){
