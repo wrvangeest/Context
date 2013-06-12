@@ -23,54 +23,41 @@ $(document).ready(function(){
 
 //Function to run the login
     $('#ok').click(function(e){
+        
         document.getElementById("ok").innerHTML = "Logging in...";
-
         e.preventDefault(); // prevents default submit action
         document.getElementById("ok").disabled = true;
 
 
-        var phpUrl = "php/formlogin.php?"+ $('#inlog-form').serialize();
+        var emailfilled = false;
+        var passwordfilled = false;
 
-        console.log("hey");
-        $.ajax( {
-            type: 'POST',
-            url: phpUrl,
-            data: $('#inlog-form').serialize(),
-            success: function(data) {
-                location.reload();
-            }
-        } );
+        if($('#login-email').val() !== ""){
+            emailfilled = true;
+        }
+        if($('#login-passwd').val() !== ""){
+            passwordfilled = true;
+        }
 
-    	var emailfilled = false;
-    	var passwordfilled = false;
+        if(emailfilled && passwordfilled){
 
+            var phpUrl = "php/formlogin.php?"+ $('#inlog-form').serialize();
 
-    	if($('#login-email').val() !== ""){
-    		emailfilled = true;
-    	}
-    	if($('#login-passwd').val() !== ""){
-    		passwordfilled = true;
-    	}
+            console.log("hey");
+            $.ajax( {
+                type: 'POST',
+                url: phpUrl,
+                data: $('#inlog-form').serialize(),
+                success: function(data) {
+                    location.reload();
+                }
+            } );
+        }else{
 
-    	if(emailfilled && passwordfilled){
-    		var url = $('#inlog-form').serialize();
-
-            
-            $.post("php/formlogin.php?"+url)
-                .done(function (data){
-                        //$('#inlog-form').hide();
-                        //$('#nav-bar-form').append('<div id="logged-in"><span>Hello ,'+ data.name +'</span><a href="php/logout.php"  id="logout">Logout</a></div>');
-
-                })
-                //Give message when failed
-                .fail(function() {
-
-                });
-
-    	}else{
-    		
-    			alert('Vul uw gegevens goed in');
-    	}
+                document.getElementById("ok").innerHTML = "Log in";
+                document.getElementById("ok").disabled = false;
+                alert('Vul uw gegevens goed in');
+        }
 
     }); 
 
