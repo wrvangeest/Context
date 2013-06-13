@@ -3,7 +3,7 @@ function createTwit() {
 	$('#twitter_link').each(function(){
 		$(this).attr('data-url', "localhost");
 		$(this).attr('data-hashtags',"SocialZap");
-		$(this).attr('data-text', "Tweet over dit tijdstip: " + window.location.href + "time=" + Popcorn("#video").currentTime() + "!")
+		$(this).attr('data-text', "Tweet over dit tijdstip: " + window.location.href + "time=" + npoplayer("socialzap-player").getPosition() + "!")
 		$(this).attr('data-count', "none");
 	});
 	getScript();
@@ -24,7 +24,7 @@ function sendTweet() {
 			//Video name
 			+ '%26vidn='  + hash['vidn']
 			//Current time
-			+ '%26time='  + Popcorn('#video').currentTime();
+			+ '%26time='  + npoplayer("socialzap-player").getPosition();
 	
 	$.ajax({
         url: 'https://www.googleapis.com/urlshortener/v1/url',

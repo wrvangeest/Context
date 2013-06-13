@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SocialZap with npoplayer</title>
+	<script type="text/javascript" src="//ida.omroep.nl/npoplayer/npoplayer-min.js"></script>
+</head>
+<body>
+	<div id="socialzap-player"></div>
+
+	<button id="play">Play</button>
+	<button id="pause">Pause</button>
+	<button id="seek">Seek (5s)</button>
+
+	<script>
+		npoplayer("socialzap-player").setup({
+			prid: 'VARA_101293945',
+			width: 552,
+			height: 321,
+			options: {
+				showControlbar: true,
+				showTitlebar: false
+			}
+		});
+
+		document.getElementById("play").onclick = function() {
+			npoplayer("socialzap-player").play(true);
+		};
+
+		document.getElementById("pause").onclick = function() {
+			npoplayer("socialzap-player").pause(true);
+		};
+
+		document.getElementById("seek").onclick = function() {
+			npoplayer("socialzap-player").seek(120);
+		};
+
+		npoplayer("socialzap-player").onSeek(function(){
+			var currentTime = this.getPosition();
+		});
+
+		npoplayer("socialzap-player").onComplete(function(){
+			alert("video ended");
+		});
+	</script>
+</body>
+</html>

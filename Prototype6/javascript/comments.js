@@ -11,7 +11,7 @@ $(document).ready(function(){
 				var hash = getUrlVars();
 				var vidid = hash['vidid'];
 				var text = $('#inputcomment').val();
-				var dur = Popcorn("#video").currentTime();
+				var dur = window.videodur;
 
 				$.post("php/setComment.php?", {vidid:vidid, comment:text, vid_time:dur}, function(data){
 					if(data.name != ''){
@@ -26,7 +26,7 @@ $(document).ready(function(){
 	);
 
 	//Initializes comment display
-	checkTime(function(dur){loadComments()},0);
+	loadComments();
 });
 
 //Retrieves comment data
@@ -49,7 +49,7 @@ function putComments(data){
 		//Convert time ("m:(s)s") to seconds
 		var secs = item.vid_time;
 		//Grab duration of video
-		var dur = Popcorn("#video").duration();
+		var dur = window.videodur;
 		if(secs <= dur){
 			
 			//Calculate ratio of time/duration

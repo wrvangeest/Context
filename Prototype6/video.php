@@ -13,12 +13,12 @@
 		<meta charset = "utf-8">
 		<title>SocialZap</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script type="text/javascript" src="//ida.omroep.nl/npoplayer/npoplayer-min.js"></script>
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script src ="lib/javascript/bootstrap.js"></script>
 		<script src ="lib/javascript/nouislider.js"></script>
 		<script src ="lib/javascript/moment.js"></script>
 		<script src ="lib/javascript/moment.js"></script>
-		<script src ="http://popcornjs.org/code/dist/popcorn.min.js"></script>
 		<!--  css files -->
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
@@ -115,17 +115,8 @@
 					<div class="video-area span9">
 						<div class="well well-header"><?php echo $_REQUEST['title'];?></div>
 						<div>
-							<video height="394" width="700" id="video" style="margin-top:4px;">
-					
-							<source id="videosource" type="video/mp4" src="videos/<?php echo $_REQUEST['vidn'];?>.mp4">
-							
-							</video>
-						</div>
-						<!-- video for frame preview -->
-						<div>
-							<video height="0" width="0" id="snapvideo" onclick="play()" style="display:none;">
-							<source type="video/mp4" src="videos/<?php echo $_REQUEST['videoname']; ?>.mp4">
-							</video>
+							<div id="socialzap-player" style="margin-top:4px;">
+							</div>
 						</div>
 					
 						<!-- video controls -->								

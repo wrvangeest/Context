@@ -1,39 +1,111 @@
+window.videodur = 0;
+
+var hash = getUrlVars();
+	var vidid = hash['vidid'];
+	$.post("php/getDur.php?", {vidid: vidid}, function(data){
+		window.videodur = JSON.parse(data).duration;
+	});
+
 $(document).ready(function(){
-	$("#loading-img").show();
 
 	/*########################### begin update progressbar  ###########*/
 
-	// create new popcorn instance
-	var pop = Popcorn("#video");
-
-	// listen to timeupdate
-	pop.on( "timeupdate", function() {
-		updatePopcornBar(this.currentTime());
+	//load video
+	npoplayer("socialzap-player").setup({
+		prid: 'VARA_101278889',
+		width: 700,
+		height: 394,
+		options: {
+			showControlbar: true,
+			showTitlebar: false
+		}
 	});
+		var currentTime = 0;
+		var oldtime = 0;
 
-	//when someone clicks on the timeline
-	$("#popcorn-progbar-wrapper").click(function(e){
-		var posX = $(this).offset().left;
-		pop.currentTime(
-			(pop.duration() * ((e.pageX - posX) / parseInt($(this).css("width"))))
-		);
-	});
+		$("#total-time").text('00:00');
 
-	$("#playbutton").click(function(){
-		pop.play();
-	});
+		$("#popcorn-progbar-wrapper").click(function(e){
+			var posX = $(this).offset().left;
+			var time = (videodur * ((e.pageX - posX) / parseInt($(this).css("width"))));
+			time = Math.round(time);
+			npoplayer("socialzap-player").seek(time);
+						
+		});
 
-	$("#pausebutton").click(function(){
-		pop.pause();
-	});
+		document.getElementById("playbutton").onclick = function() {
+			npoplayer("socialzap-player").play(true);
+		};
 
-	$("#stopbutton").click(function(){
-		pop.currentTime(0);
-		pop.pause();
-	});
+		document.getElementById("pausebutton").onclick = function() {
+			npoplayer("socialzap-player").pause(true);
+			$("#pausebutton").hide();
+			$("#playbutton").show();
+		};
+		document.getElementById('stopbutton').onclick = function() {
+			npoplayer("socialzap-player").stop(true);
+			$("#current-time").text('00:00');
+			$("#popcorn-progbar").css("width", "0px");
+		}
 
-	/*########################### end update progressbar ################*/
+		//event listener for when video is ready
+		npoplayer("socialzap-player").onReady(function(){
 
+			if (window.videodur == 0) {
+				npoplayer("socialzap-player").play(true);
+				} 			
+		});
+
+		//event listener for when time has changed in the video
+		npoplayer("socialzap-player").onTime(function(){
+			  if (window.videodur == 0) {
+			    window.videodur = this.getDuration();
+			    //update total time
+			    $("#total-time").text(moment(moment.duration(window.videodur,'seconds')).format('mm:ss'));
+			    //stop player
+			    npoplayer("socialzap-player").stop(true);
+			    getZapData(window.videodur);
+			  }else{
+
+			  		currentTime = this.getPosition();
+					if(Math.abs(currentTime-oldtime) > 0.01){
+						updatePopcornBar(currentTime);
+						oldtime = currentTime;	
+					}
+			  }
+
+			
+		});
+
+		//eventlistener for buffer
+		npoplayer("socialzap-player").onBufferChange(function(){
+			/*shoulde be loading bar
+			var percentage = this.getBuffer();
+			var viewerper = parseInt($("#popcorn-progbar").css("width"));
+			var finalnew =  (percentage * parseInt($("#popcorn-progbar-wrapper").css("width")) ) - viewerper;
+
+			$(".bar-warning").css("width", finalnew +"px");
+			*/
+		});
+
+		//eventlistener for when video is playing
+		npoplayer("socialzap-player").onPlay(function(){
+			$("#pausebutton").show();
+			$("#playbutton").hide();
+		});
+
+		//eventlistener for when video is stopped
+		npoplayer("socialzap-player").onIdle(function(){
+			$("#pausebutton").hide();
+			$("#playbutton").show();
+		});
+
+		//eventlistener for when video is completely watched
+		npoplayer("socialzap-player").onComplete(function(){
+
+		});
+
+	/*########################### end update progresar ################*/
 	//make first slider
 	$("#slider1").noUiSlider({
 		range: [0, 1]
@@ -61,22 +133,8 @@ $(document).ready(function(){
 			getNewTags("visual");
 		}
 	});
-	
-	//When played show pause button, and when paused show play button
-	Popcorn("#video").on("playing", function(){
-		$("#pausebutton").show();
-		$("#playbutton").hide();
-	});
-	Popcorn("#video").on("pause", function(){
-		$("#pausebutton").hide();
-		$("#playbutton").show();
-	})
 
-	/* update de current time */
-	Popcorn("#video").on("timeupdate", function(){
-		$("#current-time").text(moment(moment.duration(Popcorn("#video").currentTime(),'seconds')).format('mm:ss'));
-	});
-
+	//Initialize
 	checkTime( function(dur) {
 		//Starts chain to construct ZapPoints
 		getZapData(dur);
@@ -85,7 +143,7 @@ $(document).ready(function(){
 		//Skips video to time specified in URL
 		getSkipTime();
 		//Sets the total time
-		$("#total-time").text(moment(moment.duration(Popcorn("#video").duration(),'seconds')).format('mm:ss'));
+		$("#total-time").text(moment(moment.duration(window.videodur,'seconds')).format('mm:ss'));
 	},0);
 
 	//POPOVER
@@ -97,8 +155,7 @@ $(document).ready(function(){
 ///update progressbar
 function updatePopcornBar(newwidth)
 {
-	var finalnew =  (newwidth / Popcorn("#video").duration()) * parseInt($("#popcorn-progbar-wrapper").css("width"));
+	var finalnew =  (newwidth / window.videodur) * parseInt($("#popcorn-progbar-wrapper").css("width"));
 	$("#popcorn-progbar").css("width", finalnew +"px");
+	$("#current-time").text(moment(moment.duration(newwidth,'seconds')).format('mm:ss'));
 }
-
-	

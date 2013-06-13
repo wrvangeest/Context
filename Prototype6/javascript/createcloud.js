@@ -88,7 +88,7 @@ function getNewTags(type){
 
 	var rerankingscore = $("#tweet_value").val();
 	var visualscore = $("#visual_value").val();
-	filterData(vidid, Popcorn("#video").duration(), type);
+	filterData(vidid, window.videodur, type);
 }	
 
 //Scroll tag to the right position 

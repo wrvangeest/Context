@@ -94,8 +94,8 @@ function goToTime(loc) {
 	//Calculate seconds
 	var time = calcTime(loc);
 	//Jump to time
-	Popcorn("#video").currentTime(time);
-	Popcorn("#video").play();
+	npoplayer("socialzap-player").seek(time);
+	npoplayer("socialzap-player").play(true);
 }
 
 //##############################################################

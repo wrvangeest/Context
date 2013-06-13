@@ -5,7 +5,7 @@ function calcDist(val){
 	//Convert time ("m:(s)s") to seconds
 	var secs = timeToSec(val.time);
 	//Grab duration of video
-	var dur = Popcorn("#video").duration();
+	var dur = window.videodur;
 	//Calculate ratio of time/duration
 	var ratio = secs / dur;
 	//Grab width of timeline in pixels
@@ -20,7 +20,7 @@ function calcDist(val){
 //Calculates the time in seconds from the offset in pixels
 function calcTime(dist){
 	//Get duration of the video
-	var dur = Popcorn("#video").duration();
+	var dur = window.videodur;
 	//Get width of timeline in pixels
 	var wdth = document.getElementById("visualPoints").style.width;
 	//Trim for calculations
@@ -89,7 +89,7 @@ function getSkipTime(){
 	var hash = getUrlVars();
 
 	if(!isNaN(hash['time'])){
-		Popcorn("#video").currentTime(hash['time']).play();
+		npoplayer("socialzap-player").seek(hash['time']);
 	}
 }
 //##############################################################
