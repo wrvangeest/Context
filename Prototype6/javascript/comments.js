@@ -85,7 +85,6 @@ function putComments(data){
 		//get the right format of date and time
 		//and how long ago it was posted
 		var datumpost = new Date(item.datum);
-		console.log(item.datum);
 		var datumformat = getPostTime(datumpost);
 		var geleden = getPostPast(datumpost);
 
