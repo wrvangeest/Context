@@ -11,7 +11,7 @@ $(document).ready(function(){
 				var hash = getUrlVars();
 				var vidid = hash['vidid'];
 				var text = $('#inputcomment').val();
-				var dur = Popcorn("#video").duration();
+				var dur = Popcorn("#video").currentTime();
 
 				$.post("php/setComment.php?", {vidid:vidid, comment:text, vid_time:dur}, function(data){
 					if(data == "Reactie is geplaatst!"){
