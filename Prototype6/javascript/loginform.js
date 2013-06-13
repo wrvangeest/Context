@@ -43,13 +43,17 @@ $(document).ready(function(){
 
             var phpUrl = "php/formlogin.php?"+ $('#inlog-form').serialize();
 
-            console.log("hey");
             $.ajax( {
                 type: 'POST',
                 url: phpUrl,
                 data: $('#inlog-form').serialize(),
-                success: function(data) {
-                    location.reload();
+                success: function(result) {
+                    console.log(result);
+                    switch(result){
+                    case '1': alert("Er is iets mis gegaan"); location.reload();break;
+                    case '2': alert("Gebruiker bestaat niet"); location.reload();break;
+                    case '3': console.log('jajaja');location.reload();break;
+                    }
                 }
             } );
         }else{
