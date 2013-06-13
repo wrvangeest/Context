@@ -5,18 +5,18 @@ $(document).ready(function(){
 			e.preventDefault();
 
 			if($('#inputcomment').val() === ""){
-				alert("Geef je mening in het invoervak.");
+				alert("Vul iets in in het invoervak.");
 			}else{
 
 				var hash = getUrlVars();
 				var vidid = hash['vidid'];
 				var text = $('#inputcomment').val();
+				var dur = Popcorn("#video").duration();
 
-				$.post("php/setComment.php?", {vidid:vidid, comment:text}, function(data){
-					if(data == "Opmerking is geplaatst!"){
+				$.post("php/setComment.php?", {vidid:vidid, comment:text, vid_time:dur}, function(data){
+					if(data == "Reactie is geplaatst!"){
 						$('#comments-real').html('');
 						loadComments();
-
 					}
 				});
 			}
@@ -24,7 +24,7 @@ $(document).ready(function(){
 	);
 
 	//Initializes comment display
-	loadComments();
+	checkTime(function(dur){loadComments()},0);
 });
 
 //Retrieves comment data
@@ -41,7 +41,34 @@ function loadComments(){
 
 //Generates comments
 function putComments(data){
+	var list = document.getElementById("commentPoints");
 	jQuery.each(data, function(index,item) {
+		//Convert time ("m:(s)s") to seconds
+		var secs = item.vid_time;
+		//Grab duration of video
+		var dur = Popcorn("#video").duration();
+		//Calculate ratio of time/duration
+		var ratio = secs / dur;
+		//Grab width of timeline in pixels
+		var wdth = document.getElementById("commentPoints").style.width;
+		//Trim for calculations
+		wdth = wdth.substr(0,wdth.length - 2);
+		//Return offset value in pixels calculated using ratio
+		var loc = (ratio * wdth);
+		console.log("secs:" + secs +",dur:"+dur+ ",ratio:"+ratio+",width:"+wdth+",loc:"+loc);
+
+		var zap = document.createElement('img');
+		zap.className = "commentPoint zapPoint";
+		zap.id = "commentPoint" + index;
+		zap.src =  item.image;
+		zap.style.marginLeft = loc + "px";
+		zap.style.width = "16px";
+		zap.style.height = "16px";
+
+		zap.style.position = "absolute";
+		zap.setAttribute('text', item.text);
+		zap.setAttribute('user', item.name);
+		list.appendChild(zap);
 
 		//make a new date object,
 		//get the right format of date and time

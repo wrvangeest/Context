@@ -49,9 +49,9 @@
 			
 			<header>
 					<div class="navbar navbar-static-top">
-					<div class="navbar-inner" id="search-animate-bar" style="margin-top:-50px;">
+					<div class="navbar-innfer" id="search-animate-bar" style="margin-top:-50px;">
 						<div class="container" >
-			   				<input id="top-search" type="search" placeholder="What are you looking for?..." style="width:100%;">
+			   				<input id="top-search" type="search" placeholder="Vul een zoekterm in..." style="width:100%;">
   						</div>
 					</div>
 
@@ -148,12 +148,17 @@
 
 						<!-- Tweet zappoints -->
 						<div id="tweetPoints" style="height:22px; width:700px;">
-						<!-- is filled dynamically with zappoint.js-->
+						<!-- is filled dynamically-->
 						</div>
 
 						<!-- Visual zappoints -->
 						<div id="visualPoints" style="height:22px; width:700px;">
-						<!-- is filled dynamically with zappoint.js-->
+						<!-- is filled dynamically-->
+						</div>
+
+						<!-- Comment images -->
+						<div id="commentPoints" style="height:22px; width:700px;">
+						<!-- is filled dynamically-->
 						</div>
 
 					<!-- begin advanced options -->
@@ -236,7 +241,7 @@
 
 
 											<form class="form-inline" id="comments-input" method="post"> 
-												<input name="comment" type="text" class="input medium" id="inputcomment" placeholder="Type your comment here">
+												<input name="comment" type="text" class="input medium" id="inputcomment" placeholder="Geef je reactie">
 												<button type="submit" class="btn" id="commentbutton">Reageer!</button>
 											</form>
 										
