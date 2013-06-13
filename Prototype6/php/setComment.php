@@ -6,7 +6,7 @@ include("config.php");
 
 $comment = $_REQUEST['comment'];
 $vidid = $_REQUEST['vidid'];
-
+$data = array();
 
 if(!$con)
 {
@@ -37,7 +37,16 @@ else
 		}
 		else
 		{
-			echo "Opmerking is geplaatst!";
+			$result = mysql_query("SELECT name,image FROM registered_users WHERE id = '$user_id'");
+			$user = mysql_fetch_assoc($result);
+
+			$tijd = date("Y-m-d H:i:s");
+			$data['image'] = $user['image'];
+			$data['name'] = $user['name'];
+			$data['vid_time'] = $dur;
+			$data['text'] = $comment;
+			$data['datum'] = $tijd;
+			echo json_encode($data);
 		}
 
 

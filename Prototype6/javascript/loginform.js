@@ -52,7 +52,7 @@ $(document).ready(function(){
                     switch(result){
                     case '1': alert("Er is iets mis gegaan"); location.reload();break;
                     case '2': alert("Gebruiker bestaat niet"); location.reload();break;
-                    case '3': console.log('jajaja');location.reload();break;
+                    case '3': location.reload();break;
                     }
                 }
             } );

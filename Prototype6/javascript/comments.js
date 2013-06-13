@@ -14,9 +14,14 @@ $(document).ready(function(){
 				var dur = Popcorn("#video").currentTime();
 
 				$.post("php/setComment.php?", {vidid:vidid, comment:text, vid_time:dur}, function(data){
-					if(data == "Reactie is geplaatst!"){
-						$('#comments-real').html('');
-						loadComments();
+					if(data.name != ''){
+						//$('#comments-real').html('');
+						//loadComments();
+						console.log(data);
+						var a = [];
+						a[0] = JSON.parse(data);
+						putComments(a);
+
 					}
 				});
 			}
