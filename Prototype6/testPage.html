@@ -15,13 +15,73 @@
 	<body>
 		<div> <h1> Welcome to the SocialZap Use Case Testing Page </h1></div>
 
-		<div> Test Case 1: <a href="test/Selenium/Use Case 1.html"> See Selenium source </a> </div>
-		<div> Test Case 2: <a href="test/Selenium/Use Case 2.html"> See Selenium source </a> </div>
-		<div> Test Case 3: <a href="test/Selenium/Use Case 3.html"> See Selenium source </a> </div>
-		<div> Test Case 4: <a href="test/Selenium/Use Case 4.html"> See Selenium source </a> </div>
-		<div> Test Case 5: <a href="test/Selenium/Use Case 5.html"> See Selenium source </a> </div>
-		<div> Test Case 6: <a href="test/Selenium/Use Case 6.html"> See Selenium source </a> </div>
+		<div> <h4>Test Case 1:</h4> <a href="test/Selenium/Use Case 1.html"> See Selenium source </a> 
+			<p>
+			<div>
+				This test case tests whether the two links (index.php, video.php) are loaded succesfully.<p>
+				After video.php is loaded, one of the tags is going to be clicked, a check is done to assure the video jumps to the right position and plays.
+			</div>
+		</div>
+
+
+
+		<div> <h4>Test Case 2:</h4> <a href="test/Selenium/Use Case 2.html"> See Selenium source </a> 
+			<p>
+			<div>
+				This test case tests if the tags are loaded succesfully.<p>
+				After video.php is loaded, we assert the elements of the tags on the page if they are present or not
+			</div>
+		</div>
+
+
+
+
+		<div> <h4>Test Case 3:</h4> <a href="test/Selenium/Use Case 3.html"> See Selenium source </a> 
+			<p>
+			<div>
+				This test case tests if the rating system is working properly.<p>
+				After video.php is loaded, the rating of a tag is set, a check is done to assure the tag rating is changed.
+			</div>
+		</div>
+
+
+
+		<div> <h4>Test Case 4:</h4> <a href="test/Selenium/Use Case 4.html"> See Selenium source </a> 
+			<p>
+			<div>
+				This test case tests if the commenting system works. </br>
+				After video.php is loaded, we first assert if the necessary elements are present (input comment, commentbutton).</br>
+				After asserting the elements for their presence, we fill in the comment, and post it to the website. </br>
+				A last check is done to verify the comment is posted.
+			</div>
+		</div>
+
+
+		<div> <h4>Test Case 5:</h4> <a href="test/Selenium/Use Case 5.html"> See Selenium source </a> 
+			<p>
+			<div>
+				This test case tests if the tweetpoints work. </br>
+				After video.php is loaded, we first assert if the necessary elements are present (tweetpoints).</br>
+				After asserting the elements for their presence, we click the tweetpoint. </br>
+				A last check is done to verify if the video jumps to the right place.
+			</div>
+		</div>
+		
+		<div> <h4>Test Case 6:</h4> <a href="test/Selenium/Use Case 6.html"> See Selenium source </a> 
+			<p>
+			<div>
+				This test case tests if the loginsystem works. </br>
+				We first assert if the necessary elements are present (login-email, login-password, login-button, radiobuttons).</br>
+				After asserting the elements for their presence, we login using a e-mail and password. </br>
+				A last check is done to verify if the user has logged in.
+
+				<h5> Note: </h5> The login system only works with the correct local database. </br>
+				You can also register and change the values in Selenium to the new username and password.
+			</div>
+		</div>
 		<br></br>
+
+
 
 		<div>
 			<h2> Help: </h2>
@@ -29,7 +89,15 @@
 
 		<div>
 			These tests are made with the use of Selenium IDE.
-			The HTML pages can be saved and openened in Selenium and run as tests. 
+			The HTML pages can be saved and openened in Selenium and run as tests. http://docs.seleniumhq.org/download/
+		</div> 
+
+		<div>
+			<h2> Download Selenium: </h2>
+		</div> 
+
+		<div>
+			<a href="http://docs.seleniumhq.org/download/"> Download Selenium here </a>
 		</div> 
 
 
