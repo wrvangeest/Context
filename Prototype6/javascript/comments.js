@@ -43,33 +43,42 @@ function loadComments(){
 function putComments(data){
 	var list = document.getElementById("commentPoints");
 	jQuery.each(data, function(index,item) {
+		//---------------Create zappoints for comments --------------------------
 		//Convert time ("m:(s)s") to seconds
 		var secs = item.vid_time;
 		//Grab duration of video
 		var dur = Popcorn("#video").duration();
-		//Calculate ratio of time/duration
-		var ratio = secs / dur;
-		//Grab width of timeline in pixels
-		var wdth = document.getElementById("commentPoints").style.width;
-		//Trim for calculations
-		wdth = wdth.substr(0,wdth.length - 2);
-		//Return offset value in pixels calculated using ratio
-		var loc = (ratio * wdth);
-		console.log("secs:" + secs +",dur:"+dur+ ",ratio:"+ratio+",width:"+wdth+",loc:"+loc);
+		if(secs <= dur){
+			
+			//Calculate ratio of time/duration
+			var ratio = secs / dur;
+			//Grab width of timeline in pixels
+			var wdth = document.getElementById("commentPoints").style.width;
+			//Trim for calculations
+			wdth = wdth.substr(0,wdth.length - 2);
+			//Return offset value in pixels calculated using ratio
+			var loc = (ratio * wdth);
 
-		var zap = document.createElement('img');
-		zap.className = "commentPoint zapPoint";
-		zap.id = "commentPoint" + index;
-		zap.src =  item.image;
-		zap.style.marginLeft = loc + "px";
-		zap.style.width = "16px";
-		zap.style.height = "16px";
+			var zap = document.createElement('img');
+			zap.className = "commentPoint zapPoint";
+			zap.id = "commentPoint" + index;
+			zap.src =  item.image;
+			zap.style.marginLeft = loc + "px";
+			zap.style.width = "16px";
+			zap.style.height = "16px";
+			$(zap).popover({placement: 'bottom',
+							trigger:'hover',
+							toggle:'popover',
+							});
+			zap.setAttribute('data-content', item.text);
+			zap.setAttribute('data-original-title', item.name + " zegt:");
 
-		zap.style.position = "absolute";
-		zap.setAttribute('text', item.text);
-		zap.setAttribute('user', item.name);
-		list.appendChild(zap);
+			zap.style.position = "absolute";
 
+			list.appendChild(zap);
+		}
+
+		//---------------- Create comments ---------------------------------
 		//make a new date object,
 		//get the right format of date and time
 		//and how long ago it was posted
@@ -82,9 +91,15 @@ function putComments(data){
 		var acomment = $(document.createElement('div'));
 		acomment.addClass("a-comment");
 
-		var userphoto = $(document.createElement('div'));
-		userphoto.addClass("user-photo");
-		userphoto.html('<li class="icon-user icon-2x"></li>');
+		var userphoto = document.createElement('div');
+		var userImg = document.createElement('img');
+		userImg.src = item.image;
+		userImg.style.width = '32px';
+		userImg.style.height = '32px';
+		$(userphoto).addClass("user-photo");
+		userphoto.appendChild(userImg);
+
+		//userphoto.html('<li class="icon-user icon-2x"></li>');
 			
 		var commentinfo = $(document.createElement('div'));
 		commentinfo.addClass("comment-info");
