@@ -35,7 +35,7 @@
 					<div class="navbar navbar-static-top">
 						<div class="navbar-inner" id="search-animate-bar" style="margin-top:-50px;">
 							<div class="container" >
-				   				<input id="top-search" type="search" placeholder="What are you looking for?..." style="width:100%;">
+				   				<input id="top-search" type="search" placeholder="Vul een zoekterm in..." style="width:100%;">
 	  						</div>
 						</div>
 

@@ -4,14 +4,13 @@
 	$vidid = $_REQUEST['vidid'];
 	
 	//Query
-	$qry = "SELECT comments.text,registered_users.name,comments.datum
+	$qry = "SELECT comments.text,registered_users.name,comments.datum, registered_users.image, comments.vid_time
 			FROM comments, registered_users 
 			WHERE vid_id = '$vidid'
 			AND comments.user_id = registered_users.id";
 
 	//Get data from table
 	$result = mysql_query($qry);
-
 	//If error
 	if(!$result){
 		$result = "Failed!";

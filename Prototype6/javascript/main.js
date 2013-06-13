@@ -27,7 +27,7 @@ $(document).ready(function(){
 		{
 			if($(this).val() == "")
 			{
-				$(this).attr('placeholder','Please enter a search term....');
+				$(this).attr('placeholder','Vul en term in om de tags te doorzoeken...');
 				e.stopImmediatePropagation();
 			}else
 			{
