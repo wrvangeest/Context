@@ -85,6 +85,7 @@ function putComments(data){
 		//get the right format of date and time
 		//and how long ago it was posted
 		var datumpost = new Date(item.datum);
+		console.log(item.datum);
 		var datumformat = getPostTime(datumpost);
 		var geleden = getPostPast(datumpost);
 
@@ -121,7 +122,7 @@ function putComments(data){
 //return the date in a clearer format
 function getPostTime(datumpost){
 	jaar = datumpost.getFullYear();
-	maand = datumpost.getMonth();
+	maand = datumpost.getMonth()+1;
 	dag = datumpost.getDate();
 	uur = datumpost.getHours();
 	minuut = datumpost.getMinutes();
@@ -137,7 +138,7 @@ function getPostTime(datumpost){
 // extends with the correct extension
 function getPostPast(datumpost){
 
-	var nu = new Date()
+	var nu = new Date();
 	var verschildatum = nu - datumpost;
 	
 	if(verschildatum<1000){
