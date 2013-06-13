@@ -15,9 +15,6 @@ $(document).ready(function(){
 
 				$.post("php/setComment.php?", {vidid:vidid, comment:text, vid_time:dur}, function(data){
 					if(data.name != ''){
-						//$('#comments-real').html('');
-						//loadComments();
-						console.log(data);
 						var a = [];
 						a[0] = JSON.parse(data);
 						putComments(a);
