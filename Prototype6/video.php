@@ -160,13 +160,13 @@
 					<div id="adv-options">
 						<div class="well well-header">Geavanceerde opties</div>
 							<div style="clear:right;">Selecteer minimale Reranking Score
-								<a href="#" id="popo" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The reranking score is a combination of a visual score and tweet scores. The tweet scores are calculated by comparing the tweets with the images and subjects in the video." title="Reranking Score" data-original-title="Popover on top">?</a>
+								<a href="#" id="popo" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="De reranking score is een combinatie van visuele scores en tweet scores. De tweet scores worden berekend door het vergelijken van de tweets met de afbeeldingen en onderwerpen in de video." title="Reranking Score" data-original-title="Popover on top">?</a>
 							</div>
 								<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
 								<input id="tweet_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
 
 							<div style="clear:right;">Selecteer minimale Visuele Score
-								<a href="#" id="popo2" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The visual score is calculated by comparing the keyframes with the tags. The higher the correspondence, the higher the score." title="Visual Score" data-original-title="Popover on top">?</a>
+								<a href="#" id="popo2" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The visuele score wordt berekend door de vergelijking van de keyframes met de tags. De hoogte van de score wordt bepaald het aantal overeenkomsten." title="Visual Score" data-original-title="Popover on top">?</a>
 							</div>
 								<div class="noUiSlider" id="slider2" style="float:left; margin-top:10px;"></div>
 								<input id="visual_value" type="text" style="margin-left:5px;" class="input-mini" disabled="true">
