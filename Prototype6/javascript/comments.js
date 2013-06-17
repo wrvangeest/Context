@@ -24,9 +24,6 @@ $(document).ready(function(){
 			}
 		} 
 	);
-
-	//Initializes comment display
-	loadComments();
 });
 
 //Retrieves comment data

@@ -129,6 +129,8 @@ $(document).ready(function(){
 		createTwit();
 		//Skips video to time specified in URL
 		getSkipTime();
+		//Initializes comment display
+		loadComments();
 		//Sets the total time
 		$("#total-time").text(timeToMin(window.videodur));
 	},0);
