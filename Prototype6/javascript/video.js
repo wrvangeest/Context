@@ -1,29 +1,31 @@
 window.videodur = 0;
 
-var hash = getUrlVars();
-	var vidid = hash['vidid'];
-	$.post("php/getDur.php?", {vidid: vidid}, function(data){
-		window.videodur = JSON.parse(data).duration;
-	});
+
 
 $(document).ready(function(){
+	var hash = getUrlVars();
+	var vidid = hash['vidid'];
+	$.post("php/getInfo.php?", {vidid: vidid}, function(data){
+		var parsed = JSON.parse(data);
+		window.videodur = parsed.duration;
+
+		//load video
+		npoplayer("socialzap-player").setup({
+			prid: parsed.ug_id,
+			width: 700,
+			height: 394,
+			options: {
+				showControlbar: false,
+				showTitlebar: false
+			}
+		});
+	});
 
 	/*########################### begin update progressbar  ###########*/
 
-	//load video
-	npoplayer("socialzap-player").setup({
-		prid: 'VARA_101278889',
-		width: 700,
-		height: 394,
-		options: {
-			showControlbar: true,
-			showTitlebar: false
-		}
-	});
+	
 		var currentTime = 0;
 		var oldtime = 0;
-
-		$("#total-time").text('00:00');
 
 		$("#popcorn-progbar-wrapper").click(function(e){
 			var posX = $(this).offset().left;
@@ -50,31 +52,16 @@ $(document).ready(function(){
 
 		//event listener for when video is ready
 		npoplayer("socialzap-player").onReady(function(){
-
-			if (window.videodur == 0) {
-				npoplayer("socialzap-player").play(true);
-				} 			
+	
 		});
 
 		//event listener for when time has changed in the video
 		npoplayer("socialzap-player").onTime(function(){
-			  if (window.videodur == 0) {
-			    window.videodur = this.getDuration();
-			    //update total time
-			    $("#total-time").text(moment(moment.duration(window.videodur,'seconds')).format('mm:ss'));
-			    //stop player
-			    npoplayer("socialzap-player").stop(true);
-			    getZapData(window.videodur);
-			  }else{
-
-			  		currentTime = this.getPosition();
-					if(Math.abs(currentTime-oldtime) > 0.01){
-						updatePopcornBar(currentTime);
-						oldtime = currentTime;	
-					}
-			  }
-
-			
+	  		currentTime = this.getPosition();
+			if(Math.abs(currentTime-oldtime) > 0.01){
+				updatePopcornBar(currentTime);
+				oldtime = currentTime;
+			}	
 		});
 
 		//eventlistener for buffer
@@ -143,7 +130,7 @@ $(document).ready(function(){
 		//Skips video to time specified in URL
 		getSkipTime();
 		//Sets the total time
-		$("#total-time").text(moment(moment.duration(window.videodur,'seconds')).format('mm:ss'));
+		$("#total-time").text(timeToMin(window.videodur));
 	},0);
 
 	//POPOVER
@@ -157,5 +144,5 @@ function updatePopcornBar(newwidth)
 {
 	var finalnew =  (newwidth / window.videodur) * parseInt($("#popcorn-progbar-wrapper").css("width"));
 	$("#popcorn-progbar").css("width", finalnew +"px");
-	$("#current-time").text(moment(moment.duration(newwidth,'seconds')).format('mm:ss'));
+	$("#current-time").text(timeToMin(newwidth));
 }

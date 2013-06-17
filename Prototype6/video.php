@@ -17,8 +17,6 @@
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script src ="lib/javascript/bootstrap.js"></script>
 		<script src ="lib/javascript/nouislider.js"></script>
-		<script src ="lib/javascript/moment.js"></script>
-		<script src ="lib/javascript/moment.js"></script>
 		<!--  css files -->
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">

@@ -1,8 +1,8 @@
 <?php
 	include("config.php");
 
-	function getDur($vidid){
-		$qry = "SELECT duration 
+	function getInfo($vidid){
+		$qry = "SELECT duration, ug_id
 				FROM videos
 				WHERE aux_id = '$vidid'";
 		$result = mysql_query($qry);
@@ -12,6 +12,6 @@
 
 	//Calls function
 	if(isset($_REQUEST['vidid'])){
-		echo json_encode(getDur($_REQUEST['vidid']));
+		echo json_encode(getInfo($_REQUEST['vidid']));
 	}
 ?>
