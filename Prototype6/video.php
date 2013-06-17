@@ -26,6 +26,7 @@
 		<LINK rel="stylesheet" href="css/tagtoggler.css" type="text/css" >
 		<LINK rel="stylesheet" href="css/ratingbar.css" type="text/css" >	
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
+		<link rel="shortcut icon" href="img/icon.ico">
 		
 	</head>	
 	<body>

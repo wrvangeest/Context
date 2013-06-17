@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="lib/css/font-awesome.css" type="text/css">
 		<LINK rel="stylesheet" href="css/style.css" type="text/css" MEDIA=screen>
+		<link rel="shortcut icon" href="img/icon.ico">
 		
 	</head>
 	
