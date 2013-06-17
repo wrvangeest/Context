@@ -74,7 +74,7 @@ $(document).ready(function(){
 
 	/* update de current time */
 	Popcorn("#video").on("timeupdate", function(){
-		$("#current-time").text(moment(moment.duration(Popcorn("#video").currentTime(),'seconds')).format('mm:ss'));
+		$("#current-time").text(timeToMin(Popcorn("#video").currentTime()));
 	});
 
 	checkTime( function(dur) {
@@ -85,7 +85,7 @@ $(document).ready(function(){
 		//Skips video to time specified in URL
 		getSkipTime();
 		//Sets the total time
-		$("#total-time").text(moment(moment.duration(Popcorn("#video").duration(),'seconds')).format('mm:ss'));
+		$("#total-time").text(timeToMin(Popcorn("#video").duration()));
 	},0);
 
 	//POPOVER
