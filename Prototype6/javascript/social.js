@@ -41,7 +41,7 @@ function sendTweet() {
 
 function completeLink(sUrl, oUrl) {
 	var link = "https://twitter.com/intent/tweet?"
-			 + "&text=Dit moet je zien op SocialZap! " + sUrl + " Originele url: " + oUrl
+			 + "&text=Dit moet je zien op SocialZap! " + sUrl
 			 + "&hashtags=SocialZap";
 	getScript();
 	window.open(link, 'twitterwindow', 'height=550, width=420');
