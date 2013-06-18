@@ -1,3 +1,4 @@
+var OFFSET = 6;
 //Generates HTML code
 function createZapCode(data, type){
 	//Grab the list div (located in HTML file)

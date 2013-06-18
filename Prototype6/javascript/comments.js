@@ -65,7 +65,7 @@ function putComments(data){
 			zap.className = "commentPoint zapPoint";
 			zap.id = "commentPoint" + index;
 			zap.src =  item.image;
-			zap.style.marginLeft = loc + "px";
+			zap.style.marginLeft = loc - OFFSET + "px";
 			zap.style.width = "16px";
 			zap.style.height = "16px";
 			$(zap).popover({placement: 'bottom',

@@ -88,7 +88,7 @@ $(document).ready(function(){
                 
             $.post("php/register.php",url, function(data){
                 if(data === "goed"){
-                    alert("je bent nu geregistreerd, log nu in");
+                    alert("Registratie is gelukt. U kunt nu inloggen.");
                     location.href = "index.php";
                 }
             });      
