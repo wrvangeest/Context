@@ -163,7 +163,7 @@
 					<!-- begin advanced options -->
 					<div id="adv-options">
 						<div class="well well-header">Geavanceerde opties</div>
-							<div style="clear:right;">Selecteer minimale Reranking Score
+							<div style="clear:right;">Selecteer minimale Tweet Score
 								<a href="#" id="popo" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="De reranking score is een combinatie van visuele scores en tweet scores. De tweet scores worden berekend door het vergelijken van de tweets met de afbeeldingen en onderwerpen in de video." title="Reranking Score" data-original-title="Popover on top">?</a>
 							</div>
 								<div class="noUiSlider" id="slider1" style="float:left; margin-top:10px;"></div>
