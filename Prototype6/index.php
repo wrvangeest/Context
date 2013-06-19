@@ -64,7 +64,7 @@
 	  							<?php }else {?>
 	  							<!-- Else make it login form -->
 			  						<form class="form-inline" id="inlog-form" method="post">
-									  <input name="email" type="text" class="input-small" id="login-email" placeholder="Email">
+									  <input name="email" type="text" class="input-small" id="login-email" placeholder="Username">
 									  <input name="password" type="password" class="input-small" id="login-passwd" placeholder="Password">
 									  <input name="name" type="text" class="input-small" id="reg-name" placeholder="Name">
 
